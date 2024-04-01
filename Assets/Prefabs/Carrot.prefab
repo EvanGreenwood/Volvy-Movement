@@ -122,11 +122,17 @@ MonoBehaviour:
     - {fileID: -1672468844, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
     - {fileID: 855358616, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
     - {fileID: 1279794148, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: 104079160, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: 607458302, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: -940489704, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: -854082706, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: 1497560014, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: 755319648, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
     frameCounter: 0
-    frameRate: 0.0334
+    frameRate: 0.045
     frame: 0
-    loop: 0
-    loopFrame: -1
+    loop: 1
+    loopFrame: 8
   _shadow: {fileID: 5910588912158316047}
 --- !u!135 &3506292164396862564
 SphereCollider:
@@ -176,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4444687144464004070}

@@ -23,6 +23,8 @@ public class VegetableObject : MonoBehaviour
         _shadow.enabled = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         transform.position = transform.position.WithZ(transform.position.y * 0.02f);
+        _currentAnimation = _rootedAnimation;
+        _rootedAnimation.frame = 1000 - (int)(transform.position.x );
     }
 
     // 
