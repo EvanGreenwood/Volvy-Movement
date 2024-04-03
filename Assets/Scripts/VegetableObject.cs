@@ -8,12 +8,18 @@ public class VegetableObject : MonoBehaviour
 {
     [SerializeField] private CharacterAnimator.CharacterAnimation _rootedAnimation;
     [SerializeField] private CharacterAnimator.CharacterAnimation _uprootedAnimation;
+    [SerializeField] private CharacterAnimator.CharacterAnimation _growingAnimation;
     //
     private CharacterAnimator.CharacterAnimation _currentAnimation;
 
     private SpriteRenderer _spriteRenderer;
     //
     [SerializeField] private SpriteRenderer _shadow;
+    //
+    private float _uprootedTime = -1;
+    private bool _collecting = false;
+    private Vector3 _velocity;
+    private bool _growing = true;
     //
    
     //
@@ -30,7 +36,13 @@ public class VegetableObject : MonoBehaviour
     // 
     void Update()
     {
-        if (_rooted)
+        if (_growing)
+        {
+            RunAnimation(_growingAnimation);
+            //
+            if (_growingAnimation.IsFinished) _growing = false;
+        } 
+        else if (_rooted)
         {
             RunAnimation(_rootedAnimation);
         }
@@ -38,6 +50,50 @@ public class VegetableObject : MonoBehaviour
         {
             RunAnimation(_uprootedAnimation);
             // 
+            //
+            if (_collecting)
+            {
+                if (UnitManager.Instance.IsVolvyBurrowing)
+                {
+                    _velocity *= (1 - Time.deltaTime * 9);
+                    if (_velocity.sqrMagnitude < 0.1f)
+                    {
+                        _collecting = false;
+                    }
+                }
+                else
+                {
+                    Vector3 diff = (UnitManager.Instance.playerTransform.position - transform.position).WithZ(0);
+                    if (diff.sqrMagnitude < 0.2f)
+                    {
+                        AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        _velocity += diff * Time.deltaTime / diff.sqrMagnitude * 64;
+                        if (diff.sqrMagnitude < 3)
+                        {
+                            _velocity *= (1 - Time.deltaTime * (3 - diff.sqrMagnitude));
+                        }
+                       
+                    }
+                }
+                transform.position += _velocity * Time.deltaTime;
+                transform.position = transform.position.WithZ(transform.position.y * 0.02f);
+            }
+            else if (Time.time - _uprootedTime > 0.6f)
+            {
+                if (!UnitManager.Instance.IsVolvyBurrowing)
+                {
+                    Vector3 diff = (UnitManager.Instance.playerTransform.position - transform.position).WithZ(0);
+                    if (diff.sqrMagnitude < 4)
+                    {
+                        _collecting = true;
+                        _velocity = -diff * 3.5f;
+                    }
+                }
+            }
         }
     }
     public void RunAnimation(CharacterAnimator.CharacterAnimation animation)
@@ -55,7 +111,7 @@ public class VegetableObject : MonoBehaviour
     }
     public void Uproot()
     {
-        Debug.Log(" Uproot! ");
+        _uprootedTime = Time.time;
         _rooted = false;
         gameObject.layer =  LayerMask.NameToLayer("Uprooted Vegetables");
         _shadow.enabled = true;

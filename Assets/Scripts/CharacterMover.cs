@@ -10,6 +10,8 @@ public enum MovementState
     Run,
     Burrow,
     ExitBurrow,
+    Stunned,
+    Dead,
 }
 public class CharacterMover : MonoBehaviour
 {
@@ -19,19 +21,44 @@ public class CharacterMover : MonoBehaviour
     [SerializeField] private float _speed = 2;
     private Vector2 _burrowDirection = Vector2.zero;
     private float _burrowTime = 0;
+    private float _deathTime = 0;
     //
     [SerializeField] private SpriteRenderer _shadow;
+    [SerializeField] private bool _avoidEnemies = false;
+    private BounceTransform _bounce;
+    private float _stunTime = 0;
     void Start()
     {
         movementState = MovementState.Idle;
         _input = GetComponent<CharacterInput>();
+        _bounce= GetComponentInChildren<BounceTransform>();
+        //
+        if (_avoidEnemies) UnitManager.Instance._enemies.Add(transform);
     }
-
+    private void OnDestroy()
+    {
+        if (_avoidEnemies && UnitManager.HasInstance) UnitManager.Instance._enemies.Remove(transform);
+    }
     //  
     void Update()
     {
         Vector2 direction = new Vector2((_input.HoldingLeft ? -1 : 0) + (_input.HoldingRight ? 1 : 0), (_input.HoldingDowm ? -1 : 0) + (_input.HoldingUp ? 1 : 0)).normalized;
-        if (movementState == MovementState.Burrow)
+
+        if (movementState == MovementState.Dead)
+        {
+            // *** DEAD *** 
+            if (Time.time - _deathTime > 1.6f)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (movementState == MovementState.Stunned)
+        {
+            // *** NOTHING ***
+            _stunTime -= Time.deltaTime;
+            if (_stunTime <= 0) movementState = MovementState.Idle;
+        } 
+        else  if (movementState == MovementState.Burrow)
         {
             if (_input.PressedFireRecently)
             {
@@ -79,25 +106,46 @@ public class CharacterMover : MonoBehaviour
         {
             if (movementState != MovementState.Burrow)
             {
-                movementState = MovementState.Burrow;
-                _burrowTime = 0;
-                _shadow.enabled = false;
-                //
-                if (direction.magnitude > 0)
+                if (AbilitiesManager.Instance.chargeBar.TryUseCharge())
                 {
-                    _burrowDirection = direction;
-                }
-                else if (_input.LastDirection != 0)
-                {
-                    _burrowDirection = new Vector2(_input.LastDirection, 0);
-                }
-                else
-                {
-                    _burrowDirection = new Vector2(1, 0);
+                    movementState = MovementState.Burrow;
+                    _burrowTime = 0;
+                    _shadow.enabled = false;
+                    //
+                    if (direction.magnitude > 0)
+                    {
+                        _burrowDirection = direction;
+                    }
+                    else if (_input.LastDirection != 0)
+                    {
+                        _burrowDirection = new Vector2(_input.LastDirection, 0);
+                    }
+                    else
+                    {
+                        _burrowDirection = new Vector2(1, 0);
+                    }
                 }
             }
         }
         //
+        if (_avoidEnemies && movementState != MovementState.Stunned && movementState != MovementState.Dead)
+        {
+            transform.position += UnitManager.Instance.GetAvoidanceAmount(transform);
+        }
+        //
         transform.position = transform.position.WithZ(transform.position.y * 0.02f);
+    }
+    public void Stun(float time)
+    {
+        _bounce.Bounce(0.5f, 5);
+        movementState = MovementState.Stunned;
+        _stunTime = time;
+    }
+    public void Damage(float damageAmount)
+    {
+        _bounce.Bounce(0.0f, 5);
+        movementState = MovementState.Dead;
+        gameObject.layer = Layer.Default;
+        _deathTime = Time.time;
     }
 }

@@ -49,26 +49,27 @@ public class CharacterAnimator : MonoBehaviour
     private CharacterInput _input;
     private CharacterMover _mover; 
     private Rigidbody _rigidbody;
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     //
     [SerializeField] private CharacterAnimation _idleAnimation;
     [SerializeField] private CharacterAnimation _runAnimation;
     [SerializeField] private CharacterAnimation _burrowAnimation;
     [SerializeField] private CharacterAnimation _exitburrowAnimation;
+    [SerializeField] private CharacterAnimation _stunnedAnimation;
+    [SerializeField] private CharacterAnimation _deathAnimation;
     //
     private CharacterAnimation _currentAnimation;
     void Start()
     {
         _input = GetComponent<CharacterInput>(); 
-        _rigidbody = GetComponent<Rigidbody>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _rigidbody = GetComponent<Rigidbody>(); 
         _mover = GetComponent<CharacterMover>();
     }
 
     // 
     void LateUpdate()
     {
-        if (_mover.movementState != MovementState.Burrow && _mover.movementState != MovementState.ExitBurrow)
+        if (_mover.movementState != MovementState.Burrow && _mover.movementState != MovementState.ExitBurrow && _mover.movementState != MovementState.Stunned && _mover.movementState != MovementState.Dead)
         {
             if (_input.HoldingLeft && _input.HoldingRight)
             {
@@ -88,9 +89,17 @@ public class CharacterAnimator : MonoBehaviour
             }
         }
         //
-        if (_mover.movementState == MovementState.Idle)
+        if (_mover.movementState == MovementState.Dead)
+        {
+            RunAnimation(_deathAnimation);
+        }
+        else if (_mover.movementState == MovementState.Idle)
         { 
             RunAnimation(_idleAnimation);
+        }
+        else if (_mover.movementState == MovementState.Stunned)
+        {
+            RunAnimation(_stunnedAnimation);
         }
         else if (_mover.movementState == MovementState.Run)
         {

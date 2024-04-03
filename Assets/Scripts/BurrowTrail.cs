@@ -43,6 +43,16 @@ public class BurrowTrail : MonoBehaviour
                     vegetable.Uproot();
                 }
             }
+            //
+            Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 0.6f, 1 << LayerMask.NameToLayer("Enemies"));
+            for (int i = 0; i < enemyColliders.Length; i++)
+            {
+                if (enemyColliders[i].TryGetComponent<CharacterMover>(out CharacterMover mover))
+                {
+                    mover.Damage(1);
+                   // mover.Stun(1f);
+                }
+            }
         }
         else
         {
