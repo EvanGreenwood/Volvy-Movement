@@ -30,6 +30,11 @@ public class EnemySpawner : MonoBehaviour
             {
                 Instantiate(_enemyPrefab, new Vector3(_maxX * (Random.Range(0, 2) * 2 - 1), Random.Range(-7, 7), 0), Quaternion.identity);
             }
+            //
+            if (_spawnRate > 0.6f)
+            {
+                _spawnRate -= 0.03f;
+            }
         }
     }
 }

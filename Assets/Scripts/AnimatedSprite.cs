@@ -11,6 +11,7 @@ public class AnimatedSprite : MonoBehaviour
     private float _counter = 0;
     [SerializeField] private float _frameRate = 0.016667f;
     [SerializeField] private bool _loop = false;
+    [SerializeField] private bool _destroyAtEnd = true;
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -44,7 +45,14 @@ public class AnimatedSprite : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                if (_destroyAtEnd)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    enabled = false;
+                }
                 break;
             }
         }

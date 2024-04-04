@@ -49,8 +49,8 @@ public class BurrowTrail : MonoBehaviour
             {
                 if (enemyColliders[i].TryGetComponent<CharacterMover>(out CharacterMover mover))
                 {
-                    mover.Damage(1);
-                   // mover.Stun(1f);
+                   // mover.Damage(1);
+                     mover.Stun(2f);
                 }
             }
         }

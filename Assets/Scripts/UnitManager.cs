@@ -7,6 +7,7 @@ public class UnitManager : SingletonBehaviour<UnitManager>
 {
     public Transform playerTransform;
     [SerializeField] CharacterMover _volvyMover;
+    [SerializeField] private Bomb _bombPrefab;
     public bool IsVolvyBurrowing => _volvyMover.movementState == MovementState.Burrow || _volvyMover.movementState == MovementState.ExitBurrow;
      
     public List<Transform > _enemies = new List<Transform>();
@@ -30,5 +31,10 @@ public class UnitManager : SingletonBehaviour<UnitManager>
         }
 
         return avoidance;
+    }
+    public void VolvyDropBomb()
+    {
+      Bomb b=  Instantiate(_bombPrefab, _volvyMover.transform.position, Quaternion.identity);
+        b.Launch(-_volvyMover.MoveDirection*2, 8);
     }
 }

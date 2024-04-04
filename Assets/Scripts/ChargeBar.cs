@@ -33,6 +33,10 @@ public class ChargeBar : MonoBehaviour
     }
     public void AddCharge(float charge)
     {
+        if (_chargeAmount + charge > 1)
+        {
+            UnitManager.Instance.VolvyDropBomb();
+        }
         _chargeAmount = Mathf.Clamp01(_chargeAmount + charge);
     }
 }

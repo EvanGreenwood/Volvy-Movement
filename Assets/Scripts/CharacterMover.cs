@@ -27,6 +27,9 @@ public class CharacterMover : MonoBehaviour
     [SerializeField] private bool _avoidEnemies = false;
     private BounceTransform _bounce;
     private float _stunTime = 0;
+    private Vector3 _knockForce = Vector3.zero;
+    public Vector2 MoveDirection => _moveDirection;
+    private Vector2 _moveDirection = Vector2.zero;
     void Start()
     {
         movementState = MovementState.Idle;
@@ -43,11 +46,12 @@ public class CharacterMover : MonoBehaviour
     void Update()
     {
         Vector2 direction = new Vector2((_input.HoldingLeft ? -1 : 0) + (_input.HoldingRight ? 1 : 0), (_input.HoldingDowm ? -1 : 0) + (_input.HoldingUp ? 1 : 0)).normalized;
-
+        _moveDirection = direction;
+        //
         if (movementState == MovementState.Dead)
         {
             // *** DEAD *** 
-            if (Time.time - _deathTime > 1.6f)
+            if (Time.time - _deathTime > 1.2f)
             {
                 Destroy(gameObject);
             }
@@ -130,8 +134,13 @@ public class CharacterMover : MonoBehaviour
         //
         if (_avoidEnemies && movementState != MovementState.Stunned && movementState != MovementState.Dead)
         {
-            transform.position += UnitManager.Instance.GetAvoidanceAmount(transform);
+            transform.position += UnitManager.Instance.GetAvoidanceAmount(transform) + _knockForce * Time.deltaTime;
         }
+        else if (movementState == MovementState.Stunned)
+        {
+            transform.position +=  _knockForce * Time.deltaTime;
+        }
+        _knockForce *= 1 - Time.deltaTime * 9;
         //
         transform.position = transform.position.WithZ(transform.position.y * 0.02f);
     }
@@ -147,5 +156,9 @@ public class CharacterMover : MonoBehaviour
         movementState = MovementState.Dead;
         gameObject.layer = Layer.Default;
         _deathTime = Time.time;
+    }
+    public void Knock(Vector3 velocity)
+    {
+        _knockForce = velocity;
     }
 }

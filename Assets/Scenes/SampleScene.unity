@@ -1114,6 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 195859920}
   _volvyMover: {fileID: 195859918}
+  _bombPrefab: {fileID: 3748471826094123701, guid: 312effcb5c2345544b0870dd08fb60a3, type: 3}
   _enemies: []
 --- !u!114 &1854948519
 MonoBehaviour:
