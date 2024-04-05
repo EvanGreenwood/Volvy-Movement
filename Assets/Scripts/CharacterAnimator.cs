@@ -15,16 +15,28 @@ public class CharacterAnimator : MonoBehaviour
         public int frame = 0;
         public bool loop = true;
         public int loopFrame = -1;
+        private bool disabled = false;
         //
         public void Reset(SpriteRenderer renderer)
         {
             frameCounter = 0;
             frame = 0;
-            renderer.sprite = frames[frame];
+            if (frames.Length > 0)
+            {
+                renderer.sprite = frames[frame];                 
+                if (!renderer.enabled)  renderer.enabled = true;
+            }
+            else
+            {
+                disabled = true;
+                renderer.enabled = false;
+            }
         }
         //
         public void Run(SpriteRenderer renderer)
         {
+            if (disabled) return;
+            //
             frameCounter += Time.deltaTime;
             if (frameCounter >= frameRate)
             {
@@ -47,8 +59,7 @@ public class CharacterAnimator : MonoBehaviour
         public bool IsFinished => frame >= frames.Length && !loop;
     }
     private CharacterInput _input;
-    private CharacterMover _mover; 
-    private Rigidbody _rigidbody;
+    private CharacterMover _mover;  
     [SerializeField] private SpriteRenderer _spriteRenderer;
     //
     [SerializeField] private CharacterAnimation _idleAnimation;
@@ -61,9 +72,8 @@ public class CharacterAnimator : MonoBehaviour
     private CharacterAnimation _currentAnimation;
     void Start()
     {
-        _input = GetComponent<CharacterInput>(); 
-        _rigidbody = GetComponent<Rigidbody>(); 
-        _mover = GetComponent<CharacterMover>();
+        _input = GetComponentInParent<CharacterInput>();  
+        _mover = GetComponentInParent<CharacterMover>();
     }
 
     // 

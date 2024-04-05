@@ -36,7 +36,7 @@ public class Bomb : MonoBehaviour
                     }
                     else
                     {
-                        mover.Stun(0.5f);
+                        mover.Stun(1f);
                         mover.Knock(diff.normalized * _knockForce);
                     }
                     // mover.Stun(1f);

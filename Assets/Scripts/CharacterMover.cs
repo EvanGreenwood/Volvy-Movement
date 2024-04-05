@@ -140,7 +140,7 @@ public class CharacterMover : MonoBehaviour
         {
             transform.position +=  _knockForce * Time.deltaTime;
         }
-        _knockForce *= 1 - Time.deltaTime * 9;
+        _knockForce *= 1 - Time.deltaTime * 6;
         //
         transform.position = transform.position.WithZ(transform.position.y * 0.02f);
     }
