@@ -2576,6 +2576,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1230131913396810970, guid: cb7ae48637c279b4eb149f8b793dc4de, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -539032887, guid: c338342a522793947b3cbceb010a84ee, type: 3}
     - target: {fileID: 1297943928946259022, guid: cb7ae48637c279b4eb149f8b793dc4de, type: 3}
       propertyPath: _runAnimation.frames.Array.size
       value: 6
