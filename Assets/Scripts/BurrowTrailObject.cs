@@ -43,7 +43,7 @@ public class BurrowTrailObject : MonoBehaviour
         }
         else
         {
-            _currentAnimation.Run(_spriteRenderer);
+            _currentAnimation.Run(_spriteRenderer, Time.time);
         }
         // 
     }

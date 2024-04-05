@@ -105,7 +105,7 @@ public class VegetableObject : MonoBehaviour
         }
         else
         {
-            _currentAnimation.Run(_spriteRenderer);
+            _currentAnimation.Run(_spriteRenderer, Time.time);
         }
         // 
     }
