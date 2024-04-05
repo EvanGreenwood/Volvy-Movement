@@ -94,7 +94,7 @@ public class CharacterMover : MonoBehaviour
                 {
                     movementState = MovementState.Idle;
                 }
-            } 
+            }
         }
         else if (direction.magnitude > 0)
         {
