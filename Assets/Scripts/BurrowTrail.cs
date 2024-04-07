@@ -11,6 +11,7 @@ public class BurrowTrail : MonoBehaviour
     [SerializeField] private float _trailDistance = 1f;
     [SerializeField] private float _trailRemoveDistance = 2f;
     private float _trailRemoveTime = -10;
+    private int _trailCount = 0;
     void Start()
     {
         _mover = GetComponent<CharacterMover>();    
@@ -24,12 +25,19 @@ public class BurrowTrail : MonoBehaviour
             if (_trailObjects.Count == 0)
             {
                 AddTrailObject();
+                //
+                EffectsController.Instance.SpawnShrapnel(1, transform.position, 11, 2);
             }
             else
             {
                 if ((_trailObjects[_trailObjects.Count - 1].transform.position - transform.position).magnitude > _trailDistance)
                 {
                     AddTrailObject();
+                    _trailCount++;
+                    if (_trailCount % 3 == 0)
+                    {
+                        EffectsController.Instance.SpawnShrapnel(1, transform.position, 11, 2);
+                    }
                 }
                 //
                 TryRemoveBurrows();

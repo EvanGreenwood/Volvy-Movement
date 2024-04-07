@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f82e9f6c773caac449c873350d72747d
+guid: e159c0206c21bc54d89d19a5e390f4ea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,85 +110,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CarrotShrapnel_0
+      name: ShadowAnim Tiny_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c520b3a126d90c749a5b821c07eb1d94
-      internalID: 228746403
+      spriteID: 7d22cc46d98acd84a9edf7d2191ff455
+      internalID: 441021957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CarrotShrapnel_1
+      name: ShadowAnim Tiny_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a779697c6d426574f837aefb8200e027
+      internalID: -451239945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShadowAnim Tiny_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4dda158d56b36f4b87ea693fa14dd51
-      internalID: -336632581
+      spriteID: af59daf225f5db44385ef0b8a7380fce
+      internalID: 366862461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CarrotShrapnel_2
+      name: ShadowAnim Tiny_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8c4c46ecaaa1742816d296a4ad4700
+      internalID: -953372326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShadowAnim Tiny_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21cee90fda504544ba20afafffe6dfc0
-      internalID: -2031629297
+      spriteID: 17a325fa709603e449340e3e48d36571
+      internalID: 2076788138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CarrotShrapnel_3
+      name: ShadowAnim Tiny_5
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16bc576100c78e5478082bde7b881eca
-      internalID: -588809599
+      spriteID: d42ad185e649c2449a850c115a88c4fa
+      internalID: -1874833553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShadowAnim Tiny_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fdd8213c2ec646438f4ce54a73dee18
+      internalID: 525160149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShadowAnim Tiny_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92fce8540bffc6d4d9d498a062c1907b
+      internalID: 1439925738
       vertices: []
       indices: 
       edges: []
@@ -204,10 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CarrotShrapnel_0: 228746403
-      CarrotShrapnel_1: -336632581
-      CarrotShrapnel_2: -2031629297
-      CarrotShrapnel_3: -588809599
+      ShadowAnim Tiny_0: 441021957
+      ShadowAnim Tiny_1: -451239945
+      ShadowAnim Tiny_2: 366862461
+      ShadowAnim Tiny_3: -953372326
+      ShadowAnim Tiny_4: 2076788138
+      ShadowAnim Tiny_5: -1874833553
+      ShadowAnim Tiny_6: 525160149
+      ShadowAnim Tiny_7: 1439925738
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
