@@ -66,6 +66,9 @@ public class VegetableObject : MonoBehaviour
                     Vector3 diff = (UnitManager.Instance.playerTransform.position - transform.position).WithZ(0);
                     if (diff.sqrMagnitude < 0.2f)
                     {
+                        if(StomachManager.HasInstance)
+                            StomachManager.Instance.SpawnVegetable();
+
                         AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
                         Destroy(gameObject);
                     }

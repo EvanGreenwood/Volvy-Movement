@@ -126,6 +126,7 @@ MonoBehaviour:
     frame: 0
     loop: 1
     loopFrame: -1
+    wobble: 0
   _runAnimation:
     frames:
     - {fileID: 1726892689, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
@@ -137,6 +138,7 @@ MonoBehaviour:
     frame: 0
     loop: 1
     loopFrame: -1
+    wobble: 0
   _burrowAnimation:
     frames:
     - {fileID: 1096157007, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
@@ -160,6 +162,7 @@ MonoBehaviour:
     frame: 0
     loop: 1
     loopFrame: 9
+    wobble: 0
   _exitburrowAnimation:
     frames:
     - {fileID: -1930779639, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
@@ -175,6 +178,23 @@ MonoBehaviour:
     frame: 0
     loop: 0
     loopFrame: -1
+    wobble: 0
+  _stunnedAnimation:
+    frames: []
+    frameCounter: 0
+    frameRate: 0.0334
+    frame: 0
+    loop: 1
+    loopFrame: -1
+    wobble: 0
+  _deathAnimation:
+    frames: []
+    frameCounter: 0
+    frameRate: 0.0334
+    frame: 0
+    loop: 1
+    loopFrame: -1
+    wobble: 0
 --- !u!114 &8064055236086699497
 MonoBehaviour:
   m_ObjectHideFlags: 0
