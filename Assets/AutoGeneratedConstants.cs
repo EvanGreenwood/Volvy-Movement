@@ -127,11 +127,13 @@ public partial class RuleTrigger
 {
 
 	public static RuleTrigger[] AllRuleTriggers { get { if (__allRuleTriggers == null) __allRuleTriggers = GetValues<RuleTrigger>(); return __allRuleTriggers; } }
+	public static RuleTrigger BumpEnemy { get { if (__bumpEnemy == null) __bumpEnemy = GetValue<RuleTrigger>("Bump Enemy"); return __bumpEnemy; } }
 	public static RuleTrigger Overcharge { get { if (__overcharge == null) __overcharge = GetValue<RuleTrigger>("Overcharge"); return __overcharge; } }
 	public static RuleTrigger VolvyEat { get { if (__volvyEat == null) __volvyEat = GetValue<RuleTrigger>("Volvy Eat"); return __volvyEat; } }
 	public static RuleTrigger VolvyHurt { get { if (__volvyHurt == null) __volvyHurt = GetValue<RuleTrigger>("Volvy Hurt"); return __volvyHurt; } }
 	
 	protected static RuleTrigger[] __allRuleTriggers;
+	protected static RuleTrigger __bumpEnemy;
 	protected static RuleTrigger __overcharge;
 	protected static RuleTrigger __volvyEat;
 	protected static RuleTrigger __volvyHurt;

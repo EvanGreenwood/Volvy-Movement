@@ -92,6 +92,7 @@ public class CharacterAnimator : MonoBehaviour
         //
         if (_mover.movementState != MovementState.Burrow && _mover.movementState != MovementState.ExitBurrow && _mover.movementState != MovementState.Stunned && _mover.movementState != MovementState.Dead)
         {
+            Debug.Log(" _input.HoldingLeft " + _input.HoldingLeft + "  " +  _input.HoldingRight);
             if (_input.HoldingLeft && _input.HoldingRight)
             {
                 // ***  BORK  ***

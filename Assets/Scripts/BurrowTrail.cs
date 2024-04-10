@@ -57,7 +57,11 @@ public class BurrowTrail : MonoBehaviour
             {
                 if (enemyColliders[i].TryGetComponent<CharacterMover>(out CharacterMover mover))
                 {
-                   // mover.Damage(1);
+                    // mover.Damage(1);
+                    if (mover.movementState != MovementState.Stunned && mover.movementState != MovementState.Dead)
+                    {
+                        RulesManager.Instance.TryTrigger(RuleTrigger.BumpEnemy, transform.position);
+                    }
                      mover.Stun(2f);
                 }
             }
