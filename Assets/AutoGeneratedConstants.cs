@@ -14,6 +14,7 @@ public enum LayerName
 	IgnoreRaycast = -1,
 	Water = 4,
 	UI = 5,
+	Enemies = 13,
 	RootedVegetables = -1,
 	UprootedVegetables = -1
 }
@@ -31,6 +32,7 @@ public static class Layer
 	public const int IgnoreRaycast = -1;
 	public const int Water = 4;
 	public const int UI = 5;
+	public const int Enemies = 13;
 	public const int RootedVegetables = -1;
 	public const int UprootedVegetables = -1;
 
@@ -66,6 +68,7 @@ public static partial class LayerMasks
 	public static readonly LayerMask IgnoreRaycast = -2147483648;
 	public static readonly LayerMask Water = 16;
 	public static readonly LayerMask UI = 32;
+	public static readonly LayerMask Enemies = 8192;
 	public static readonly LayerMask RootedVegetables = -2147483648;
 	public static readonly LayerMask UprootedVegetables = -2147483648;
 
@@ -81,6 +84,7 @@ public static class CollisionMatrix
 	public static readonly LayerMask IgnoreRaycastCollisionMask = -1;
 	public static readonly LayerMask WaterCollisionMask = -1;
 	public static readonly LayerMask UICollisionMask = -1;
+	public static readonly LayerMask EnemiesCollisionMask = -1;
 	public static readonly LayerMask RootedVegetablesCollisionMask = -1;
 	public static readonly LayerMask UprootedVegetablesCollisionMask = -1;
 

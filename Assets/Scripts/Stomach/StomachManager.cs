@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class StomachManager : SingletonBehaviour<StomachManager>
 {
-    [SerializeField] int _numberOfVegetablesEaten;
     [SerializeField] private StomachVegetable _vegetablePrefab;
     [SerializeField] private Transform _neckTransform;
+    public List<StomachVegetable> StomachVegetables => _stomachVegetables;
     List<StomachVegetable> _stomachVegetables = new List<StomachVegetable>();
     void Start()
     {
@@ -36,19 +36,11 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         {
             stomachVegetable.ThrowUpVegetable();
         }
-
-        _numberOfVegetablesEaten = 0;
         _stomachVegetables.Clear();
     }
 
     public void RemoveStomachVegetable(StomachVegetable stomachVegetable)
     {
         _stomachVegetables.Remove(stomachVegetable);
-    }
-
-    public void IncreaseVegetablesEaten()
-    {
-        _numberOfVegetablesEaten++;
-        SpawnVegetable();
     }
 }

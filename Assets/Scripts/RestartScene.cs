@@ -8,7 +8,7 @@ public class RestartScene : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Backslash))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Backslash) || Input.GetKeyDown(KeyCode.Backspace))
         {
             Restart();
         }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2779933935214398173}
   - component: {fileID: 8064055236086699497}
   - component: {fileID: 1187346612172450115}
+  - component: {fileID: 4676018682060355523}
   m_Layer: 0
   m_Name: Volvy
   m_TagString: Untagged
@@ -222,6 +223,20 @@ MonoBehaviour:
   _burrowObjectPrefab: {fileID: 7948247576507647075, guid: bf14a584f8f5cc14881d34a9111cc2ed, type: 3}
   _trailDistance: 0.45
   _trailRemoveDistance: 2.5
+--- !u!114 &4676018682060355523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959660175620158080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4d3f52f2b347b49b40d40ac93f8b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionRadius: 0.25
+  _invulnerabilityTime: 0
 --- !u!1001 &3000370673363572748
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class StomachVegetable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_combining && collision.collider.TryGetComponent<StomachVegetable>(out StomachVegetable otherVegetable))
+        /*if (!_combining && collision.collider.TryGetComponent<StomachVegetable>(out StomachVegetable otherVegetable))
         {
             if (otherVegetable.Type == Type && _combineCount == otherVegetable.CombineCount)
             {
@@ -64,7 +64,7 @@ public class StomachVegetable : MonoBehaviour
                 //
                 CalculateScale();
             }
-        }
+        }*/
     }
     public void CalculateScale()
     {
