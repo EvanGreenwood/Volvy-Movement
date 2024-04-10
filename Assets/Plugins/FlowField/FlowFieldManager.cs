@@ -215,8 +215,8 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
     }
     public Tile GetNearesetTile(Vector3 position)
     {
-        int row = Mathf.Max(Mathf.Min(Mathf.FloorToInt((position.y - offset.y) / cellSize), numRows - 1), 0);
-        int col = Mathf.Max(Mathf.Min(Mathf.FloorToInt((position.x - offset.x) / cellSize), numCols - 1), 0);
+        int row = Mathf.Max(Mathf.Min(Mathf.FloorToInt((position.y - offset.y + (cellSize / 2f)) / cellSize), numRows - 1), 0);
+        int col = Mathf.Max(Mathf.Min(Mathf.FloorToInt((position.x - offset.x + (cellSize / 2f)) / cellSize), numCols - 1), 0);
         return tiles[row][col];
     }
     public Vector2 GetFlowDir(Vector3 position)
@@ -238,5 +238,5 @@ public class Tile
 public enum TileType
 {
     Empty,
-    Wall
+    Obstacle
 }
