@@ -82,6 +82,8 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
     }
     private void Update()
     {
+        if (target == null) return;
+
         Build();
         Flow();
         Clear();

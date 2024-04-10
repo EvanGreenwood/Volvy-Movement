@@ -100,6 +100,8 @@ public class RatsColonyManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (volvy == null) return;
+
         var moveJob = new MoveJob()
         {
             volvyPosition = (Vector2)volvy.position,
