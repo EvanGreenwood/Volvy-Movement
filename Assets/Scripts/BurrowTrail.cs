@@ -26,7 +26,7 @@ public class BurrowTrail : MonoBehaviour
             {
                 AddTrailObject();
                 //
-                EffectsController.Instance.SpawnShrapnel(1, transform.position, 11, 2);
+               // EffectsController.Instance.SpawnShrapnel(1, transform.position, 11, 2);
             }
             else
             {
@@ -36,7 +36,7 @@ public class BurrowTrail : MonoBehaviour
                     _trailCount++;
                     if (_trailCount % 3 == 0)
                     {
-                        EffectsController.Instance.SpawnShrapnel(1, transform.position, 11, 2);
+                       // EffectsController.Instance.SpawnShrapnel(1, transform.position, 11, 2);
                     }
                 }
                 //

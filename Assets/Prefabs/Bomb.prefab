@@ -48,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animatedSprite: {fileID: 7793766741521693223}
   _explosionPrefab: {fileID: 1120729383287809400, guid: f66978d3add07cc47bdd75cc64425ce3, type: 3}
-  _knockForce: 8
+  _knockRange: 3.4
+  _killRange: 2.2
+  _knockForce: 4
 --- !u!1 &8543722384310328006
 GameObject:
   m_ObjectHideFlags: 0

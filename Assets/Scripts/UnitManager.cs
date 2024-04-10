@@ -32,9 +32,34 @@ public class UnitManager : SingletonBehaviour<UnitManager>
 
         return avoidance;
     }
-    public void VolvyDropBomb()
+    public void VolvyDropBomb(Vector3 position, Vector2 velocity)
     {
-      Bomb b=  Instantiate(_bombPrefab, _volvyMover.transform.position, Quaternion.identity);
-        b.Launch(-_volvyMover.MoveDirection*2, 8);
+      Bomb b=  Instantiate(_bombPrefab, position, Quaternion.identity);
+        b.Launch(-_volvyMover.MoveDirection* 2 + velocity * 0.6f, 8);
+    }
+    //
+    public void Explode(Vector3 position, float killRange, float knockRange, float knockForce)
+    {
+       
+        Collider[] enemyColliders = Physics.OverlapSphere(position, Mathf.Max(knockRange, killRange), 1 << LayerMask.NameToLayer("Enemies"));
+        //
+        Debug.Log(" Explode " + Mathf.Max(knockRange, killRange) + "  " + enemyColliders.Length);
+        //
+        for (int i = 0; i < enemyColliders.Length; i++)
+        {
+            if (enemyColliders[i].TryGetComponent(out CharacterMover mover))
+            {
+                Vector3 diff = (mover.transform.position - position).WithZ(0);
+                if (killRange > 0 && diff.magnitude < killRange)
+                {
+                    mover.Damage(1);
+                }
+                else
+                {
+                    mover.Stun(1f);
+                    mover.Knock(diff.normalized * knockForce);
+                }
+            }
+        }
     }
 }

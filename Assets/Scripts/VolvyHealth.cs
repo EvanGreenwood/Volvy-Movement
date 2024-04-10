@@ -33,10 +33,16 @@ public class VolvyHealth : MonoBehaviour
         {
             if (!_isInvulnerable && _mover.movementState != MovementState.Burrow)
             {
-                if (StomachManager.HasInstance && StomachManager.Instance.StomachVegetables.Count > 0)
-                    TakeDamage();
-                else
-                    Die();
+                if (c.TryGetComponent(out CharacterMover enemyMover))
+                {
+                    if (enemyMover.movementState != MovementState.Dead && enemyMover.movementState != MovementState.Stunned)
+                    {
+                        if (StomachManager.HasInstance && StomachManager.Instance.StomachVegetables.Count > 0)
+                            TakeDamage();
+                        else
+                            Die();
+                    }
+                }
             }
         }
     }

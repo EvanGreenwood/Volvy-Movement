@@ -96,3 +96,56 @@ public static class SceneNames
 	public const string SampleScene = "SampleScene";
 
 }
+
+[CreateAssetMenu(fileName = "Rule Effect", menuName = "Scriptable Enum/Rule Effect")]
+public partial class RuleEffect
+{
+
+	public static RuleEffect[] AllRuleEffects { get { if (__allRuleEffects == null) __allRuleEffects = GetValues<RuleEffect>(); return __allRuleEffects; } }
+	public static RuleEffect SpawnBomb { get { if (__spawnBomb == null) __spawnBomb = GetValue<RuleEffect>("Spawn Bomb"); return __spawnBomb; } }
+	public static RuleEffect SpawnCarrotSeed { get { if (__spawnCarrotSeed == null) __spawnCarrotSeed = GetValue<RuleEffect>("Spawn Carrot Seed"); return __spawnCarrotSeed; } }
+	
+	protected static RuleEffect[] __allRuleEffects;
+	protected static RuleEffect __spawnBomb;
+	protected static RuleEffect __spawnCarrotSeed;
+
+}
+
+[CreateAssetMenu(fileName = "Rule Passive", menuName = "Scriptable Enum/Rule Passive")]
+public partial class RulePassive
+{
+
+	public static RulePassive[] AllRulePassives { get { if (__allRulePassives == null) __allRulePassives = GetValues<RulePassive>(); return __allRulePassives; } }
+	
+	protected static RulePassive[] __allRulePassives;
+	
+
+}
+
+[CreateAssetMenu(fileName = "Rule Trigger", menuName = "Scriptable Enum/Rule Trigger")]
+public partial class RuleTrigger
+{
+
+	public static RuleTrigger[] AllRuleTriggers { get { if (__allRuleTriggers == null) __allRuleTriggers = GetValues<RuleTrigger>(); return __allRuleTriggers; } }
+	public static RuleTrigger Overcharge { get { if (__overcharge == null) __overcharge = GetValue<RuleTrigger>("Overcharge"); return __overcharge; } }
+	public static RuleTrigger VolvyEat { get { if (__volvyEat == null) __volvyEat = GetValue<RuleTrigger>("Volvy Eat"); return __volvyEat; } }
+	public static RuleTrigger VolvyHurt { get { if (__volvyHurt == null) __volvyHurt = GetValue<RuleTrigger>("Volvy Hurt"); return __volvyHurt; } }
+	
+	protected static RuleTrigger[] __allRuleTriggers;
+	protected static RuleTrigger __overcharge;
+	protected static RuleTrigger __volvyEat;
+	protected static RuleTrigger __volvyHurt;
+
+}
+
+[CreateAssetMenu(fileName = "Rule Recipe", menuName = "Scriptable Enum/Rule Recipe")]
+public partial class RuleRecipe
+{
+
+	public static RuleRecipe[] AllRuleRecipes { get { if (__allRuleRecipes == null) __allRuleRecipes = GetValues<RuleRecipe>(); return __allRuleRecipes; } }
+	public static RuleRecipe CarrotOnionBomb { get { if (__carrotOnionBomb == null) __carrotOnionBomb = GetValue<RuleRecipe>("Carrot+Onion=Bomb"); return __carrotOnionBomb; } }
+	
+	protected static RuleRecipe[] __allRuleRecipes;
+	protected static RuleRecipe __carrotOnionBomb;
+
+}

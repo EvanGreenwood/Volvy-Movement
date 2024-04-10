@@ -69,6 +69,9 @@ public class VegetableObject : MonoBehaviour
                         if(StomachManager.HasInstance)
                             StomachManager.Instance.SpawnVegetable();
 
+                        //
+                        if (RulesManager.HasInstance) RulesManager.Instance.TryTrigger(RuleTrigger.VolvyEat, UnitManager.Instance.playerTransform.position);
+
                         AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
                         Destroy(gameObject);
                     }

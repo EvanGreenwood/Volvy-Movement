@@ -79,7 +79,9 @@ public class CharacterMover : MonoBehaviour
                 movementState = MovementState.ExitBurrow;
                 _burrowTime = 0;
                 //
-                EffectsController.Instance.SpawnShrapnel(5, transform.position, 15, 2.5f);
+                UnitManager.Instance.Explode(transform.position, 0, 2.4f, 3);
+                //
+                //EffectsController.Instance.SpawnShrapnel(5, transform.position, 15, 2.5f);
             }
         }
         else if (movementState == MovementState.ExitBurrow)

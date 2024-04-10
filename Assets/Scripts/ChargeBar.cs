@@ -35,7 +35,7 @@ public class ChargeBar : MonoBehaviour
     {
         if (_chargeAmount + charge > 1)
         {
-            UnitManager.Instance.VolvyDropBomb();
+            if (RulesManager.HasInstance)  RulesManager.Instance.TryTrigger(RuleTrigger.Overcharge, UnitManager.Instance.playerTransform.position);
         }
         _chargeAmount = Mathf.Clamp01(_chargeAmount + charge);
     }

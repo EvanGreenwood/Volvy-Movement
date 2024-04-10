@@ -7,6 +7,8 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField] private AnimatedSprite _animatedSprite;
    [SerializeField] private AnimatedSprite _explosionPrefab;
+    [SerializeField] private float _knockRange = 3.1f;
+    [SerializeField] private float _killRange = 1.8f;
     [SerializeField] private float _knockForce = 5;
     private float _yOffsetSpeed = 0;
     private Vector2 _velocity;
@@ -23,25 +25,8 @@ public class Bomb : MonoBehaviour
         if (!_animatedSprite.enabled)
         {
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            //
-            Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 3.1f, 1 << LayerMask.NameToLayer("Enemies"));
-            for (int i = 0; i < enemyColliders.Length; i++)
-            {
-                if (enemyColliders[i].TryGetComponent<CharacterMover>(out CharacterMover mover))
-                {
-                    Vector3 diff = (mover.transform.position - transform.position).WithZ(0);
-                    if (diff.magnitude < 1.7f)
-                    {
-                        mover.Damage(1);
-                    }
-                    else
-                    {
-                        mover.Stun(1f);
-                        mover.Knock(diff.normalized * _knockForce);
-                    }
-                    // mover.Stun(1f);
-                }
-            }
+            // 
+            UnitManager.Instance.Explode(transform.position, _killRange, _knockRange, _knockForce);
             //
             Destroy(gameObject);
             //
@@ -70,6 +55,9 @@ public class Bomb : MonoBehaviour
             transform.position = transform.position.WithZ(transform.position.y * 0.02f);
         }
     }
+
+    
+
     public void Launch(Vector2 velocity, float ySpeed)
     {
         this._velocity = velocity;

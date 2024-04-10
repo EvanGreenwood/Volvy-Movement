@@ -19,6 +19,8 @@ public class Shrapnel : MonoBehaviour
     [SerializeField] private CharacterAnimator.CharacterAnimation _fadeAnim; 
     private float _groundTime = 0;
     [SerializeField] private GameObject _shadow;
+    //
+    [SerializeField] private StomachVegetable.VegetableType _seedType = StomachVegetable.VegetableType.None;
 
     void Start()
     {
@@ -38,7 +40,7 @@ public class Shrapnel : MonoBehaviour
             _yOffset += _yOffsetSpeed * Time.deltaTime;
             if (_yOffset <= 0 && _yOffsetSpeed < 0)
             {
-                Debug.Log(" Hit ground "); 
+                //Debug.Log(" Hit ground "); 
                 //
                 _yOffset = 0;
                 _yOffsetSpeed *= -0.4f;
@@ -47,6 +49,7 @@ public class Shrapnel : MonoBehaviour
                     _yOffsetSpeed = 0;
                     _velocity = Vector2.zero;
                     _shadow.SetActive(false);
+                    // **********  LAND  **************
                 }
                 else
                 {
@@ -82,13 +85,20 @@ public class Shrapnel : MonoBehaviour
                 _fadeAnim.Run(_spriteRenderer, Time.time);
                 if (_fadeAnim.IsFinished)
                 {
+                    //
+                    if (_seedType != StomachVegetable.VegetableType.None)
+                    {
+                        VegetablesSpawner.Instance.SpawnVegetable(  _seedType, transform.position);
+                    }
                     Destroy(gameObject);
+                    //
+                    
                 }
             }
         }
         //
        // _spriteRenderer.transform.localPosition = new Vector3(0, 2, 0);
-        Debug.Log(" _yOffset  " + _yOffset + "   + _yOffsetSpeed " + _yOffsetSpeed + " " + _spriteRenderer.transform.localPosition);
+       // Debug.Log(" _yOffset  " + _yOffset + "   + _yOffsetSpeed " + _yOffsetSpeed + " " + _spriteRenderer.transform.localPosition);
     }
     public void Launch(float upwardForce, Vector2 force)
     {

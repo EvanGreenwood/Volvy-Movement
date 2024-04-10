@@ -7,8 +7,9 @@ public class StomachVegetable : MonoBehaviour
     public enum VegetableType
     {
         None,
-        Onion,
-        Vegetable,
+        Onion =1,
+        Carrot=2,
+        Bomb = 50,
     }
     public int CombineCount => _combineCount;
     [SerializeField] private int _combineCount = 1;
