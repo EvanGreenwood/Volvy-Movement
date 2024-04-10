@@ -42,7 +42,7 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
             for (int c = 0; c < numCols; ++c)
             {
                 Tile tile = tiles[r][c];
-                if (tile.isTraversable)
+                if (tile.IsTraversable)
                 {
                     Gizmos.color = Color.white;
                 }
@@ -58,10 +58,10 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
 
                 if (drawFlow)
                 {
-                    if (tile.isTraversable)
+                    if (tile.IsTraversable)
                     {
                         float t = distance / maxDistance;
-                        float l = (cellSize) / 2f;
+                        float l = (t * cellSize) / 2f;
 
                         Vector2 flow = flowField[r][c].normalized * l;
                         Gizmos.DrawRay(pos, flow);
@@ -76,8 +76,9 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
     }
 #endif
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         Setup();
     }
     private void Update()
@@ -109,9 +110,8 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
                 {
                     col = c,
                     row = r,
-                    isTraversable = true
+                    type = TileType.Empty
                 };
-
                 visitedTiles[r][c] = false;
                 distancesToTarget[r][c] = 0f;
                 flowField[r][c] = Vector2.zero;
@@ -146,7 +146,7 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
                 Tile neighbourTile = tiles[y][x];
 
                 // Check if traversable
-                if (!neighbourTile.isTraversable)
+                if (!neighbourTile.IsTraversable)
                 {
                     continue;
                 }
@@ -199,7 +199,7 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
 
     public bool IsTraversable(int y, int x)
     {
-        return tiles[y][x].isTraversable;
+        return tiles[y][x].IsTraversable;
     }
     public bool IsOutOfBounds(int y, int x)
     {
@@ -230,5 +230,13 @@ public class Tile
 {
     public int row;
     public int col;
-    public bool isTraversable = true;
+    public TileType type;
+
+    public bool IsTraversable => type == TileType.Empty;
+}
+
+public enum TileType
+{
+    Empty,
+    Wall
 }
