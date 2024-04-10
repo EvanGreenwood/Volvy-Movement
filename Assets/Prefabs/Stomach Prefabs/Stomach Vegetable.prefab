@@ -181,3 +181,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combineCount: 1
   _vegetableType: 1
+  _spawnVegetable: {fileID: 48970222861116248, guid: 60207fa60355ac8419050b973b3a1044, type: 3}

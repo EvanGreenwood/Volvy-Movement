@@ -7,6 +7,9 @@ public class EnemyInput : CharacterInput
 {
     public void Move(Vector2 dir)
     {
+        if (UnitManager.Instance.playerTransform == null)
+            return;
+
 #if UNITY_EDITOR
         Debug.DrawRay(transform.position, dir);
 #endif
