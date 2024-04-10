@@ -10,6 +10,9 @@ public class EnemyInput : CharacterInput
     {
         base.Update();
         //
+        if (UnitManager.Instance.playerTransform == null)
+            return;
+
         Vector3 playerPos = UnitManager.Instance.playerTransform.position;
         Vector3 diff = (playerPos - transform.position).WithZ(0)  ;
 
