@@ -5,55 +5,52 @@ using Framework;
 
 public class EnemyInput : CharacterInput
 {
-
-    protected override void Update()
+    public void Move(Vector2 dir)
     {
-        base.Update();
-        //
         if (UnitManager.Instance.playerTransform == null)
             return;
 
-        Vector3 playerPos = UnitManager.Instance.playerTransform.position;
-        Vector3 diff = (playerPos - transform.position).WithZ(0)  ;
+#if UNITY_EDITOR
+        Debug.DrawRay(transform.position, dir);
+#endif
 
-        //
-        if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y) * 2)
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y) * 2)
         {
-            if (diff.x > 0)
+            if (dir.x > 0)
             {
                 _right = true;
             }
-            else if (diff.x < 0)
+            else if (dir.x < 0)
             {
                 _left = true;
             }
         }
-        else if (Mathf.Abs(diff.x) * 2 < Mathf.Abs(diff.y))
+        else if (Mathf.Abs(dir.x) * 2 < Mathf.Abs(dir.y))
         {
-            if (diff.y > 0)
+            if (dir.y > 0)
             {
                 _up = true;
             }
-            else if (diff.y < 0)
+            else if (dir.y < 0)
             {
                 _down = true;
             }
         }
         else
-        { 
-            if (diff.x > 0)
+        {
+            if (dir.x > 0)
             {
                 _right = true;
             }
-            else if (diff.x < 0)
+            else if (dir.x < 0)
             {
                 _left = true;
             }
-            if (diff.y > 0)
+            if (dir.y > 0)
             {
                 _up = true;
             }
-            else if (diff.y < 0)
+            else if (dir.y < 0)
             {
                 _down = true;
             }
