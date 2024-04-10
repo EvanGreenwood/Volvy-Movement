@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StomachVegetable : MonoBehaviour
@@ -42,6 +43,8 @@ public class StomachVegetable : MonoBehaviour
         if (_ejecting)
         {
             _rigidbody.AddForce(Vector3.up * 40 * Time.deltaTime, ForceMode.VelocityChange);
+            if (transform.position.y >= StomachManager.Instance.NeckTransform.position.y + 2f)
+                Destroy(gameObject);
         }
     }
 

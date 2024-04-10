@@ -6,6 +6,7 @@ using UnityEngine;
 public class StomachManager : SingletonBehaviour<StomachManager>
 {
     [SerializeField] private StomachVegetable _vegetablePrefab;
+    public Transform NeckTransform => _neckTransform;
     [SerializeField] private Transform _neckTransform;
     public List<StomachVegetable> StomachVegetables => _stomachVegetables;
     List<StomachVegetable> _stomachVegetables = new List<StomachVegetable>();

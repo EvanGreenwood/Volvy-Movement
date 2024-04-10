@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8813819678601543704}
   - component: {fileID: 8676099862744452748}
   - component: {fileID: 1102775034035633597}
+  - component: {fileID: 497674364618399822}
   m_Layer: 0
   m_Name: Scene Functions
   m_TagString: Untagged
@@ -260,3 +261,21 @@ MonoBehaviour:
   numRows: 30
   target: {fileID: 0}
   drawFlow: 1
+--- !u!114 &497674364618399822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012663009470821617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f14853d17a973443bd6b43272003f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rulePairs:
+  - trigger: {fileID: 11400000, guid: 99ee4598ca6eed147b80a8b951b26fe3, type: 2}
+    effect: {fileID: 11400000, guid: 3863afe9ed80b1642bec1ef257ae5c3d, type: 2}
+    probability:
+      portion: 1
+      outOf: 6
