@@ -48,9 +48,6 @@ public class StomachVegetable : MonoBehaviour
     public void ThrowUpVegetable()
     {
         _ejecting = true;
-
-        if(UnitManager.HasInstance && UnitManager.Instance.playerTransform != null)
-            Instantiate(_spawnVegetable, UnitManager.Instance.playerTransform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter(Collision collision)

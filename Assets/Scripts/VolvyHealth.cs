@@ -1,7 +1,10 @@
 using Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class VolvyHealth : MonoBehaviour
 {
@@ -44,7 +47,17 @@ public class VolvyHealth : MonoBehaviour
                         if (!_isInvulnerable)
                         {
                             if (StomachManager.HasInstance && StomachManager.Instance.StomachVegetables.Count > 0)
+                            {
+                                for (int i = 0; i < StomachManager.Instance.StomachVegetables.Count; i++)
+                                {
+
+                                    float angle = Time.time * 2 + (Mathf.PI * 2 / StomachManager.Instance.StomachVegetables.Count) * i;
+                                    Vector2 v = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+                                    EffectsController.Instance.SpawnShrapnel(StomachVegetable.VegetableType.Carrot, UnitManager.Instance.playerTransform.position, v, 15, 2);
+                                }
+                                //EffectsController.Instance.SpawnShrapnel(StomachVegetable.VegetableType.Carrot, StomachManager.Instance.StomachVegetables.Count, UnitManager.Instance.playerTransform.position, 2, 2);
                                 TakeDamage();
+                            }
                             else
                                 Die();
                         }
