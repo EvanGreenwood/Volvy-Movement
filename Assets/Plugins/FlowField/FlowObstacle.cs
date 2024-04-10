@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class FlowObstacle : MonoBehaviour
 {
     [SerializeField] private float scale = 1.25f;
-    //[SerializeField] private int precision = 4;
 
     private List<Tile> tiles = new();
     private Collider2D col;
@@ -29,29 +29,10 @@ public class FlowObstacle : MonoBehaviour
                 tile.type = TileType.Obstacle;
 
                 tile.flow = FlowFieldManager.Instance.GetTilePosition(tile) - (Vector2)(transform.position);
+
+                tiles.Add(tile);
             }
         }
-
-        //for (int y = 0; y < precision + 1; ++y)
-        //{
-        //    float pY = (float)y / precision;
-        //    for (int x = 0; x < precision + 1; ++x)
-        //    {
-        //        float pX = (float)x / precision;
-
-        //        Vector3 size = col.bounds.size * scale;
-
-        //        Vector2 pos = col.transform.position - size / 2f;
-        //        pos.x += size.x * pX;
-        //        pos.y += size.y * pY;
-
-        //        Tile tile = FlowFieldManager.Instance.GetNearesetTile(pos);
-        //        tiles.Add(tile);
-
-        //        tile.type = TileType.Obstacle;
-        //        tile.flow = pos - (Vector2)(transform.position);
-        //    }
-        //}
     }
 
     private void OnEnable()

@@ -1,12 +1,14 @@
 using Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Unity.Burst;
+using Unity.Jobs;
 using UnityEditor;
 using UnityEngine;
 
 public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
 {
     [SerializeField] private Vector2 offset;
+    [SerializeField] private float threshDistance = 0.1f;
     [SerializeField] private float cellSize = 1f;
     [SerializeField] private int numCols = 10;
     [SerializeField] private int numRows = 10;
@@ -19,6 +21,7 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
     private Vector2[][] flowField;
     private bool isBuilt;
     private float maxDistance;
+    private Vector2 prevTargetPosition;
 
     private readonly Vector2Int[] neighbours = new[]
     {
@@ -83,9 +86,13 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
     {
         if (target == null) return;
 
-        Build();
-        Flow();
-        Clear();
+        float sqrM = ((Vector2)(target.position) - prevTargetPosition).sqrMagnitude;
+        if (sqrM > (threshDistance * threshDistance))
+        {
+            Build();
+            Flow();
+            prevTargetPosition = target.position;
+        }
     }
 
     private void Setup()
@@ -166,6 +173,14 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
             }
         }
 
+        for (int r = 0; r < numRows; ++r)
+        {
+            for (int c = 0; c < numCols; ++c)
+            {
+                visitedTiles[r][c] = false;
+            }
+        }
+
         isBuilt = true;
     }
     private void Flow()
@@ -189,16 +204,6 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
                 {
                     flowField[r][c] = tile.flow;
                 }
-            }
-        }
-    }
-    private void Clear()
-    {
-        for (int r = 0; r < numRows; ++r)
-        {
-            for (int c = 0; c < numCols; ++c)
-            {
-                visitedTiles[r][c] = false;
             }
         }
     }
@@ -239,6 +244,7 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
         return new Vector2(tile.col, tile.row) * cellSize + offset;
     }
 }
+
 
 public class Tile
 {
