@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class FlowObstacle : MonoBehaviour
 {
-    [SerializeField] private float distance = 5f;
-    [SerializeField] private int precision = 4;
     [SerializeField] private float scale = 1.25f;
+    //[SerializeField] private int precision = 4;
 
     private List<Tile> tiles = new();
     private Collider2D col;
@@ -16,26 +15,43 @@ public class FlowObstacle : MonoBehaviour
     }
     private void Start()
     {
-        for (int y = 0; y < precision + 1; ++y)
+        Vector3 size = col.bounds.size * scale;
+        Vector2 pos = col.transform.position - size / 2f;
+
+        Tile t1 = FlowFieldManager.Instance.GetNearesetTile(pos);
+        Tile t2 = FlowFieldManager.Instance.GetNearesetTile(new Vector2(pos.x + size.x, pos.y + size.y));
+
+        for (int y = t1.row; y <= t2.row; ++y)
         {
-            float pY = (float)y / precision;
-            for (int x = 0; x < precision + 1; ++x)
+            for (int x = t1.col; x <= t2.col; ++x)
             {
-                float pX = (float)x / precision;
-
-                Vector3 size = col.bounds.size * scale;
-
-                Vector2 pos = col.transform.position - size / 2f;
-                pos.x += size.x * pX;
-                pos.y += size.y * pY;
-
-                Tile tile = FlowFieldManager.Instance.GetNearesetTile(pos);
-                tiles.Add(tile);
-
+                Tile tile = FlowFieldManager.Instance.GetTile(y, x);
                 tile.type = TileType.Obstacle;
-                tile.flow = pos - (Vector2)(transform.position);
+
+                tile.flow = FlowFieldManager.Instance.GetTilePosition(tile) - (Vector2)(transform.position);
             }
         }
+
+        //for (int y = 0; y < precision + 1; ++y)
+        //{
+        //    float pY = (float)y / precision;
+        //    for (int x = 0; x < precision + 1; ++x)
+        //    {
+        //        float pX = (float)x / precision;
+
+        //        Vector3 size = col.bounds.size * scale;
+
+        //        Vector2 pos = col.transform.position - size / 2f;
+        //        pos.x += size.x * pX;
+        //        pos.y += size.y * pY;
+
+        //        Tile tile = FlowFieldManager.Instance.GetNearesetTile(pos);
+        //        tiles.Add(tile);
+
+        //        tile.type = TileType.Obstacle;
+        //        tile.flow = pos - (Vector2)(transform.position);
+        //    }
+        //}
     }
 
     private void OnEnable()

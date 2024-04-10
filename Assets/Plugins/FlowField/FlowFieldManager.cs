@@ -230,6 +230,14 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
         Tile tile = GetNearesetTile(position);
         return flowField[tile.row][tile.col];
     }
+    public Tile GetTile(int y, int x)
+    {
+        return tiles[y][x];
+    }
+    public Vector2 GetTilePosition(Tile tile)
+    {
+        return new Vector2(tile.col, tile.row) * cellSize + offset;
+    }
 }
 
 public class Tile
