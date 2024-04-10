@@ -7,6 +7,10 @@ public class EnemyInput : CharacterInput
 {
     public void Move(Vector2 dir)
     {
+#if UNITY_EDITOR
+        Debug.DrawRay(transform.position, dir);
+#endif
+
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y) * 2)
         {
             if (dir.x > 0)

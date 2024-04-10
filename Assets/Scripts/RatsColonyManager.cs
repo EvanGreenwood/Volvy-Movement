@@ -8,37 +8,37 @@ using Random = UnityEngine.Random;
 
 public class RatsColonyManager : MonoBehaviour
 {
-    [SerializeField] private Character _ratPrefab;
+    [SerializeField] private Rat _ratPrefab;
     [SerializeField] private float _spawnRate = 2;
-    private float _spawnCounter = 0;
     [SerializeField] private float _maxY = 9;
     [SerializeField] private float _maxX = 15;
     [SerializeField] private int maxNumRats = 100;
+    [SerializeField] private Transform[] initialSpawnPoints;
     [SerializeField] private Transform volvy;
     [SerializeField] private float _ratSpeed = 3f;
-    [SerializeField] private float _ratDistanceToAttack = 0.1f;
+    [SerializeField] private float _ratReqDistanceToAttack = 0.1f;
     [SerializeField] private float _ratAttackCooldown = 1f;
-    [SerializeField] private Transform[] initialSpawnPoints;
 
-    private List<Character> _rats = new();
+    private List<Rat> _rats = new();
     private int _numSpawnedRats = 0;
+    private float _spawnCounter = 0;
 
-    private NativeArray<float> _prevAttackTimes;
-    private NativeArray<float2> _ratInputVectors;
+    private NativeArray<float> _ratPrevAttackTimes;
+    private NativeArray<float2> _ratInputDirs;
     private NativeArray<float2> _ratPositions;
     private NativeArray<RatState> _ratStates;
 
 
     private void Start()
     {
-        _prevAttackTimes = new NativeArray<float>(maxNumRats, Allocator.Persistent);
-        _ratInputVectors = new NativeArray<float2>(maxNumRats, Allocator.Persistent);
+        _ratPrevAttackTimes = new NativeArray<float>(maxNumRats, Allocator.Persistent);
+        _ratInputDirs = new NativeArray<float2>(maxNumRats, Allocator.Persistent);
         _ratPositions = new NativeArray<float2>(maxNumRats, Allocator.Persistent);
         _ratStates = new NativeArray<RatState>(maxNumRats, Allocator.Persistent);
 
         for (int i = 0; i < maxNumRats; i++)
         {
-            _prevAttackTimes[i] = 0f;
+            _ratPrevAttackTimes[i] = 0f;
             _ratStates[i] = RatState.Targeting;
         }
 
@@ -49,8 +49,8 @@ public class RatsColonyManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _prevAttackTimes.Dispose();
-        _ratInputVectors.Dispose();
+        _ratPrevAttackTimes.Dispose();
+        _ratInputDirs.Dispose();
         _ratPositions.Dispose();
         _ratStates.Dispose();
     }
@@ -82,36 +82,41 @@ public class RatsColonyManager : MonoBehaviour
 
         for (int i = 0; i < _rats.Count; i++)
         {
-            (_rats[i].Input as EnemyInput).Move(_ratInputVectors[i]);
-            
-            if (_ratStates[i] == RatState.Attacking)
+            var rat = _rats[i];
+            if (rat == null)
             {
-                Debug.Log(i + " ATTACK");
-                _ratStates[i] = RatState.Targeting;
+                _rats.RemoveAt(i);
+                i--;
+            }
+            else
+            {
+                Vector2 dir = FlowFieldManager.Instance.GetFlowDir(rat.transform.position);
+                rat.EnemyInput.Move(dir);
+
+                _ratPositions[i] = (Vector2)rat.transform.position;
+                _ratStates[i] = rat.State;
             }
         }
     }
     private void FixedUpdate()
     {
-        //var pathfindJob = new PathfindJob();
-        //pathfindJob.Schedule(maxNumRats, 1);
-
         var moveJob = new MoveJob()
         {
+            volvyPosition = (Vector2)volvy.position,
             ratPositions = _ratPositions,
-            ratInputVectors = _ratInputVectors,
-            volvyPosition = (Vector2)volvy.position
+            ratInputDirs = _ratInputDirs
         };
         moveJob.Schedule(maxNumRats, 1).Complete();
 
         var attackJob = new AttackJob()
         {
-            prevAttackTimes = _prevAttackTimes,
             volvyPosition = (Vector2)volvy.position,
-            currentTime = Time.time,
-            distanceToAttack = _ratDistanceToAttack,
-            ratPositions = _ratInputVectors,
-            ratStates = _ratStates
+            ratPositions = _ratPositions,
+            ratStates = _ratStates,
+            ratPrevAttackTimes = _ratPrevAttackTimes,
+            ratReqDistanceToAttack = _ratReqDistanceToAttack,
+            ratAttackCooldown = _ratAttackCooldown,
+            currentTime = Time.time
         };
         attackJob.Schedule(maxNumRats, 1).Complete();
     }
@@ -127,31 +132,31 @@ public class RatsColonyManager : MonoBehaviour
     }
 }
 
-
 [BurstCompile(CompileSynchronously = true)]
 public struct AttackJob : IJobParallelFor
 {
-    [ReadOnly] public NativeArray<float2> ratPositions;
     [ReadOnly] public float2 volvyPosition;
-    public NativeArray<float> prevAttackTimes;
-    public float distanceToAttack;
-    public float attackCooldown;
+    [ReadOnly] public NativeArray<float2> ratPositions;
     public NativeArray<RatState> ratStates;
+    public NativeArray<float> ratPrevAttackTimes;
+    public float ratReqDistanceToAttack;
+    public float ratAttackCooldown;
     public float currentTime;
 
     public void Execute(int index)
     {
-        if (ratStates[index] != RatState.Targeting) return; // must be targeting the player to attack
-
-        float prevAttackTime = prevAttackTimes[index];
-        if (currentTime > prevAttackTime + attackCooldown)
+        if (ratStates[index] == RatState.Targeting)
         {
-            float2 ratPosition = ratPositions[index];
-            float sqrDist = math.distancesq(volvyPosition, ratPosition);
-            if (sqrDist < distanceToAttack * distanceToAttack)
+            float prevAttackTime = ratPrevAttackTimes[index];
+            if (currentTime > prevAttackTime + ratAttackCooldown)
             {
-                ratStates[index] = RatState.Attacking;
-                prevAttackTimes[index] = currentTime;
+                float2 ratPosition = ratPositions[index];
+                float sqrDist = math.distancesq(volvyPosition, ratPosition);
+                if (sqrDist < ratReqDistanceToAttack * ratReqDistanceToAttack)
+                {
+                    ratStates[index] = RatState.Attacking;
+                    ratPrevAttackTimes[index] = currentTime;
+                }
             }
         }
     }
@@ -160,31 +165,14 @@ public struct AttackJob : IJobParallelFor
 [BurstCompile(CompileSynchronously = true)]
 public struct MoveJob : IJobParallelFor
 {
-    public NativeArray<float2> ratPositions;
-    public NativeArray<float2> ratInputVectors;
     [ReadOnly] public float2 volvyPosition;
+    [ReadOnly] public NativeArray<float2> ratPositions;
+    public NativeArray<float2> ratInputDirs;
 
     public void Execute(int index)
     {
         float2 currRatPosition = ratPositions[index];
         float2 dir = math.normalize(volvyPosition - currRatPosition);
-        ratInputVectors[index] = dir;
+        ratInputDirs[index] = dir;
     }
-}
-
-[BurstCompile(CompileSynchronously = true)]
-public struct PathfindJob : IJobParallelFor
-{
-    public void Execute(int index)
-    {
-    }
-}
-
-
-public enum RatState
-{
-    Targeting,
-    Attacking,
-    Stunned,
-    Dying
 }
