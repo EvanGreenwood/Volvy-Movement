@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -10918038, guid: 2fcd6b46b37a38840935edbf46a2cdd5, type: 3}
+  m_Sprite: {fileID: 777793117, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -601734107, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
+  m_Sprite: {fileID: -1794473670, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1191876126408571383}
   _idleAnimation:
     frames:
-    - {fileID: -601734107, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
+    - {fileID: -1794473670, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
     frameCounter: 0
     frameRate: 0.0334
     frame: 0
@@ -208,14 +208,14 @@ MonoBehaviour:
     wobble: 0
   _runAnimation:
     frames:
-    - {fileID: 1191791451, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: -941494052, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: -1750599951, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: 1617077427, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: 684852002, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: -912859281, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: 1698728993, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
-    - {fileID: -1042551355, guid: a5054266cd43d1a49a270f7a370fb23d, type: 3}
+    - {fileID: 766208954, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: -1794473670, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: 1782966431, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: -1489710185, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: -630189432, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: 948135588, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: 83408833, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
+    - {fileID: 1852378396, guid: 9900fdd9de73ddf418ff2b69bc68c259, type: 3}
     frameCounter: 0
     frameRate: 0.055
     frame: 0
@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 2550679225032251935}
   - component: {fileID: 3694638375061186852}
   - component: {fileID: 6128135947261372204}
+  - component: {fileID: 8900195848247320500}
   m_Layer: 13
   m_Name: Ratty
   m_TagString: Untagged
@@ -323,7 +324,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1230131913396810970}
   _idleAnimation:
     frames:
-    - {fileID: -10918038, guid: 2fcd6b46b37a38840935edbf46a2cdd5, type: 3}
+    - {fileID: 777793117, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
     frameCounter: 0
     frameRate: 0.0334
     frame: 0
@@ -332,9 +333,16 @@ MonoBehaviour:
     wobble: 0
   _runAnimation:
     frames:
-    - {fileID: -1626494592, guid: 2fcd6b46b37a38840935edbf46a2cdd5, type: 3}
+    - {fileID: 777793117, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: 452332176, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: 1696128691, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: -234947162, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: 1376331655, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: -1520434745, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: 1560741809, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
+    - {fileID: 1332060128, guid: 63697b8d79d11ce489e93605b963eb99, type: 3}
     frameCounter: 0
-    frameRate: 0.1
+    frameRate: 0.055
     frame: 0
     loop: 1
     loopFrame: -1
@@ -472,6 +480,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &8900195848247320500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771531502617413484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9828feb2832987e44a9a931177892185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterInput: {fileID: 2550679225032251935}
 --- !u!1001 &6035426466002615143
 PrefabInstance:
   m_ObjectHideFlags: 0

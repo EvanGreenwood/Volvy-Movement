@@ -16,6 +16,8 @@ public class StomachVegetable : MonoBehaviour
     public VegetableType Type => _vegetableType;
     [SerializeField] private VegetableType _vegetableType;
     private Rigidbody _rigidbody;
+
+    [SerializeField] VegetableObject _spawnVegetable;
     //
     private bool _combining = false;
     private bool _ejecting = false;
@@ -46,6 +48,9 @@ public class StomachVegetable : MonoBehaviour
     public void ThrowUpVegetable()
     {
         _ejecting = true;
+
+        if(UnitManager.HasInstance && UnitManager.Instance.playerTransform != null)
+            Instantiate(_spawnVegetable, UnitManager.Instance.playerTransform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter(Collision collision)

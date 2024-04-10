@@ -1,3 +1,4 @@
+using Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,21 +27,27 @@ public class VolvyHealth : MonoBehaviour
 
     void CheckEnemyCollisions()
     {
-        
         Collider[] enemyColliders = Physics.OverlapSphere(transform.position, _collisionRadius, 1 << Layer.Enemies);
 
         foreach (Collider c in enemyColliders)
         {
-            if (!_isInvulnerable && _mover.movementState != MovementState.Burrow)
+            if (!UnitManager.Instance.IsVolvyBurrowing)
             {
                 if (c.TryGetComponent(out CharacterMover enemyMover))
                 {
                     if (enemyMover.movementState != MovementState.Dead && enemyMover.movementState != MovementState.Stunned)
                     {
-                        if (StomachManager.HasInstance && StomachManager.Instance.StomachVegetables.Count > 0)
-                            TakeDamage();
-                        else
-                            Die();
+                        Vector3 dir = (c.transform.position - transform.position).WithZ(0);
+
+                        enemyMover.Knock(dir.normalized * 20);
+                        //
+                        if (!_isInvulnerable)
+                        {
+                            if (StomachManager.HasInstance && StomachManager.Instance.StomachVegetables.Count > 0)
+                                TakeDamage();
+                            else
+                                Die();
+                        }
                     }
                 }
             }
