@@ -1,5 +1,6 @@
 using Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -58,14 +59,11 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
 
                 if (drawFlow)
                 {
-                    if (tile.IsTraversable)
-                    {
-                        float t = distance / maxDistance;
-                        float l = (t * cellSize) / 2f;
+                    float t = 1f;//distance / maxDistance;
+                    float l = (t * cellSize) / 2f;
 
-                        Vector2 flow = flowField[r][c].normalized * l;
-                        Gizmos.DrawRay(pos, flow);
-                    }
+                    Vector2 flow = flowField[r][c].normalized * l;
+                    Gizmos.DrawRay(pos, flow);
                 }
                 else
                 {
@@ -176,13 +174,21 @@ public class FlowFieldManager : SingletonBehaviour<FlowFieldManager>
         {
             for (int c = 0; c < numCols; ++c)
             {
-                float currentDistance = distancesToTarget[r][c] + 1;
+                Tile tile = tiles[r][c];
+                if (tile.IsTraversable)
+                {
+                    float currentDistance = distancesToTarget[r][c] + 1;
 
-                float x = GetDistance(r, c - 1, currentDistance) - GetDistance(r, c + 1, currentDistance);
-                float y = GetDistance(r + 1, c, currentDistance) - GetDistance(r - 1, c, currentDistance);
+                    float x = GetDistance(r, c - 1, currentDistance) - GetDistance(r, c + 1, currentDistance);
+                    float y = GetDistance(r + 1, c, currentDistance) - GetDistance(r - 1, c, currentDistance);
 
-                Vector2 flow = new Vector2(x, -y).normalized;
-                flowField[r][c] = flow;
+                    Vector2 flow = new Vector2(x, -y).normalized;
+                    flowField[r][c] = flow;
+                }
+                else
+                {
+                    flowField[r][c] = tile.flow;
+                }
             }
         }
     }
@@ -231,6 +237,7 @@ public class Tile
     public int row;
     public int col;
     public TileType type;
+    public Vector2 flow;
 
     public bool IsTraversable => type == TileType.Empty;
 }
