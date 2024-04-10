@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StomachVegetable : MonoBehaviour
@@ -42,15 +43,14 @@ public class StomachVegetable : MonoBehaviour
         if (_ejecting)
         {
             _rigidbody.AddForce(Vector3.up * 40 * Time.deltaTime, ForceMode.VelocityChange);
+            if (transform.position.y >= StomachManager.Instance.NeckTransform.position.y + 2f)
+                Destroy(gameObject);
         }
     }
 
     public void ThrowUpVegetable()
     {
         _ejecting = true;
-
-        if(UnitManager.HasInstance && UnitManager.Instance.playerTransform != null)
-            Instantiate(_spawnVegetable, UnitManager.Instance.playerTransform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter(Collision collision)
