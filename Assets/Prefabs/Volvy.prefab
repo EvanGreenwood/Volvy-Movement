@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 8064055236086699497}
   - component: {fileID: 1187346612172450115}
   - component: {fileID: 4676018682060355523}
+  - component: {fileID: 5649156177869545838}
   m_Layer: 0
   m_Name: Volvy
   m_TagString: Untagged
@@ -552,6 +553,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionRadius: 0.25
+--- !u!114 &5649156177869545838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959660175620158080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26c6ec23cc08754bb7b8d1632fae206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 9195784310918474120, guid: f51ec74c5d982f7408d8ff9dcd0bad33, type: 3}
+  _rate: 2
 --- !u!1001 &3000370673363572748
 PrefabInstance:
   m_ObjectHideFlags: 0

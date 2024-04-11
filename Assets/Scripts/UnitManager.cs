@@ -62,4 +62,29 @@ public class UnitManager : SingletonBehaviour<UnitManager>
             }
         }
     }
+    public bool FindNearestEnemy(out Transform enemyTransform, Vector2 pos, float  maxRange)
+    {
+        float nearestDist = maxRange;
+        int nearestIndex = -1;
+        for (int i = 0; i < _enemies.Count; i++)
+        {
+            float dist = (_enemies[i].transform.position.ToVector2() - pos).magnitude;
+            if (dist < nearestDist)
+            {
+                nearestIndex = i;
+                nearestDist = dist;
+            }
+        }
+        if (nearestIndex >= 0)
+        {
+            enemyTransform = _enemies[nearestIndex];
+            return true;
+        }
+        else
+        {
+            enemyTransform = null;
+            return false;
+        }
+
+    }
 }
