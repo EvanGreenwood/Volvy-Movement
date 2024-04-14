@@ -7,8 +7,8 @@ public partial class RuleRecipe : ScriptableEnum
 {
     public Sprite icon;
     //
-    public StomachVegetable.VegetableType vegetableIngredient;
-    public StomachVegetable.VegetableType vegetableIngredientOther;
+    public VegetableType vegetableIngredient;
+    public VegetableType vegetableIngredientOther;
     //
-    public StomachVegetable.VegetableType vegetableResult;
+    public VegetableType vegetableResult;
 }

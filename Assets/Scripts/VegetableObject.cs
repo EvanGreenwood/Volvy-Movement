@@ -30,9 +30,10 @@ public class VegetableObject : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         transform.position = transform.position.WithZ(transform.position.y * 0.02f);
         _currentAnimation = _rootedAnimation;
+        _currentAnimation.Reset(_spriteRenderer);
         _rootedAnimation.frame = 1000 - (int)(transform.position.x );
     }
-
+    //
     // 
     void Update()
     {

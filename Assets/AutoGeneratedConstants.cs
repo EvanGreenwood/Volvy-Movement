@@ -16,7 +16,8 @@ public enum LayerName
 	UI = 5,
 	Enemies = 13,
 	RootedVegetables = -1,
-	UprootedVegetables = -1
+	UprootedVegetables = -1,
+	DontRender = 31
 }
 
 public enum SortingLayerName
@@ -35,6 +36,7 @@ public static class Layer
 	public const int Enemies = 13;
 	public const int RootedVegetables = -1;
 	public const int UprootedVegetables = -1;
+	public const int DontRender = 31;
 
 }
 
@@ -71,6 +73,7 @@ public static partial class LayerMasks
 	public static readonly LayerMask Enemies = 8192;
 	public static readonly LayerMask RootedVegetables = -2147483648;
 	public static readonly LayerMask UprootedVegetables = -2147483648;
+	public static readonly LayerMask DontRender = -2147483648;
 
 }
 
@@ -87,6 +90,7 @@ public static class CollisionMatrix
 	public static readonly LayerMask EnemiesCollisionMask = -1;
 	public static readonly LayerMask RootedVegetablesCollisionMask = -1;
 	public static readonly LayerMask UprootedVegetablesCollisionMask = -1;
+	public static readonly LayerMask DontRenderCollisionMask = -1;
 
 }
 
@@ -151,5 +155,21 @@ public partial class RuleRecipe
 	
 	protected static RuleRecipe[] __allRuleRecipes;
 	protected static RuleRecipe __carrotOnionBomb;
+
+}
+
+[CreateAssetMenu(fileName = "Vegetable Type", menuName = "Scriptable Enum/Vegetable Type")]
+public partial class VegetableType
+{
+
+	public static VegetableType[] AllVegetableTypes { get { if (__allVegetableTypes == null) __allVegetableTypes = GetValues<VegetableType>(); return __allVegetableTypes; } }
+	public static VegetableType Bomb { get { if (__bomb == null) __bomb = GetValue<VegetableType>("Bomb"); return __bomb; } }
+	public static VegetableType Carrot { get { if (__carrot == null) __carrot = GetValue<VegetableType>("Carrot"); return __carrot; } }
+	public static VegetableType Onion { get { if (__onion == null) __onion = GetValue<VegetableType>("Onion"); return __onion; } }
+	
+	protected static VegetableType[] __allVegetableTypes;
+	protected static VegetableType __bomb;
+	protected static VegetableType __carrot;
+	protected static VegetableType __onion;
 
 }

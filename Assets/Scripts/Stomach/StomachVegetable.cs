@@ -1,37 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Collections.Generic; 
 using UnityEngine;
 
 public class StomachVegetable : MonoBehaviour
 {
-    public enum VegetableType
-    {
-        None,
-        Onion =1,
-        Carrot=2,
-        Bomb = 50,
-    }
+     
     public int CombineCount => _combineCount;
     [SerializeField] private int _combineCount = 1;
     public VegetableType Type => _vegetableType;
     [SerializeField] private VegetableType _vegetableType;
+    public Rigidbody Rigidbody => _rigidbody;
     private Rigidbody _rigidbody;
 
-    [SerializeField] VegetableObject _spawnVegetable;
     //
     private bool _combining = false;
+    public bool Ejecting => _ejecting; 
     private bool _ejecting = false;
+    [SerializeField] private float _ejectForce = 60f;
+    private Vector3 _originalScale;
 
+    [SerializeField] private bool _autoEject = false;
+
+    private void Awake()
+    {
+        _originalScale = transform.localScale;
+        transform.localScale = _originalScale * 0.02f;
+    }
     void Start()
     {
+         
         _rigidbody = GetComponent<Rigidbody>();
-        CalculateScale();
+        //CalculateScale();
+        if (_autoEject) Invoke("ThrowUpVegetable", 0.5f);
     }
 
     //  
     void Update()
     {
+        transform.localScale =  Vector3.Lerp(transform.localScale, _originalScale, Time.deltaTime * 7)  ;
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Eject"); 
@@ -42,9 +48,17 @@ public class StomachVegetable : MonoBehaviour
     {
         if (_ejecting)
         {
-            _rigidbody.AddForce(Vector3.up * 40 * Time.deltaTime, ForceMode.VelocityChange);
-            if (transform.position.y >= StomachManager.Instance.NeckTransform.position.y + 2f)
+            _rigidbody.AddForce(Vector3.up * (_rigidbody.velocity.y < 5? _ejectForce  * 2: _ejectForce) * Time.deltaTime, ForceMode.VelocityChange);
+
+            if (transform.position.y >= StomachManager.Instance.NeckTransform.position.y + 1f)
+            {
+                if (_vegetableType.bombPrefab != null)
+                {
+                    UnitManager.Instance.VolvyDropBomb(UnitManager.Instance.playerTransform.position, Vector2.zero);
+                }
                 Destroy(gameObject);
+
+            }
         }
     }
 
@@ -55,30 +69,33 @@ public class StomachVegetable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        /*if (!_combining && collision.collider.TryGetComponent<StomachVegetable>(out StomachVegetable otherVegetable))
+        if (!_combining && collision.rigidbody != null && collision.rigidbody.TryGetComponent(out StomachVegetable otherVegetable))
         {
-            if (otherVegetable.Type == Type && _combineCount == otherVegetable.CombineCount)
+            //
+            if (RulesManager.Instance.TryCombineVegetables(Type, otherVegetable.Type, out VegetableType result))
             {
-                _combineCount *= 2;
-                
-                otherVegetable.StartCombining();
-                otherVegetable.GetComponentInChildren<Collider>().enabled = false;
+
+                _combining = true;
+                //_rigidbody.MovePosition(collision.contacts[0].point);
+                StomachManager.Instance.SpawnVegetable(result, collision.contacts[0].point);
+
+                StomachManager.Instance.RemoveStomachVegetable(this);
                 StomachManager.Instance.RemoveStomachVegetable(otherVegetable);
+                Destroy(gameObject);
                 Destroy(otherVegetable.gameObject);
-                //
-                _rigidbody.MovePosition(collision.contacts[0].point);
-                //
-                CalculateScale();
+                // 
             }
-        }*/
+        }
     }
     public void CalculateScale()
     {
         transform.localScale = Vector3.one * (0.25f + 0.125f * Mathf.Sqrt(CombineCount));
         _rigidbody.mass = 0.75f + 0.5f * Mathf.Sqrt(CombineCount);
     }
-    public void StartCombining()
+    public void HalfScale()
     {
-        _combining = true;
+        transform.localScale = _originalScale * 0.33f;
+        
     }
+    
 }

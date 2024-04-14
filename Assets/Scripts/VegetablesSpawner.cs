@@ -21,10 +21,26 @@ public class VegetablesSpawner : SingletonBehaviour<VegetablesSpawner>
         {
             _spawnCounter -= _spawnRate;
             //
-            Instantiate(_vegetablePrefab, new Vector3((Random.Range(4, 11)) * (Random.Range(0, 2) * 2 - 1), (Random.Range(2, 7)) * (Random.Range(0, 2) * 2 - 1) - 1, 0), Quaternion.identity);
+            TrySpawnVegetable();
         }
     }
-    public void SpawnVegetable(StomachVegetable.VegetableType type, Vector2 pos)
+
+    private void TrySpawnVegetable()
+    {
+        int attempts = 0;
+        while (attempts < 25)
+        {
+            Vector3 pos = new Vector3((Random.Range(4, 21)) * (Random.Range(0, 2) * 2 - 1), (Random.Range(4, 14)) * (Random.Range(0, 2) * 2 - 1) - 1, 0);
+            if (  Physics2D.OverlapCircle(pos, 2.5f, 1 << Layer.DontRender) == null && !Physics.CheckSphere(pos, 1, 1 << Layer.RootedVegetables))
+            {
+                Instantiate(_vegetablePrefab, pos, Quaternion.identity);
+                break;
+            }
+           
+        }
+    }
+
+    public void SpawnVegetable(VegetableType type, Vector2 pos)
     {
         Instantiate(_vegetablePrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
 

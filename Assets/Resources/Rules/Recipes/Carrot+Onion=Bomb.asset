@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 5b45395c028c567499e9f63bc407709a
   icon: {fileID: 0}
-  vegetableIngredient: 1
-  vegetableIngredientOther: 2
-  vegetableResult: 50
+  vegetableIngredient: {fileID: 11400000, guid: fa6664aee5d43f54a8e3aaa9dce8a32d, type: 2}
+  vegetableIngredientOther: {fileID: 11400000, guid: 93da5dfd42856da4f959d8d856605471, type: 2}
+  vegetableResult: {fileID: 11400000, guid: 8f160431337f7d5439352cc80e06648c, type: 2}

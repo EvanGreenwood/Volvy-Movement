@@ -81,7 +81,7 @@ public class RulesManager : SingletonBehaviour<RulesManager>
             triggerCount =  ( portion + _chances % outOf) / outOf;
             bool occurs = triggerCount > 0;
             //
-            Debug.Log(" Roll " + occurs + "  triggerCount " + triggerCount + ".... _chances " + _chances + " portion " + portion + " outOf " + outOf);
+            //Debug.Log(" Roll " + occurs + "  triggerCount " + triggerCount + ".... _chances " + _chances + " portion " + portion + " outOf " + outOf);
             //
             _chances++;
             if (occurs)
@@ -97,6 +97,7 @@ public class RulesManager : SingletonBehaviour<RulesManager>
     } 
     //
     [SerializeField]  private  List<RulePair> rulePairs = new List<RulePair>();
+    [SerializeField] private List<RuleRecipe> ruleRecipes = new List<RuleRecipe>();
     //
     public void TryTrigger(RuleTrigger trigger, Vector3 position)
     { 
@@ -118,12 +119,11 @@ public class RulesManager : SingletonBehaviour<RulesManager>
             Debug.LogError("Null effect ");
         }
         else if (effect == RuleEffect.SpawnCarrotSeed  )
-        { 
-            //
+        {  
             float angle = Time.time * 2 + (Mathf.PI * 2 / triggeredCount) * index;
             Vector2 v = new Vector2(Mathf.Sin(angle),  Mathf.Cos(angle));
             //
-            EffectsController.Instance.SpawnShrapnel(StomachVegetable.VegetableType.Carrot, position, v, 15, 2);
+            EffectsController.Instance.SpawnShrapnel(VegetableType.Carrot, position, v, 15, 2);
         }
         else if (effect == RuleEffect.SpawnBomb)
         {
@@ -133,5 +133,20 @@ public class RulesManager : SingletonBehaviour<RulesManager>
             UnitManager.Instance.VolvyDropBomb(position, v);
         }
 
+    }
+    public bool TryCombineVegetables(VegetableType vegetableThis, VegetableType vegetableOther, out VegetableType created)
+    {
+        Debug.Log("ruleRecipes " + ruleRecipes.Count);
+        foreach (RuleRecipe recipe in ruleRecipes)
+        {
+            Debug.Log("TryCombineVegetables !! " + vegetableThis + " " + vegetableOther);
+            if (recipe.vegetableIngredient == vegetableThis && recipe.vegetableIngredientOther == vegetableOther)
+            {
+                created = recipe.vegetableResult;  
+                return true;
+            }
+        }
+        created = null;
+        return false;
     }
 }

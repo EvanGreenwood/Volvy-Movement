@@ -34,7 +34,7 @@ public class UnitManager : SingletonBehaviour<UnitManager>
     }
     public void VolvyDropBomb(Vector3 position, Vector2 velocity)
     {
-      Bomb b=  Instantiate(_bombPrefab, position, Quaternion.identity);
+        Bomb b=  Instantiate(_bombPrefab, position, Quaternion.identity);
         b.Launch(-_volvyMover.MoveDirection* 2 + velocity * 0.6f, 8);
     }
     //

@@ -20,7 +20,7 @@ public class Shrapnel : MonoBehaviour
     private float _groundTime = 0;
     [SerializeField] private GameObject _shadow;
     //
-    [SerializeField] private StomachVegetable.VegetableType _seedType = StomachVegetable.VegetableType.None;
+    [SerializeField] private VegetableType _seedType ;
 
     void Start()
     {
@@ -86,7 +86,7 @@ public class Shrapnel : MonoBehaviour
                 if (_fadeAnim.IsFinished)
                 {
                     //
-                    if (_seedType != StomachVegetable.VegetableType.None)
+                    if (_seedType != null)
                     {
                         VegetablesSpawner.Instance.SpawnVegetable(  _seedType, transform.position);
                     }

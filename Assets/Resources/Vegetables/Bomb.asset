@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e9edc744b5657418416b81eab214fb, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  _guid: 8f160431337f7d5439352cc80e06648c
+  icon: {fileID: 0}
+  stomachPrefab: {fileID: 6881329953308988149, guid: 1bab133742693ef4585c4a5ac741489d, type: 3}
+  seedPrefab: {fileID: 0}
+  bombPrefab: {fileID: 3748471826094123701, guid: 312effcb5c2345544b0870dd08fb60a3, type: 3}
