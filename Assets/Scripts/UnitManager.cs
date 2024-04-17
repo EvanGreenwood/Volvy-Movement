@@ -52,7 +52,7 @@ public class UnitManager : SingletonBehaviour<UnitManager>
                 Vector3 diff = (mover.transform.position - position).WithZ(0);
                 if (killRange > 0 && diff.magnitude < killRange)
                 {
-                    mover.Damage(1);
+                    mover.Damage(DamageType.Explode, 1);
                 }
                 else
                 {

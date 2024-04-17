@@ -21,10 +21,12 @@ public class Shrapnel : MonoBehaviour
     [SerializeField] private GameObject _shadow;
     //
     [SerializeField] private VegetableType _seedType ;
+    [SerializeField] private bool _randomXFlip = false;
 
     void Start()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (_randomXFlip) _spriteRenderer.flipX = Random.value > 0.5f;
     }
 
     //  

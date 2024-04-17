@@ -13,6 +13,12 @@ public enum MovementState
     Stunned,
     Dead,
 }
+public enum DamageType
+{
+    None,
+    Explode,
+    Acid,
+}
 public class CharacterMover : MonoBehaviour
 {
     public MovementState movementState;
@@ -154,12 +160,20 @@ public class CharacterMover : MonoBehaviour
         movementState = MovementState.Stunned;
         _stunTime = time;
     }
-    public void Damage(float damageAmount)
+    public void Damage(  DamageType damageType, float damageAmount)
     {
-        _bounce.Bounce(0.0f, 5);
-        movementState = MovementState.Dead;
-        gameObject.layer = Layer.Default;
-        _deathTime = Time.time;
+        if (damageType == DamageType.Acid)
+        {
+            _bounce.Bounce(0.0f, 5);
+            movementState = MovementState.Dead;
+            gameObject.layer = Layer.Default;
+            _deathTime = Time.time;
+        }
+        else if (damageType == DamageType.Explode)
+        {
+            EffectsController.Instance.SpawnBoneShrapnel(7, transform.position, 10, 2);
+            Destroy(gameObject);
+        }      
     }
     public void Knock(Vector3 velocity)
     {

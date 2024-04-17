@@ -8,7 +8,9 @@ public class EffectsController : SingletonBehaviour<EffectsController>
 {
     //  
     [SerializeField] private Shrapnel _shrapnelPrefab;
+    [SerializeField] private Shrapnel _boneShrapnelPrefab;
     [SerializeField] private Shrapnel _carrotSeedPrefab;
+
 
 
     //  
@@ -16,9 +18,13 @@ public class EffectsController : SingletonBehaviour<EffectsController>
     {
         
     }
-    public void SpawnShrapnel(  int count, Vector3 pos, float upwardForce, float sidewaysForce)
+    public void SpawnShrapnel(int count, Vector3 pos, float upwardForce, float sidewaysForce)
     {
         SpawnShrapnel(_shrapnelPrefab, count, pos, upwardForce, sidewaysForce);
+    }
+    public void SpawnBoneShrapnel(  int count, Vector3 pos, float upwardForce, float sidewaysForce)
+    {
+        SpawnShrapnel(_boneShrapnelPrefab, count, pos, upwardForce, sidewaysForce);
     }
     public void SpawnShrapnel(VegetableType type,  int count, Vector3 pos, float upwardForce, float sidewaysForce)
     {
