@@ -1,3 +1,4 @@
+using Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class AnimatedSprite : MonoBehaviour
     [SerializeField] private float _frameRate = 0.016667f;
     [SerializeField] private bool _loop = false;
     [SerializeField] private bool _destroyAtEnd = true;
+    [SerializeField] private bool _rotateEachFrame = false;
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -42,6 +44,11 @@ public class AnimatedSprite : MonoBehaviour
             if (_frame < _sprites.Length)
             {
                 _spriteRenderer.sprite = _sprites[_frame];
+                //
+                if (_rotateEachFrame)
+                {
+                    transform.localEulerAngles = transform.localEulerAngles.PlusZ(30 + Random.value * 15);
+                }
             }
             else
             {
