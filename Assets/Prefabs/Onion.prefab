@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 48970222861116248}
   - component: {fileID: 3506292164396862564}
   m_Layer: 14
-  m_Name: Carrot
+  m_Name: Onion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7523172, y: -0.42347288, z: 0.02769921}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.14, y: 1.14, z: 1.14}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5226109206581748815}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1242413489, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+  m_Sprite: {fileID: -1978413625, guid: 458ab202726e22343841b94609a1b388, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,15 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31ab66139319f549bdd8c99d031fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: fa6664aee5d43f54a8e3aaa9dce8a32d, type: 2}
+  type: {fileID: 11400000, guid: 93da5dfd42856da4f959d8d856605471, type: 2}
   _rootedAnimation:
     frames:
-    - {fileID: 176216928, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 523203070, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1017931566, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1542383817, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -1791148890, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -783115656, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: 144950779, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 371652736, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 144950779, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 1858894594, guid: 458ab202726e22343841b94609a1b388, type: 3}
     frameCounter: 0
     frameRate: 0.1
     frame: 0
@@ -116,20 +114,21 @@ MonoBehaviour:
     wobble: 0
   _uprootedAnimation:
     frames:
-    - {fileID: -1198220653, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1634125331, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -890268816, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1163630423, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1372626656, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -1672468844, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 855358616, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1279794148, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 104079160, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 607458302, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -940489704, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -854082706, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1497560014, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 755319648, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: -1978413625, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -548166996, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 1951004986, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 726967871, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -457030348, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -282948905, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -25608385, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -1163289303, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -1292154755, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 786376890, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 921598505, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 1227189897, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 921598505, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 786376890, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -1292154755, guid: 458ab202726e22343841b94609a1b388, type: 3}
     frameCounter: 0
     frameRate: 0.045
     frame: 0
@@ -138,14 +137,13 @@ MonoBehaviour:
     wobble: 0
   _growingAnimation:
     frames:
-    - {fileID: 1885614637, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -1376414938, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1135635020, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -1303644062, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 842325390, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: 1720987376, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -1939131222, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
-    - {fileID: -1469114308, guid: 2f4659690c783f346b8f3abbbe7d7f95, type: 3}
+    - {fileID: 1888287848, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: -76994234, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 1403606641, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 580268989, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 1662747386, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 870266282, guid: 458ab202726e22343841b94609a1b388, type: 3}
+    - {fileID: 571295041, guid: 458ab202726e22343841b94609a1b388, type: 3}
     frameCounter: 0
     frameRate: 0.067
     frame: 0

@@ -22,7 +22,7 @@ public class AnimatedSprite : MonoBehaviour
         if (Time.deltaTime >= _frameRate /2f)
         {
             _frame = Random.Range(0, 3);
-            _spriteRenderer.sprite = _sprites[_frame];
+            _spriteRenderer.sprite = _sprites[_frame % _sprites.Length];
         }
         else
         {

@@ -135,11 +135,9 @@ public class RulesManager : SingletonBehaviour<RulesManager>
 
     }
     public bool TryCombineVegetables(VegetableType vegetableThis, VegetableType vegetableOther, out VegetableType created)
-    {
-        Debug.Log("ruleRecipes " + ruleRecipes.Count);
+    { 
         foreach (RuleRecipe recipe in ruleRecipes)
-        {
-            Debug.Log("TryCombineVegetables !! " + vegetableThis + " " + vegetableOther);
+        { 
             if (recipe.vegetableIngredient == vegetableThis && recipe.vegetableIngredientOther == vegetableOther)
             {
                 created = recipe.vegetableResult;  

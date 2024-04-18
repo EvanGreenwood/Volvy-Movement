@@ -132,6 +132,8 @@ public partial class RuleTrigger
 
 	public static RuleTrigger[] AllRuleTriggers { get { if (__allRuleTriggers == null) __allRuleTriggers = GetValues<RuleTrigger>(); return __allRuleTriggers; } }
 	public static RuleTrigger BumpEnemy { get { if (__bumpEnemy == null) __bumpEnemy = GetValue<RuleTrigger>("Bump Enemy"); return __bumpEnemy; } }
+	public static RuleTrigger EatCarrot { get { if (__eatCarrot == null) __eatCarrot = GetValue<RuleTrigger>("Eat Carrot"); return __eatCarrot; } }
+	public static RuleTrigger EatOnion { get { if (__eatOnion == null) __eatOnion = GetValue<RuleTrigger>("Eat Onion"); return __eatOnion; } }
 	public static RuleTrigger MarkEnemy { get { if (__markEnemy == null) __markEnemy = GetValue<RuleTrigger>("Mark Enemy"); return __markEnemy; } }
 	public static RuleTrigger Overcharge { get { if (__overcharge == null) __overcharge = GetValue<RuleTrigger>("Overcharge"); return __overcharge; } }
 	public static RuleTrigger VolvyEat { get { if (__volvyEat == null) __volvyEat = GetValue<RuleTrigger>("Volvy Eat"); return __volvyEat; } }
@@ -139,6 +141,8 @@ public partial class RuleTrigger
 	
 	protected static RuleTrigger[] __allRuleTriggers;
 	protected static RuleTrigger __bumpEnemy;
+	protected static RuleTrigger __eatCarrot;
+	protected static RuleTrigger __eatOnion;
 	protected static RuleTrigger __markEnemy;
 	protected static RuleTrigger __overcharge;
 	protected static RuleTrigger __volvyEat;

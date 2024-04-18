@@ -165,7 +165,8 @@ MonoBehaviour:
     loopFrame: -1
     wobble: 0
   _shadow: {fileID: 5974812501224968642}
-  _seedType: 2
+  _seedType: {fileID: 11400000, guid: fa6664aee5d43f54a8e3aaa9dce8a32d, type: 2}
+  _randomXFlip: 0
 --- !u!1001 &1647437661891858791
 PrefabInstance:
   m_ObjectHideFlags: 0

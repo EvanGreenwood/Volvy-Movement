@@ -31,8 +31,11 @@ public class CharacterAnimator : MonoBehaviour
             {
                 disabled = true;
                 renderer.enabled = false;
-            }
-            if (!wobble ) renderer.transform.localScale = Vector3.one;
+            } 
+        }
+        public void Exit(SpriteRenderer renderer)
+        {
+            if (wobble) renderer.transform.localScale = Vector3.one;
         }
         //
         public void Run(SpriteRenderer renderer, float time)
@@ -139,6 +142,7 @@ public class CharacterAnimator : MonoBehaviour
     {
         if (_currentAnimation != animation)
         {
+            if (_currentAnimation != null) _currentAnimation.Exit(_spriteRenderer);
             _currentAnimation = animation;
             _currentAnimation.Reset(_spriteRenderer);
         }

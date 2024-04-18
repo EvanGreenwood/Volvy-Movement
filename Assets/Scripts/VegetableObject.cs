@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class VegetableObject : MonoBehaviour
 {
+     [SerializeField] private VegetableType type;
     [SerializeField] private CharacterAnimator.CharacterAnimation _rootedAnimation;
     [SerializeField] private CharacterAnimator.CharacterAnimation _uprootedAnimation;
     [SerializeField] private CharacterAnimator.CharacterAnimation _growingAnimation;
@@ -71,10 +72,14 @@ public class VegetableObject : MonoBehaviour
                     if (diff.sqrMagnitude < 0.2f)
                     {
                         if(StomachManager.HasInstance)
-                            StomachManager.Instance.SpawnVegetable();
+                            StomachManager.Instance.SpawnVegetable(type);
 
                         //
-                        if (RulesManager.HasInstance) RulesManager.Instance.TryTrigger(RuleTrigger.VolvyEat, UnitManager.Instance.playerTransform.position);
+                        if (RulesManager.HasInstance)
+                        {
+                            RulesManager.Instance.TryTrigger(RuleTrigger.VolvyEat, UnitManager.Instance.playerTransform.position);
+                            if (type.eatTrigger != null)  RulesManager.Instance.TryTrigger(type.eatTrigger, UnitManager.Instance.playerTransform.position);
+                        }
 
                         AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
                         Destroy(gameObject);
@@ -113,6 +118,7 @@ public class VegetableObject : MonoBehaviour
     {
         if (_currentAnimation != animation)
         {
+            if (_currentAnimation != null)  _currentAnimation.Exit(_spriteRenderer);
             _currentAnimation = animation;
             _currentAnimation.Reset(_spriteRenderer);
         }

@@ -48,6 +48,7 @@ public class VolvyHealth : MonoBehaviour
                         {
                             if (StomachManager.HasInstance && StomachManager.Instance.StomachVegetables.Count > 0)
                             {
+                                /*
                                 for (int i = 0; i < StomachManager.Instance.StomachVegetables.Count; i++)
                                 {
 
@@ -55,6 +56,7 @@ public class VolvyHealth : MonoBehaviour
                                     Vector2 v = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
                                     EffectsController.Instance.SpawnShrapnel(VegetableType.Carrot, UnitManager.Instance.playerTransform.position, v, 30, 2);
                                 }
+                                */
                                 //EffectsController.Instance.SpawnShrapnel(StomachVegetable.VegetableType.Carrot, StomachManager.Instance.StomachVegetables.Count, UnitManager.Instance.playerTransform.position, 2, 2);
                                 TakeDamage();
                             }

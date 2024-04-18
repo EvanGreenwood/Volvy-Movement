@@ -38,6 +38,7 @@ public class BurrowTrailObject : MonoBehaviour
     {
         if (_currentAnimation != animation)
         {
+            if (_currentAnimation != null) _currentAnimation.Exit(_spriteRenderer);
             _currentAnimation = animation;
             _currentAnimation.Reset(_spriteRenderer);
         }

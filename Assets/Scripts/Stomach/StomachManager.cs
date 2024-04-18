@@ -47,6 +47,14 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         }//
          //
         _calculatedVeggieCount = 0;
+        for (int i = _stomachVegetables.Count - 1; i >= 0; i--)
+        {
+            if (_stomachVegetables[i] == null)
+            {
+                Debug.LogError(" Null vegetable");
+                _stomachVegetables.RemoveAt(i);
+            }
+        }
         foreach (StomachVegetable veg in _stomachVegetables)
         {
             if (veg.transform.position.y < _waterLevelDummy.transform.position.y + 0.2f && ! veg.Ejecting)
@@ -55,6 +63,14 @@ public class StomachManager : SingletonBehaviour<StomachManager>
                 if (veg.Rigidbody.velocity.y < -2) veg.Rigidbody.AddForce(Vector3.up * 40 * Time.deltaTime, ForceMode.VelocityChange);
                 veg.Rigidbody.velocity *= 1 - Time.deltaTime * 12;
                 veg.Rigidbody.angularVelocity *= 1 - Time.deltaTime * 12;
+            }
+        }
+        for (int i = _digestingVegetables.Count - 1; i >= 0; i--)
+        {
+            if (_digestingVegetables[i] == null)
+            {
+                Debug.LogError(" Null vegetable");
+                _digestingVegetables.RemoveAt(i);
             }
         }
         foreach (StomachVegetable veg in _digestingVegetables)
@@ -153,6 +169,11 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         StomachVegetable veggie = Instantiate(_vegetablePrefab, _neckTransform.position, Quaternion.identity, transform); 
         _stomachVegetables.Add(veggie); 
     }
+    public void SpawnVegetable(VegetableType type)
+    {
+        StomachVegetable veggie = Instantiate(type.stomachPrefab, _neckTransform.position, Quaternion.identity, transform);
+        _stomachVegetables.Add(veggie);
+    }
     public void SpawnOnion()
     {
         StomachVegetable veggie = Instantiate(_onionPrefab, _neckTransform.position, Quaternion.identity, transform);
@@ -165,15 +186,17 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     }
     public void ThrowUpVegetables()
     {
-        foreach(StomachVegetable stomachVegetable in _stomachVegetables)
+        for (int i = 0; i < _stomachVegetables.Count; i++)
         {
-            stomachVegetable.ThrowUpVegetable();
-        }
+            Debug.Log(" Throw up " + ((Mathf.PI * 2f / _stomachVegetables.Count) * i));
+            _stomachVegetables[i].ThrowUpVegetable(  Time.time * 0.2f + (Mathf.PI * 2f / _stomachVegetables.Count) * i);
+        } 
         _stomachVegetables.Clear();
     }
 
     public void RemoveStomachVegetable(StomachVegetable stomachVegetable)
     {
         _stomachVegetables.Remove(stomachVegetable);
+        _digestingVegetables.Remove(stomachVegetable);
     }
 }

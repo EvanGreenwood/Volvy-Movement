@@ -56,13 +56,11 @@ public class EffectsController : SingletonBehaviour<EffectsController>
             }
         }
     }
-    public void SpawnShrapnel(VegetableType type,   Vector3 pos, Vector2 direction, float upwardForce, float sidewaysForce)
+    public void SpawnShrapnel(VegetableType type, Vector3 pos, Vector2 direction, float upwardForce, float sidewaysForce)
     {
-        //Debug.Log(" SpawnShrapnel " + type + "  " + pos + "  direction " + direction);
-        if (type == VegetableType.Carrot)
-        {
-            SpawnShrapnel(_carrotSeedPrefab,  pos,   direction, upwardForce, sidewaysForce);
-        }
+
+        SpawnShrapnel(type.seedPrefab, pos, direction, upwardForce, sidewaysForce);
+
     }
     public void SpawnShrapnel(Shrapnel prefab,  Vector3 pos, Vector2 direction, float upwardForce, float sidewaysForce)
     {

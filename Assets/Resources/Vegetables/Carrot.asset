@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: fa6664aee5d43f54a8e3aaa9dce8a32d
   icon: {fileID: 0}
+  worldPrefab: {fileID: 48970222861116248, guid: 60207fa60355ac8419050b973b3a1044, type: 3}
   stomachPrefab: {fileID: 6881329953308988149, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
   seedPrefab: {fileID: 5651442155661624929, guid: 83d81b96553ff6449a37319946799a10, type: 3}
   bombPrefab: {fileID: 0}
+  eatTrigger: {fileID: 11400000, guid: dd9c9ee60b2d3ed47af047c7e9ec06ea, type: 2}

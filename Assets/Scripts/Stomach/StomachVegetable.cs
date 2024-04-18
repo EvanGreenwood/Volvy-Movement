@@ -16,6 +16,8 @@ public class StomachVegetable : MonoBehaviour
     private bool _combining = false;
     public bool Ejecting => _ejecting; 
     private bool _ejecting = false;
+    private float _ejectingDelay = 0;
+    private float _vomitAngle = 0;
     [SerializeField] private float _ejectForce = 60f;
     private Vector3 _originalScale;
 
@@ -30,8 +32,12 @@ public class StomachVegetable : MonoBehaviour
     {
          
         _rigidbody = GetComponent<Rigidbody>();
-        //CalculateScale();
-        if (_autoEject) Invoke("ThrowUpVegetable", 0.5f);
+        // 
+        if (_autoEject)
+        {
+            _ejectingDelay = 0.5f;
+            _ejecting = true;
+        }
     }
 
     //  
@@ -39,14 +45,18 @@ public class StomachVegetable : MonoBehaviour
     {
         transform.localScale =  Vector3.Lerp(transform.localScale, _originalScale, Time.deltaTime * 7)  ;
         if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("Eject"); 
+        { 
+            _vomitAngle = Random.value *Mathf.PI * 2;
             _ejecting = true;
         }
     }
     private void FixedUpdate()
     {
-        if (_ejecting)
+        if (_ejecting && _ejectingDelay > 0)
+        {
+            _ejectingDelay -= Time.deltaTime;
+        }
+        else if (_ejecting)
         {
             _rigidbody.AddForce(Vector3.up * (_rigidbody.velocity.y < 5? _ejectForce  * 2: _ejectForce) * Time.deltaTime, ForceMode.VelocityChange);
 
@@ -56,14 +66,22 @@ public class StomachVegetable : MonoBehaviour
                 {
                     UnitManager.Instance.VolvyDropBomb(UnitManager.Instance.playerTransform.position, Vector2.zero);
                 }
-                Destroy(gameObject);
-
+                else if (_vegetableType.seedPrefab != null)
+                {
+                    Debug.Log("  SpawnShrapnel " + _vomitAngle);
+                    Vector2 v = new Vector2(Mathf.Sin(_vomitAngle), Mathf.Cos(_vomitAngle));
+                    EffectsController.Instance.SpawnShrapnel(Type, UnitManager.Instance.playerTransform.position, v, 20, 3);
+                }
+                StomachManager.Instance.RemoveStomachVegetable(this);
+                Destroy(gameObject); 
             }
         }
     }
-
-    public void ThrowUpVegetable()
+     //
+    public void ThrowUpVegetable(float vomitAngle)
     {
+        Debug.Log("  ThrowUpVegetable " + vomitAngle);
+        _vomitAngle = vomitAngle;
         _ejecting = true;
     }
 

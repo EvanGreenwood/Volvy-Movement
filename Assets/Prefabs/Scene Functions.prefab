@@ -201,7 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd03be815cc8c143b1044a486cbf5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vegetablePrefab: {fileID: 2043026137160203467, guid: 60207fa60355ac8419050b973b3a1044, type: 3}
+  _spawnTypes:
+  - {fileID: 11400000, guid: fa6664aee5d43f54a8e3aaa9dce8a32d, type: 2}
+  - {fileID: 11400000, guid: 93da5dfd42856da4f959d8d856605471, type: 2}
   _spawnRate: 2
 --- !u!114 &8813819678601543704
 MonoBehaviour:
