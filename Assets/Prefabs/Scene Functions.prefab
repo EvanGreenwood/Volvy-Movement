@@ -220,6 +220,7 @@ MonoBehaviour:
   _shrapnelPrefab: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
   _boneShrapnelPrefab: {fileID: 5651442155661624929, guid: 936adc6c54b1833449df31db757c1ca6, type: 3}
   _carrotSeedPrefab: {fileID: 5651442155661624929, guid: 83d81b96553ff6449a37319946799a10, type: 3}
+  _poopShrapnelPrefab: {fileID: 1635221245008473552, guid: ec188c61dd5ce6146b11440831918641, type: 3}
 --- !u!114 &8676099862744452748
 MonoBehaviour:
   m_ObjectHideFlags: 0

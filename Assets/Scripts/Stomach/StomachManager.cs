@@ -154,7 +154,11 @@ public class StomachManager : SingletonBehaviour<StomachManager>
             _leftSphincter.Close();
         _rightSphincter.Close();
         //
-        time = 0.8f;
+        EffectsController.Instance.SpawnPoop(UnitManager.Instance.playerTransform.position, 11, 2);
+        //
+        RulesManager.Instance.TryTrigger(RuleTrigger.VolvyPoop, UnitManager.Instance.playerTransform.position);
+        //
+        time = 2.2f;
         while (time > 0)
         {
             time -= Time.deltaTime;

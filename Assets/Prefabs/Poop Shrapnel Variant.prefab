@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6403148610166844337
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702833380514520347, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126163329358674417, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _sprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126163329358674417, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -766210260, guid: 5f499a811b3ac094e93cc56d28ee3eb1, type: 3}
+    - target: {fileID: 5126163329358674417, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1558829998, guid: 5f499a811b3ac094e93cc56d28ee3eb1, type: 3}
+    - target: {fileID: 5126163329358674417, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 1923208040, guid: 5f499a811b3ac094e93cc56d28ee3eb1, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _flyingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 2130369485, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _flyingSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -1030792717, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _flyingSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 243817806, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _flyingSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -218788626, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[0]
+      value: 
+      objectReference: {fileID: -865789149, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[1]
+      value: 
+      objectReference: {fileID: -1808135613, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[2]
+      value: 
+      objectReference: {fileID: -1122559165, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[3]
+      value: 
+      objectReference: {fileID: -220618668, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[4]
+      value: 
+      objectReference: {fileID: 1650154997, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[5]
+      value: 
+      objectReference: {fileID: 77173333, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[6]
+      value: 
+      objectReference: {fileID: -1348493984, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[7]
+      value: 
+      objectReference: {fileID: 2028659897, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[8]
+      value: 
+      objectReference: {fileID: 1553672924, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[9]
+      value: 
+      objectReference: {fileID: 2080356266, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[0]
+      value: 
+      objectReference: {fileID: 717897083, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[1]
+      value: 
+      objectReference: {fileID: 1169823023, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[2]
+      value: 
+      objectReference: {fileID: -250701345, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[3]
+      value: 
+      objectReference: {fileID: -58334925, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[4]
+      value: 
+      objectReference: {fileID: -250701345, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[5]
+      value: 
+      objectReference: {fileID: 1169823023, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _landAnim.frames.Array.data[6]
+      value: 
+      objectReference: {fileID: 717897083, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[10]
+      value: 
+      objectReference: {fileID: 556422905, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[11]
+      value: 
+      objectReference: {fileID: 527990780, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[12]
+      value: 
+      objectReference: {fileID: -1937944165, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[13]
+      value: 
+      objectReference: {fileID: -979676426, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 5651442155661624929, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: _fadeAnim.frames.Array.data[14]
+      value: 
+      objectReference: {fileID: 246210974, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    - target: {fileID: 7383350556914592659, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_Name
+      value: Poop Shrapnel Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482851838411698039, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -766210260, guid: 5f499a811b3ac094e93cc56d28ee3eb1, type: 3}
+    - target: {fileID: 8533341743551900391, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 717897083, guid: 05026d769db55c645946d03c8533d672, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 780acd13aea3e08409e6b861eeda7ee8, type: 3}

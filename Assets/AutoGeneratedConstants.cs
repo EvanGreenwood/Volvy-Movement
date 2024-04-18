@@ -138,6 +138,7 @@ public partial class RuleTrigger
 	public static RuleTrigger Overcharge { get { if (__overcharge == null) __overcharge = GetValue<RuleTrigger>("Overcharge"); return __overcharge; } }
 	public static RuleTrigger VolvyEat { get { if (__volvyEat == null) __volvyEat = GetValue<RuleTrigger>("Volvy Eat"); return __volvyEat; } }
 	public static RuleTrigger VolvyHurt { get { if (__volvyHurt == null) __volvyHurt = GetValue<RuleTrigger>("Volvy Hurt"); return __volvyHurt; } }
+	public static RuleTrigger VolvyPoop { get { if (__volvyPoop == null) __volvyPoop = GetValue<RuleTrigger>("Volvy Poop"); return __volvyPoop; } }
 	
 	protected static RuleTrigger[] __allRuleTriggers;
 	protected static RuleTrigger __bumpEnemy;
@@ -147,6 +148,7 @@ public partial class RuleTrigger
 	protected static RuleTrigger __overcharge;
 	protected static RuleTrigger __volvyEat;
 	protected static RuleTrigger __volvyHurt;
+	protected static RuleTrigger __volvyPoop;
 
 }
 

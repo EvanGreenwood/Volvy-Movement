@@ -10,6 +10,7 @@ public class EffectsController : SingletonBehaviour<EffectsController>
     [SerializeField] private Shrapnel _shrapnelPrefab;
     [SerializeField] private Shrapnel _boneShrapnelPrefab;
     [SerializeField] private Shrapnel _carrotSeedPrefab;
+    [SerializeField] private Shrapnel _poopShrapnelPrefab;
 
 
 
@@ -17,6 +18,12 @@ public class EffectsController : SingletonBehaviour<EffectsController>
     void Update()
     {
         
+    }
+    public void SpawnPoop( Vector3 pos, float upwardForce, float backForce)
+    {
+        Shrapnel shrapnel = Instantiate(_poopShrapnelPrefab, pos, Quaternion.identity);
+        shrapnel.Launch(upwardForce  ,  UnitManager.Instance.VolvyMoveDirection * - backForce);
+         
     }
     public void SpawnShrapnel(int count, Vector3 pos, float upwardForce, float sidewaysForce)
     {

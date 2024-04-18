@@ -448,5 +448,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rulesUICanvasGroup: {fileID: 6966768114078657115}
-  _ruleOptionPrefab: {fileID: 5808502839562327744, guid: f929d444e9a70084ebc2524b167dd8c5, type: 3}
+  _ruleOptionPrefab: {fileID: 5808502839562327744, guid: 927c472ceb0a3c1478fa0e3696af6b61, type: 3}
   _ruleOptionsParent: {fileID: 906909763985296210}

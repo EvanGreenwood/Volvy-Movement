@@ -70,7 +70,7 @@ public class Shrapnel : MonoBehaviour
                 //
                 if (_flyingSprites.Length > 1)
                 {
-                    int targetFrame = (int)Mathf.Clamp(Mathf.Abs(_yOffsetSpeed) / 3, 0, 3);
+                    int targetFrame = (int)Mathf.Clamp(Mathf.Abs(_yOffsetSpeed) / 2.5f, 0, 3);
                     if (_flyingFrame < targetFrame) _flyingFrame++;
                     if (_flyingFrame > targetFrame) _flyingFrame--;
                 }

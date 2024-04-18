@@ -6,6 +6,7 @@ using Framework;
 public class UnitManager : SingletonBehaviour<UnitManager>
 {
     public Transform playerTransform;
+    public Vector2 VolvyMoveDirection => _volvyMover.MoveDirection;
     [SerializeField] CharacterMover _volvyMover;
     [SerializeField] private Bomb _bombPrefab;
     public bool IsVolvyBurrowing => _volvyMover.movementState == MovementState.Burrow || _volvyMover.movementState == MovementState.ExitBurrow;
