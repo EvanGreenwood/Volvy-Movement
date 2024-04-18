@@ -98,6 +98,7 @@ public class RulesManager : SingletonBehaviour<RulesManager>
     //
     [SerializeField]  private  List<RulePair> rulePairs = new List<RulePair>();
     [SerializeField] private List<RuleRecipe> ruleRecipes = new List<RuleRecipe>();
+    
     //
     public void TryTrigger(RuleTrigger trigger, Vector3 position)
     { 
@@ -148,5 +149,15 @@ public class RulesManager : SingletonBehaviour<RulesManager>
         }
         created = null;
         return false;
+    }
+
+    public void AddRulePair(RuleTrigger trigger, RuleEffect effect, RuleProbability probability)
+    {
+        RulePair rulePair = new RulePair(); 
+        rulePair.trigger = trigger;
+        rulePair.effect = effect;
+        rulePair.probability = probability;
+
+        rulePairs.Add(rulePair);
     }
 }

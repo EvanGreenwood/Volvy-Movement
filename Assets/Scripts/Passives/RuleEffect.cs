@@ -7,4 +7,5 @@ public partial class RuleEffect : ScriptableEnum
 {
     // 
     public Sprite icon;
+    public int improbabilityMultiplier = 1;
 }

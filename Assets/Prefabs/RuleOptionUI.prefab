@@ -81,6 +81,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 6854027643362153350}
+  _triggerText: {fileID: 4689501228881208980}
+  _effectText: {fileID: 4441039718256075382}
+  _ruleTrigger: {fileID: 0}
+  _ruleEffect: {fileID: 0}
+  _ruleProbability:
+    portion: 0
+    outOf: 0
 --- !u!1 &4183387097653147927
 GameObject:
   m_ObjectHideFlags: 0

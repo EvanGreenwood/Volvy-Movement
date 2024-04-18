@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   defaultProbability:
     portion: 1
-    outOf: 8
+    outOf: 1

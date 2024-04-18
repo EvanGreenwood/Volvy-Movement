@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0130fc2292d4984ebb81a49c31b9e0c, type: 3}
   m_Name: Spawn Bomb
   m_EditorClassIdentifier: 
-  _guid: 
+  _guid: c45dceb59079f9441b1d9aecf71d542d
   icon: {fileID: 0}
+  improbabilityMultiplier: 2
