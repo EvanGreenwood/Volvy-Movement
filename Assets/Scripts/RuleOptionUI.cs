@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static RulesManager;
 
 public class RuleOptionUI : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
@@ -18,15 +17,14 @@ public class RuleOptionUI : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     [SerializeField] RuleTrigger _trigger;
     [SerializeField] RuleEffect _effect;
-    [SerializeField] RuleProbability _probability;
+    [SerializeField] RulesManager.RuleProbability _probability;
     public void SetUpRuleOption()
     {
         _button.onClick.AddListener(RuleSelected);
 
         _trigger = ScriptableEnum.GetRandomValue<RuleTrigger>();
         _effect = ScriptableEnum.GetRandomValue<RuleEffect>();
-        _probability = _trigger.defaultProbability;
-        _probability.outOf *= _effect.improbabilityMultiplier;
+        _probability = new RulesManager.RuleProbability(_trigger.defaultProbability.portion, _trigger.defaultProbability.outOf * _effect.improbabilityMultiplier);
 
         _triggerText.text = _trigger.name + " " + _probability.portion + "/" + _probability.outOf + " chance";
         _effectText.text = _effect.name;
