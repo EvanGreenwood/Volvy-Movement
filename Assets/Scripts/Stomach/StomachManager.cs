@@ -163,6 +163,8 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         }
         _digestRoutine = null;
         Debug.Log(" Stop digesting !! ");
+
+        RulesUI.Instance.ActivateRulesUI();
     }
     public void SpawnVegetable()
     {

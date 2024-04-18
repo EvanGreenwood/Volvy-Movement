@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0130fc2292d4984ebb81a49c31b9e0c, type: 3}
   m_Name: Spawn Carrot Seed
   m_EditorClassIdentifier: 
-  _guid: 
+  _guid: 3863afe9ed80b1642bec1ef257ae5c3d
   icon: {fileID: 0}
+  improbabilityMultiplier: 1
