@@ -29,6 +29,11 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     //
     private int _calculatedVeggieCount = 0;
     //
+
+    private int _calculatedPoopCount = 0;
+    [SerializeField] private int _poopMax = 1;
+    [SerializeField] private TMPro.TextMeshProUGUI _poopCountText;
+    [SerializeField] private TMPro.TextMeshProUGUI _poopMaxText;
     void Start()
     {
         
@@ -114,6 +119,8 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         Debug.Log(" Start digesting !! ");
         _digestingVegetables.AddRange(_stomachVegetables);
         _stomachVegetables.Clear();
+        _calculatedPoopCount++; 
+        _poopCountText.text = (_calculatedPoopCount < 10 ? "0" : "") + _calculatedPoopCount.ToString();
         //
         yield return null;
         _leftSphincter.Open();
@@ -168,7 +175,14 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         _digestRoutine = null;
         Debug.Log(" Stop digesting !! ");
 
-        RulesUI.Instance.ActivateRulesUI();
+        if (_calculatedPoopCount >= _poopMax)
+        {
+            _calculatedPoopCount = 0;
+            _poopMax++;
+            _poopCountText.text = (_calculatedPoopCount < 10 ? "0" : "") + _calculatedPoopCount.ToString();
+            _poopMaxText.text = (_poopMax < 10 ? "0" : "") + _poopMax.ToString();
+            RulesUI.Instance.ActivateRulesUI();
+        }
     }
     public void SpawnVegetable()
     {
