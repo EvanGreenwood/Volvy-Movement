@@ -61,8 +61,11 @@ public class CharacterMover : MonoBehaviour
         Vector2 direction = new Vector2((_input.HoldingLeft ? -1 : 0) + (_input.HoldingRight ? 1 : 0), (_input.HoldingDowm ? -1 : 0) + (_input.HoldingUp ? 1 : 0)).normalized;
         _moveDirection = direction;
         //
-        
-        if (movementState == MovementState.Stunned)
+        if (movementState == MovementState.Dead)
+        {
+            // *** NOTHING *** 
+            //
+        } else   if (movementState == MovementState.Stunned)
         {
             // *** NOTHING ***
             _stunTime -= Time.deltaTime;

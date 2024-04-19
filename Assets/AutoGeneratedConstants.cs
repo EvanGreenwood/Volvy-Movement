@@ -110,12 +110,14 @@ public partial class RuleEffect
 	public static RuleEffect SpawnBomb { get { if (__spawnBomb == null) __spawnBomb = GetValue<RuleEffect>("Spawn Bomb"); return __spawnBomb; } }
 	public static RuleEffect SpawnCarrotSeed { get { if (__spawnCarrotSeed == null) __spawnCarrotSeed = GetValue<RuleEffect>("Spawn Carrot Seed"); return __spawnCarrotSeed; } }
 	public static RuleEffect SpawnOnionSeed { get { if (__spawnOnionSeed == null) __spawnOnionSeed = GetValue<RuleEffect>("Spawn Onion Seed"); return __spawnOnionSeed; } }
+	public static RuleEffect SpawnRatPoison { get { if (__spawnRatPoison == null) __spawnRatPoison = GetValue<RuleEffect>("Spawn Rat Poison"); return __spawnRatPoison; } }
 	
 	protected static RuleEffect[] __allRuleEffects;
 	protected static RuleEffect __rechargeBurrow;
 	protected static RuleEffect __spawnBomb;
 	protected static RuleEffect __spawnCarrotSeed;
 	protected static RuleEffect __spawnOnionSeed;
+	protected static RuleEffect __spawnRatPoison;
 
 }
 

@@ -22,6 +22,8 @@ public class VegetableObject : MonoBehaviour
     private bool _collecting = false;
     private Vector3 _velocity;
     private bool _growing = true;
+    public bool CanBeEaten => _edibleDelay <= 0;
+    private float _edibleDelay = 0.4f;
     //
     [SerializeField] private bool _startRooted = true;
     //
@@ -53,7 +55,7 @@ public class VegetableObject : MonoBehaviour
     //
     // 
     void Update()
-    {
+    { 
         if (_growing)
         {
             RunAnimation(_growingAnimation);
@@ -66,6 +68,10 @@ public class VegetableObject : MonoBehaviour
         }
         else
         {
+            if (_edibleDelay > 0)
+            {
+                _edibleDelay -= Time.deltaTime;
+            }
             RunAnimation(_uprootedAnimation);
             // 
             //

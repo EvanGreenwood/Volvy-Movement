@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         if (_mover.movementState == MovementState.Dead)
         {
             // *** DEAD *** 
-            if (Time.time - _deathTime > 0.5f)
+            if (Time.time - _deathTime > 1.2f)
             {
                 Destroy(gameObject);
             }
@@ -41,7 +41,9 @@ public class EnemyHealth : MonoBehaviour
             EffectsController.Instance.SpawnDamageNumber(damageAmount, transform.position.WithY(transform.position.y + 1.5f));
 
             if (_health <= 0)
-                Die();
+            {
+                Die(damageType);
+            }
             else
             {
                 _mover.Stun(2);
@@ -50,14 +52,21 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    void Die(DamageType damageType)
     {
         _mover.movementState = MovementState.Dead;
-        /*_mover.Bounce.Bounce(0.0f, 5);
-        gameObject.layer = Layer.Default;
-        _deathTime = Time.time;*/
+        if (damageType == DamageType.Poison)
+        {
+            _mover.Bounce.Bounce(0.0f, 5);
+            gameObject.layer = Layer.Default;
+            _deathTime = Time.time; 
+        }
+        else
+        {
+            EffectsController.Instance.SpawnBoneShrapnel(7, transform.position, 10, 2);
+            Destroy(gameObject);
+        }
 
-        EffectsController.Instance.SpawnBoneShrapnel(7, transform.position, 10, 2);
-        Destroy(gameObject);
+       
     }
 }

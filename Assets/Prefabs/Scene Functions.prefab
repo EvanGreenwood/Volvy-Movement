@@ -222,6 +222,7 @@ MonoBehaviour:
   _carrotSeedPrefab: {fileID: 5651442155661624929, guid: 83d81b96553ff6449a37319946799a10, type: 3}
   _poopShrapnelPrefab: {fileID: 1635221245008473552, guid: ec188c61dd5ce6146b11440831918641, type: 3}
   _damageNumber: {fileID: 706158631793813067, guid: 5a4cc2874b15614478fd5bf6dea52134, type: 3}
+  _ratPoisonPrefab: {fileID: 48970222861116248, guid: 4955f44495b2b36439622d1cf1f18986, type: 3}
 --- !u!114 &8676099862744452748
 MonoBehaviour:
   m_ObjectHideFlags: 0

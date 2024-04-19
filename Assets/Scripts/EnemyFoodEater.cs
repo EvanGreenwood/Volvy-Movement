@@ -20,20 +20,23 @@ public class EnemyFoodEater : MonoBehaviour
          
         if (Physics.OverlapSphereNonAlloc(transform.position, 0.5f, vegetableColliders, _layerMask) > 0 && vegetableColliders[0].TryGetComponent(out VegetableObject vegetable))
         {
-            Debug.Log("Found vegetable ");
-            _characterMover.Eat(2f);
-            //
-            if (vegetable.Type == VegetableType.RatPoison)
+            if (vegetable.CanBeEaten)
             {
-                StartCoroutine(DeathRoutine(0.6f));
+                Debug.Log("Found vegetable ");
+                _characterMover.Eat(2f);
+                //
+                if (vegetable.Type == VegetableType.RatPoison)
+                {
+                    StartCoroutine(DeathRoutine(0.6f));
+                }
+                //
+                Destroy(vegetable.gameObject);
             }
-            //
-            Destroy(vegetable.gameObject);
         }
     }
     private IEnumerator DeathRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        _characterMover.Damage(DamageType.Poison, 2);
+        _characterMover.EnemyHealth.Damage(DamageType.Poison, 10);
     }
 }

@@ -144,6 +144,10 @@ public class RulesManager : SingletonBehaviour<RulesManager>
         {
             AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
         }
+        else if (effect == RuleEffect.SpawnRatPoison)
+        {
+            EffectsController.Instance.SpawnRatPoison(position);
+        }
 
     }
     public bool TryCombineVegetables(VegetableType vegetableThis, VegetableType vegetableOther, out VegetableType created)
