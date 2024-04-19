@@ -126,6 +126,13 @@ public class RulesManager : SingletonBehaviour<RulesManager>
             //
             EffectsController.Instance.SpawnShrapnel(VegetableType.Carrot, position, v, 15, 2);
         }
+        else if (effect == RuleEffect.SpawnOnionSeed)
+        {
+            float angle = Time.time * 2 + (Mathf.PI * 2 / triggeredCount) * index;
+            Vector2 v = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+            //
+            EffectsController.Instance.SpawnShrapnel(VegetableType.Onion, position, v, 15, 2);
+        }
         else if (effect == RuleEffect.SpawnBomb)
         {
             float angle = Time.time * 2 + (Mathf.PI * 2 / triggeredCount) * index;

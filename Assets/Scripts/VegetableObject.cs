@@ -81,7 +81,7 @@ public class VegetableObject : MonoBehaviour
                             if (type.eatTrigger != null)  RulesManager.Instance.TryTrigger(type.eatTrigger, UnitManager.Instance.playerTransform.position);
                         }
 
-                        AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
+                        //AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
                         Destroy(gameObject);
                     }
                     else

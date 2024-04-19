@@ -1774,7 +1774,7 @@ MonoBehaviour:
   _neckTransform: {fileID: 7911386976334975805}
   _waterLevelDummy: {fileID: 902971517838898418}
   _exitLevelDummy: {fileID: 1827160843383507563}
-  _vegetableMax: 10
+  _vegetableMax: 5
   _vegetableCountText: {fileID: 6062704398691817333}
   _vegetableMaxText: {fileID: 2737131740421386183}
   _leftSphincter: {fileID: 6140121113767113657}

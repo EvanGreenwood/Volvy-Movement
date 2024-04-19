@@ -8,8 +8,8 @@ public class EnemyHealth : MonoBehaviour
     CharacterMover _mover;
     [SerializeField] int _health = 10;
 
-    bool _canBeDamaged => _damageTime <= 0;
-    float _damageTime;
+    bool _canBeDamaged => _invulnerabilityTime <= 0;
+    float _invulnerabilityTime;
     private float _deathTime = 0;
 
     void Start()
@@ -27,9 +27,9 @@ public class EnemyHealth : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if(_damageTime > 0)
+        else if(_invulnerabilityTime > 0)
         {
-            _damageTime -= Time.deltaTime;
+            _invulnerabilityTime -= Time.deltaTime;
         }
     }
 
@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
             else
             {
                 _mover.Stun(2);
-                _damageTime = 0.5f;
+                _invulnerabilityTime = 0.5f;
             }
         }
     }
