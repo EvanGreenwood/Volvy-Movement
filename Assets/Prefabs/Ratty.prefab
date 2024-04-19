@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 3694638375061186852}
   - component: {fileID: 6128135947261372204}
   - component: {fileID: 8900195848247320500}
+  - component: {fileID: 1664682653766595897}
   m_Layer: 13
   m_Name: Ratty
   m_TagString: Untagged
@@ -493,6 +494,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterInput: {fileID: 2550679225032251935}
+--- !u!114 &1664682653766595897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771531502617413484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dbf0fb54c50db478946bc867016d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 10
 --- !u!1001 &6035426466002615143
 PrefabInstance:
   m_ObjectHideFlags: 0
