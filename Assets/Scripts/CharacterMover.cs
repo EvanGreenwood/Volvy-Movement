@@ -19,6 +19,7 @@ public enum DamageType
     None,
     Explode,
     Poison,
+    Bump,
 }
 public class CharacterMover : MonoBehaviour
 {
@@ -28,21 +29,25 @@ public class CharacterMover : MonoBehaviour
     [SerializeField] private float _speed = 2;
     private Vector2 _burrowDirection = Vector2.zero;
     private float _burrowTime = 0;
-    private float _deathTime = 0;
     //
     [SerializeField] private SpriteRenderer _shadow;
     [SerializeField] private bool _avoidEnemies = false;
+    public BounceTransform Bounce => _bounce;
     private BounceTransform _bounce;
     private float _stunTime = 0;
     private float _eatTime = 0; 
     private Vector3 _knockForce = Vector3.zero;
     public Vector2 MoveDirection => _moveDirection;
     private Vector2 _moveDirection = Vector2.zero;
+
+    public EnemyHealth EnemyHealth => _enemyHealth;
+    EnemyHealth _enemyHealth;
     void Start()
     {
         movementState = MovementState.Idle;
         _input = GetComponent<CharacterInput>();
         _bounce= GetComponentInChildren<BounceTransform>();
+        _enemyHealth = GetComponent<EnemyHealth>(); 
         //
         if (_avoidEnemies) UnitManager.Instance._enemies.Add(transform);
     }
@@ -56,15 +61,8 @@ public class CharacterMover : MonoBehaviour
         Vector2 direction = new Vector2((_input.HoldingLeft ? -1 : 0) + (_input.HoldingRight ? 1 : 0), (_input.HoldingDowm ? -1 : 0) + (_input.HoldingUp ? 1 : 0)).normalized;
         _moveDirection = direction;
         //
-        if (movementState == MovementState.Dead)
-        {
-            // *** DEAD *** 
-            if (Time.time - _deathTime > 1.2f)
-            {
-                Destroy(gameObject);
-            }
-        }
-        else if (movementState == MovementState.Stunned)
+        
+        if (movementState == MovementState.Stunned)
         {
             // *** NOTHING ***
             _stunTime -= Time.deltaTime;
@@ -174,21 +172,7 @@ public class CharacterMover : MonoBehaviour
         movementState = MovementState.Eat;
         _eatTime = time;
     }
-    public void Damage(  DamageType damageType, float damageAmount)
-    {
-        if (damageType == DamageType.Poison)
-        {
-            _bounce.Bounce(0.0f, 5);
-            movementState = MovementState.Dead;
-            gameObject.layer = Layer.Default;
-            _deathTime = Time.time;
-        }
-        else if (damageType == DamageType.Explode)
-        {
-            EffectsController.Instance.SpawnBoneShrapnel(7, transform.position, 10, 2);
-            Destroy(gameObject);
-        }      
-    }
+     
     public void Knock(Vector3 velocity)
     {
         _knockForce = velocity;

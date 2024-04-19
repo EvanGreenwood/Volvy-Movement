@@ -1412,7 +1412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497674364618399822, guid: 122889b04231fcb4bb4bb99b1fe4e154, type: 3}
       propertyPath: ruleRecipes.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 497674364618399822, guid: 122889b04231fcb4bb4bb99b1fe4e154, type: 3}
       propertyPath: ruleRecipes.Array.data[0]
