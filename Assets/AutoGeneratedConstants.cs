@@ -134,6 +134,7 @@ public partial class RuleTrigger
 	public static RuleTrigger BumpEnemy { get { if (__bumpEnemy == null) __bumpEnemy = GetValue<RuleTrigger>("Bump Enemy"); return __bumpEnemy; } }
 	public static RuleTrigger EatCarrot { get { if (__eatCarrot == null) __eatCarrot = GetValue<RuleTrigger>("Eat Carrot"); return __eatCarrot; } }
 	public static RuleTrigger EatOnion { get { if (__eatOnion == null) __eatOnion = GetValue<RuleTrigger>("Eat Onion"); return __eatOnion; } }
+	public static RuleTrigger EatRatPoison { get { if (__eatRatPoison == null) __eatRatPoison = GetValue<RuleTrigger>("Eat Rat Poison"); return __eatRatPoison; } }
 	public static RuleTrigger MarkEnemy { get { if (__markEnemy == null) __markEnemy = GetValue<RuleTrigger>("Mark Enemy"); return __markEnemy; } }
 	public static RuleTrigger Overcharge { get { if (__overcharge == null) __overcharge = GetValue<RuleTrigger>("Overcharge"); return __overcharge; } }
 	public static RuleTrigger VolvyEat { get { if (__volvyEat == null) __volvyEat = GetValue<RuleTrigger>("Volvy Eat"); return __volvyEat; } }
@@ -144,6 +145,7 @@ public partial class RuleTrigger
 	protected static RuleTrigger __bumpEnemy;
 	protected static RuleTrigger __eatCarrot;
 	protected static RuleTrigger __eatOnion;
+	protected static RuleTrigger __eatRatPoison;
 	protected static RuleTrigger __markEnemy;
 	protected static RuleTrigger __overcharge;
 	protected static RuleTrigger __volvyEat;
@@ -172,10 +174,12 @@ public partial class VegetableType
 	public static VegetableType Bomb { get { if (__bomb == null) __bomb = GetValue<VegetableType>("Bomb"); return __bomb; } }
 	public static VegetableType Carrot { get { if (__carrot == null) __carrot = GetValue<VegetableType>("Carrot"); return __carrot; } }
 	public static VegetableType Onion { get { if (__onion == null) __onion = GetValue<VegetableType>("Onion"); return __onion; } }
+	public static VegetableType RatPoison { get { if (__ratPoison == null) __ratPoison = GetValue<VegetableType>("Rat Poison"); return __ratPoison; } }
 	
 	protected static VegetableType[] __allVegetableTypes;
 	protected static VegetableType __bomb;
 	protected static VegetableType __carrot;
 	protected static VegetableType __onion;
+	protected static VegetableType __ratPoison;
 
 }

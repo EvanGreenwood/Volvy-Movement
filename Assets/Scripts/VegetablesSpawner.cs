@@ -36,7 +36,7 @@ public class VegetablesSpawner : SingletonBehaviour<VegetablesSpawner>
             if (Physics2D.OverlapCircle(pos, 2.5f, 1 << Layer.DontRender) == null && !Physics.CheckSphere(pos, 1, 1 << Layer.RootedVegetables))
             {
                VegetableObject veggie = Instantiate(_spawnTypes[Random.Range(0, _spawnTypes.Length)].worldPrefab , pos, Quaternion.identity);
-                Debug.Log(" Instantiate vegetable  " + veggie.transform.localScale + " " + attempts);
+               // Debug.Log(" Instantiate vegetable  " + veggie.transform.localScale + " " + attempts);
                 break;
             }
            
@@ -45,7 +45,7 @@ public class VegetablesSpawner : SingletonBehaviour<VegetablesSpawner>
 
     public void SpawnVegetable(VegetableType type, Vector2 pos)
     {
-        Debug.Log(" SpawnVegetable " + type);
+       // Debug.Log(" SpawnVegetable " + type);
         Instantiate(type.worldPrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
 
     }

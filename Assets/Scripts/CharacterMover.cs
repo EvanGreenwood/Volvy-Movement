@@ -12,12 +12,13 @@ public enum MovementState
     ExitBurrow,
     Stunned,
     Dead,
+    Eat,
 }
 public enum DamageType
 {
     None,
     Explode,
-    Acid,
+    Poison,
 }
 public class CharacterMover : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class CharacterMover : MonoBehaviour
     [SerializeField] private bool _avoidEnemies = false;
     private BounceTransform _bounce;
     private float _stunTime = 0;
+    private float _eatTime = 0; 
     private Vector3 _knockForce = Vector3.zero;
     public Vector2 MoveDirection => _moveDirection;
     private Vector2 _moveDirection = Vector2.zero;
@@ -67,7 +69,13 @@ public class CharacterMover : MonoBehaviour
             // *** NOTHING ***
             _stunTime -= Time.deltaTime;
             if (_stunTime <= 0) movementState = MovementState.Idle;
-        } 
+        }
+        else if (movementState == MovementState.Eat)
+        {
+            // *** EAT ***
+            _eatTime -= Time.deltaTime;
+            if (_eatTime <= 0) movementState = MovementState.Idle;
+        }
         else  if (movementState == MovementState.Burrow)
         {
             if (_input.PressedFireRecently)
@@ -160,9 +168,15 @@ public class CharacterMover : MonoBehaviour
         movementState = MovementState.Stunned;
         _stunTime = time;
     }
+    public void Eat(float time )
+    {
+        _bounce.Bounce(0.3f, 3);
+        movementState = MovementState.Eat;
+        _eatTime = time;
+    }
     public void Damage(  DamageType damageType, float damageAmount)
     {
-        if (damageType == DamageType.Acid)
+        if (damageType == DamageType.Poison)
         {
             _bounce.Bounce(0.0f, 5);
             movementState = MovementState.Dead;

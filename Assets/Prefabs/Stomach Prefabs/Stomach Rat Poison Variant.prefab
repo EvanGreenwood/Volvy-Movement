@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4734832140823638346
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739935270184682519, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960615387837531989, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Name
+      value: Stomach Rat Poison
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832033657811403152, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.85333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832033657811403152, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.85333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832033657811403152, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -326406494, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+    - target: {fileID: 3832033657811403152, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188287342266411646, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Height
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188287342266411646, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Radius
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188287342266411646, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188287342266411646, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881329953308988149, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: _vegetableType
+      value: 
+      objectReference: {fileID: 11400000, guid: 32198f9529bd26f4c9d382f73f6c4e72, type: 2}
+    - target: {fileID: 8475655706132248082, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Name
+      value: Stomach Rat Poison Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487215896408855497, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2960615387837531989, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8728868709618197698}
+  m_SourcePrefab: {fileID: 100100000, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+--- !u!1 &7540073321635362335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2960615387837531989, guid: f31ccb1b15cfb9f4a9e59bba36d745cc, type: 3}
+  m_PrefabInstance: {fileID: 4734832140823638346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8728868709618197698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540073321635362335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5097589d84fe234cb184bdbae430bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: -326406494, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: -17185044, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: 1907390075, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: -17185044, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: -326406494, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: -17185044, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: 553369312, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  - {fileID: -17185044, guid: 71241adc18743ce478593f19d7b23929, type: 3}
+  _frameRate: 0.07
+  _loop: 1
+  _destroyAtEnd: 0
+  _rotateEachFrame: 0

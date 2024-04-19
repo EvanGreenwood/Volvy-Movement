@@ -76,6 +76,7 @@ public class CharacterAnimator : MonoBehaviour
     [SerializeField] private CharacterAnimation _runAnimation;
     [SerializeField] private CharacterAnimation _burrowAnimation;
     [SerializeField] private CharacterAnimation _exitburrowAnimation;
+    [SerializeField] private CharacterAnimation _eatAnimation;
     [SerializeField] private CharacterAnimation _stunnedAnimation;
     [SerializeField] private CharacterAnimation _deathAnimation;
     //
@@ -93,7 +94,7 @@ public class CharacterAnimator : MonoBehaviour
     {
         _animationTime += Time.deltaTime;
         //
-        if (_mover.movementState != MovementState.Burrow && _mover.movementState != MovementState.ExitBurrow && _mover.movementState != MovementState.Stunned && _mover.movementState != MovementState.Dead)
+        if (_mover.movementState != MovementState.Burrow && _mover.movementState != MovementState.ExitBurrow && _mover.movementState != MovementState.Stunned && _mover.movementState != MovementState.Eat && _mover.movementState != MovementState.Dead)
         { 
             if (_input.HoldingLeft && _input.HoldingRight)
             {
@@ -120,6 +121,10 @@ public class CharacterAnimator : MonoBehaviour
         else if (_mover.movementState == MovementState.Idle)
         { 
             RunAnimation(_idleAnimation);
+        }
+        else if (_mover.movementState == MovementState.Eat)
+        {
+            RunAnimation(_eatAnimation);
         }
         else if (_mover.movementState == MovementState.Stunned)
         {

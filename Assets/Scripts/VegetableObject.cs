@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class VegetableObject : MonoBehaviour
 {
+    public VegetableType Type => type;
      [SerializeField] private VegetableType type;
     [SerializeField] private CharacterAnimator.CharacterAnimation _rootedAnimation;
     [SerializeField] private CharacterAnimator.CharacterAnimation _uprootedAnimation;
@@ -22,17 +23,32 @@ public class VegetableObject : MonoBehaviour
     private Vector3 _velocity;
     private bool _growing = true;
     //
-   
+    [SerializeField] private bool _startRooted = true;
     //
     private bool _rooted = true;
     void Start()
     {
-        _shadow.enabled = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        transform.position = transform.position.WithZ(transform.position.y * 0.02f);
-        _currentAnimation = _rootedAnimation;
-        _currentAnimation.Reset(_spriteRenderer);
-        _rootedAnimation.frame = 1000 - (int)(transform.position.x );
+        if (_startRooted)
+        {
+            _rooted = true;
+            _shadow.enabled = false;
+           
+            transform.position = transform.position.WithZ(transform.position.y * 0.02f);
+            _currentAnimation = _rootedAnimation;
+            _currentAnimation.Reset(_spriteRenderer);
+            _rootedAnimation.frame = 1000 - (int)(transform.position.x);
+        }
+        else
+        {
+            _rooted = false;
+            _growing = false;
+            //
+            transform.position = transform.position.WithZ(transform.position.y * 0.02f);
+            _currentAnimation = _uprootedAnimation;
+            _currentAnimation.Reset(_spriteRenderer);
+            gameObject.layer = LayerMask.NameToLayer("Uprooted Vegetables");
+        }
     }
     //
     // 

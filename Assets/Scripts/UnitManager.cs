@@ -44,7 +44,7 @@ public class UnitManager : SingletonBehaviour<UnitManager>
        
         Collider[] enemyColliders = Physics.OverlapSphere(position, Mathf.Max(knockRange, killRange), 1 << LayerMask.NameToLayer("Enemies"));
         //
-        Debug.Log(" Explode " + Mathf.Max(knockRange, killRange) + "  " + enemyColliders.Length);
+       // Debug.Log(" Explode " + Mathf.Max(knockRange, killRange) + "  " + enemyColliders.Length);
         //
         for (int i = 0; i < enemyColliders.Length; i++)
         {
