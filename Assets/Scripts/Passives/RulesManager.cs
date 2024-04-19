@@ -140,6 +140,10 @@ public class RulesManager : SingletonBehaviour<RulesManager>
             //
             UnitManager.Instance.VolvyDropBomb(position, v);
         }
+        else if (effect == RuleEffect.RechargeBurrow)
+        {
+            AbilitiesManager.Instance.chargeBar.AddCharge(0.25f);
+        }
 
     }
     public bool TryCombineVegetables(VegetableType vegetableThis, VegetableType vegetableOther, out VegetableType created)
