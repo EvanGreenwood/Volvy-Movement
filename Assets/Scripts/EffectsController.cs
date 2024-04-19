@@ -11,6 +11,7 @@ public class EffectsController : SingletonBehaviour<EffectsController>
     [SerializeField] private Shrapnel _boneShrapnelPrefab;
     [SerializeField] private Shrapnel _carrotSeedPrefab;
     [SerializeField] private Shrapnel _poopShrapnelPrefab;
+    [SerializeField] private DamageNumber _damageNumber;
 
 
 
@@ -77,5 +78,11 @@ public class EffectsController : SingletonBehaviour<EffectsController>
             Shrapnel shrapnel = Instantiate(prefab, pos, Quaternion.identity);
             shrapnel.Launch(upwardForce * 0.75f  + upwardForce * 0.25f * randomForce.y, new Vector2((direction.x + randomForce.x* 0.25f) * sidewaysForce, (direction.y + randomForce.z * 0.25f) * sidewaysForce));
          
+    }
+
+    public void SpawnDamageNumber(int damageAmount, Vector3 pos)
+    {
+        DamageNumber damageNumber = Instantiate(_damageNumber, pos, Quaternion.identity);
+        damageNumber.SetUpDamageNumber(damageAmount);
     }
 }

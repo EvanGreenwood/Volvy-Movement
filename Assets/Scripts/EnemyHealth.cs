@@ -1,3 +1,4 @@
+using Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
         if (_canBeDamaged)
         {
             _health -= damageAmount;
+            EffectsController.Instance.SpawnDamageNumber(damageAmount, transform.position.WithY(transform.position.y + 1.5f));
 
             if (_health <= 0)
                 Die();
