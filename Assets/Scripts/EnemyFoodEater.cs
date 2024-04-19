@@ -17,20 +17,22 @@ public class EnemyFoodEater : MonoBehaviour
     }
     private void Update()
     {
-         
-        if (Physics.OverlapSphereNonAlloc(transform.position, 0.5f, vegetableColliders, _layerMask) > 0 && vegetableColliders[0].TryGetComponent(out VegetableObject vegetable))
+        if (_characterMover.movementState != MovementState.Stunned && _characterMover.movementState != MovementState.Dead && _characterMover.movementState != MovementState.Eat)
         {
-            if (vegetable.CanBeEaten)
+            if (Physics.OverlapSphereNonAlloc(transform.position, 0.5f, vegetableColliders, _layerMask) > 0 && vegetableColliders[0].TryGetComponent(out VegetableObject vegetable))
             {
-                Debug.Log("Found vegetable ");
-                _characterMover.Eat(2f);
-                //
-                if (vegetable.Type == VegetableType.RatPoison)
+                if (vegetable.CanBeEaten)
                 {
-                    StartCoroutine(DeathRoutine(0.6f));
+                    Debug.Log("Found vegetable ");
+                    _characterMover.Eat(2f);
+                    //
+                    if (vegetable.Type == VegetableType.RatPoison)
+                    {
+                        StartCoroutine(DeathRoutine(0.6f));
+                    }
+                    //
+                    Destroy(vegetable.gameObject);
                 }
-                //
-                Destroy(vegetable.gameObject);
             }
         }
     }
