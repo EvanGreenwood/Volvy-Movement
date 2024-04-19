@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 1476f3488f323df478b423666b0d6a94
   icon: {fileID: 0}
-  improbabilityMultiplier: 1
+  improbabilityMultiplier: 4
