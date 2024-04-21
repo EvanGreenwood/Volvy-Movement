@@ -23,6 +23,7 @@ public class Shrapnel : MonoBehaviour
     [SerializeField] private VegetableType _seedType ;
     [SerializeField] private bool _randomXFlip = false;
 
+    bool _collectToUpgrade;
     void Start()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -91,17 +92,32 @@ public class Shrapnel : MonoBehaviour
             }
             else
             {
-                _fadeAnim.Run(_spriteRenderer, Time.time);
-                if (_fadeAnim.IsFinished)
+                if (_collectToUpgrade)
                 {
-                    //
-                    if (_seedType != null)
+                    if (UnitManager.Instance.playerTransform == null)
+                        return;
+
+                    Vector3 diff = (UnitManager.Instance.playerTransform.position - transform.position).WithZ(0);
+                    if (diff.sqrMagnitude < 0.2f)
                     {
-                        VegetablesSpawner.Instance.SpawnVegetable(  _seedType, transform.position);
+                        RulesUI.Instance.ActivateRulesUI();
+                        Destroy(gameObject);
                     }
-                    Destroy(gameObject);
-                    //
-                    
+                }
+                else
+                {
+                    _fadeAnim.Run(_spriteRenderer, Time.time);
+                    if (_fadeAnim.IsFinished)
+                    {
+                        //
+                        if (_seedType != null)
+                        {
+                            VegetablesSpawner.Instance.SpawnVegetable(_seedType, transform.position);
+                        }
+                        Destroy(gameObject);
+                        //
+
+                    }
                 }
             }
         }
@@ -113,5 +129,10 @@ public class Shrapnel : MonoBehaviour
     {
         _velocity = force;
         _yOffsetSpeed = upwardForce;
+    }
+
+    public void SetUpgradeShrapnel()
+    {
+        _collectToUpgrade = true;
     }
 }
