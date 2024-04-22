@@ -62,7 +62,7 @@ public class BurrowTrail : MonoBehaviour
                     {
                         RulesManager.Instance.TryTrigger(RuleTrigger.BumpEnemy, transform.position);
                     }
-                    mover.EnemyHealth.Damage(DamageType.Bump, 1);
+                    mover.EnemyHealth.Damage(DamageType.Bump, 4);
                 }
             }
         }
