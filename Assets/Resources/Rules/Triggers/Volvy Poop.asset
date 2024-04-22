@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515f463d241b9a4bbd2e9012663204b, type: 3}
   m_Name: Volvy Poop
   m_EditorClassIdentifier: 
-  _guid: 124e5f9380f343b42aeedbcd62b64c58
+  _guid: e188562f05da833479a3c022300fcc06
   icon: {fileID: 0}
   defaultProbability:
-    portion: 1
-    outOf: 2
+    portion: 2
+    outOf: 1

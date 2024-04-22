@@ -31,6 +31,7 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     //
 
     private int _calculatedPoopCount = 0;
+    [SerializeField] private int _poopLevelCount = 0;
     [SerializeField] private int _poopMax = 1;
     [SerializeField] private TMPro.TextMeshProUGUI _poopCountText;
     [SerializeField] private TMPro.TextMeshProUGUI _poopMaxText;
@@ -178,10 +179,14 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         if (_calculatedPoopCount >= _poopMax)
         {
             _calculatedPoopCount = 0;
-            _poopMax++;
+            if (_poopLevelCount % 2 == 0)
+            {
+                _poopMax++;
+            }
             _poopCountText.text = (_calculatedPoopCount < 10 ? "0" : "") + _calculatedPoopCount.ToString();
             _poopMaxText.text = (_poopMax < 10 ? "0" : "") + _poopMax.ToString();
             RulesUI.Instance.ActivateRulesUI();
+            _poopLevelCount++;
         }
     }
     public void SpawnVegetable()
