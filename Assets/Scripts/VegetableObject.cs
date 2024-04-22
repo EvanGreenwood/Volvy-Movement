@@ -1,6 +1,7 @@
 using Framework;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ public class VegetableObject : MonoBehaviour
     private bool _rooted = true;
     [SerializeField] int _numberOfBumpsToUproot = 1;
     float _bumpCollisionRate;
+    [SerializeField] TMP_Text _bumpText;
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -161,6 +163,9 @@ public class VegetableObject : MonoBehaviour
         {
             _numberOfBumpsToUproot--;
             _bumpCollisionRate = 1f;
+
+            if (_bumpText != null)
+                _bumpText.text = _numberOfBumpsToUproot.ToString();
         }
 
         if (_numberOfBumpsToUproot <= 0)
@@ -169,6 +174,9 @@ public class VegetableObject : MonoBehaviour
             _rooted = false;
             gameObject.layer = LayerMask.NameToLayer("Uprooted Vegetables");
             _shadow.enabled = true;
+
+            if (_bumpText != null)
+                Destroy(_bumpText);
         }
     }
 }
