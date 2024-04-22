@@ -162,7 +162,7 @@ public class StomachManager : SingletonBehaviour<StomachManager>
             _leftSphincter.Close();
         _rightSphincter.Close();
         //
-        EffectsController.Instance.SpawnPoop(UnitManager.Instance.playerTransform.position, 11, 2);
+        EffectsController.Instance.SpawnPoop(UnitManager.Instance.playerTransform.position, 11, 2, _calculatedPoopCount >= _poopMax);
         //
         RulesManager.Instance.TryTrigger(RuleTrigger.VolvyPoop, UnitManager.Instance.playerTransform.position);
         //
@@ -185,7 +185,7 @@ public class StomachManager : SingletonBehaviour<StomachManager>
             }
             _poopCountText.text = (_calculatedPoopCount < 10 ? "0" : "") + _calculatedPoopCount.ToString();
             _poopMaxText.text = (_poopMax < 10 ? "0" : "") + _poopMax.ToString();
-            RulesUI.Instance.ActivateRulesUI();
+            //RulesUI.Instance.ActivateRulesUI();
             _poopLevelCount++;
         }
     }

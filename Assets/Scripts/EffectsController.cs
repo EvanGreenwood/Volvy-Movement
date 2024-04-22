@@ -20,10 +20,12 @@ public class EffectsController : SingletonBehaviour<EffectsController>
     {
         
     }
-    public void SpawnPoop( Vector3 pos, float upwardForce, float backForce)
+    public void SpawnPoop( Vector3 pos, float upwardForce, float backForce, bool isUpgradePoop)
     {
         Shrapnel shrapnel = Instantiate(_poopShrapnelPrefab, pos, Quaternion.identity);
         shrapnel.Launch(upwardForce  ,  UnitManager.Instance.VolvyMoveDirection * - backForce);
+        if (isUpgradePoop)
+            shrapnel.SetUpgradeShrapnel();
          
     }
     public void SpawnShrapnel(int count, Vector3 pos, float upwardForce, float sidewaysForce)
