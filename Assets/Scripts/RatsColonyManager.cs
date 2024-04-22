@@ -90,37 +90,13 @@ public class RatsColonyManager : MonoBehaviour
             }
             else
             {
-                Vector2 dir = FlowFieldManager.Instance.GetFlowDir(rat.transform.position);
+                Vector2 dir = FlowFieldManager.Instance.GetFlowAt(rat.transform.position);
                 rat.EnemyInput.Move(dir);
 
                 _ratPositions[i] = (Vector2)rat.transform.position;
                 _ratStates[i] = rat.State;
             }
         }
-    }
-    private void FixedUpdate()
-    {
-        //if (volvy == null) return;
-
-        //var moveJob = new MoveJob()
-        //{
-        //    volvyPosition = (Vector2)volvy.position,
-        //    ratPositions = _ratPositions,
-        //    ratInputDirs = _ratInputDirs
-        //};
-        //moveJob.Schedule(maxNumRats, 1).Complete();
-
-        //var attackJob = new AttackJob()
-        //{
-        //    volvyPosition = (Vector2)volvy.position,
-        //    ratPositions = _ratPositions,
-        //    ratStates = _ratStates,
-        //    ratPrevAttackTimes = _ratPrevAttackTimes,
-        //    ratReqDistanceToAttack = _ratReqDistanceToAttack,
-        //    ratAttackCooldown = _ratAttackCooldown,
-        //    currentTime = Time.time
-        //};
-        //attackJob.Schedule(maxNumRats, 1).Complete();
     }
 
     public void SpawnRat(Vector2 position)
@@ -133,48 +109,3 @@ public class RatsColonyManager : MonoBehaviour
         _rats.Add(Instantiate(_ratPrefab, position, Quaternion.identity));
     }
 }
-
-//[BurstCompile(CompileSynchronously = true)]
-//public struct AttackJob : IJobParallelFor
-//{
-//    [ReadOnly] public float2 volvyPosition;
-//    [ReadOnly] public NativeArray<float2> ratPositions;
-//    public NativeArray<RatState> ratStates;
-//    public NativeArray<float> ratPrevAttackTimes;
-//    public float ratReqDistanceToAttack;
-//    public float ratAttackCooldown;
-//    public float currentTime;
-
-//    public void Execute(int index)
-//    {
-//        if (ratStates[index] == RatState.Targeting)
-//        {
-//            float prevAttackTime = ratPrevAttackTimes[index];
-//            if (currentTime > prevAttackTime + ratAttackCooldown)
-//            {
-//                float2 ratPosition = ratPositions[index];
-//                float sqrDist = math.distancesq(volvyPosition, ratPosition);
-//                if (sqrDist < ratReqDistanceToAttack * ratReqDistanceToAttack)
-//                {
-//                    ratStates[index] = RatState.Attacking;
-//                    ratPrevAttackTimes[index] = currentTime;
-//                }
-//            }
-//        }
-//    }
-//}
-
-//[BurstCompile(CompileSynchronously = true)]
-//public struct MoveJob : IJobParallelFor
-//{
-//    [ReadOnly] public float2 volvyPosition;
-//    [ReadOnly] public NativeArray<float2> ratPositions;
-//    public NativeArray<float2> ratInputDirs;
-
-//    public void Execute(int index)
-//    {
-//        float2 currRatPosition = ratPositions[index];
-//        float2 dir = math.normalize(volvyPosition - currRatPosition);
-//        ratInputDirs[index] = dir;
-//    }
-//}
