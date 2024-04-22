@@ -48,7 +48,7 @@ public class BurrowTrail : MonoBehaviour
             {
                 if (vegetableColliders[i].TryGetComponent<VegetableObject>(out VegetableObject vegetable))
                 {
-                    vegetable.Uproot();
+                    vegetable.TryUproot();
                 }
             }
             //

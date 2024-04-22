@@ -28,6 +28,8 @@ public class VegetableObject : MonoBehaviour
     [SerializeField] private bool _startRooted = true;
     //
     private bool _rooted = true;
+    [SerializeField] int _numberOfBumpsToUproot = 1;
+    float _bumpCollisionRate;
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -65,6 +67,9 @@ public class VegetableObject : MonoBehaviour
         else if (_rooted)
         {
             RunAnimation(_rootedAnimation);
+
+            if(_bumpCollisionRate > 0) 
+                _bumpCollisionRate -= Time.deltaTime;
         }
         else
         {
@@ -150,11 +155,20 @@ public class VegetableObject : MonoBehaviour
         }
         // 
     }
-    public void Uproot()
+    public void TryUproot()
     {
-        _uprootedTime = Time.time;
-        _rooted = false;
-        gameObject.layer =  LayerMask.NameToLayer("Uprooted Vegetables");
-        _shadow.enabled = true;
+        if (_bumpCollisionRate <= 0)
+        {
+            _numberOfBumpsToUproot--;
+            _bumpCollisionRate = 1f;
+        }
+
+        if (_numberOfBumpsToUproot <= 0)
+        {
+            _uprootedTime = Time.time;
+            _rooted = false;
+            gameObject.layer = LayerMask.NameToLayer("Uprooted Vegetables");
+            _shadow.enabled = true;
+        }
     }
 }

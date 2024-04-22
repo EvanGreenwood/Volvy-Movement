@@ -205,6 +205,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa6664aee5d43f54a8e3aaa9dce8a32d, type: 2}
   - {fileID: 11400000, guid: 93da5dfd42856da4f959d8d856605471, type: 2}
   _spawnRate: 2
+  _onionMan: {fileID: 11400000, guid: f3a0ca4a6c0ed0744972d0c08eea4de8, type: 2}
 --- !u!114 &8813819678601543704
 MonoBehaviour:
   m_ObjectHideFlags: 0

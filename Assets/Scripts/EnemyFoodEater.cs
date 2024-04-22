@@ -21,7 +21,7 @@ public class EnemyFoodEater : MonoBehaviour
         {
             if (Physics.OverlapSphereNonAlloc(transform.position, 0.5f, vegetableColliders, _layerMask) > 0 && vegetableColliders[0].TryGetComponent(out VegetableObject vegetable))
             {
-                if (vegetable.CanBeEaten)
+                if (vegetable.CanBeEaten && vegetable.Type != VegetableType.OnionMan)
                 {
                     Debug.Log("Found vegetable ");
                     _characterMover.Eat(2f);

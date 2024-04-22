@@ -1,4 +1,5 @@
 using Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,13 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     List<StomachVegetable> _stomachVegetables = new List<StomachVegetable>();
     List<StomachVegetable> _digestingVegetables = new List<StomachVegetable>();
     //
+    [Header("Stomach Vegetables")]
     [SerializeField] private int _vegetableMax = 10;
     [SerializeField] private TMPro.TextMeshProUGUI _vegetableCountText;
     [SerializeField] private TMPro.TextMeshProUGUI _vegetableMaxText;
+    private int _calculatedVeggieCount = 0;
     //
+    [Header("Stomach Walls")]
     [SerializeField] private StomachSphincter _leftSphincter;
     [SerializeField] private StomachSphincter _rightSphincter;
     //
@@ -27,14 +31,18 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     //
     private Coroutine _digestRoutine;
     //
-    private int _calculatedVeggieCount = 0;
-    //
-
-    private int _calculatedPoopCount = 0;
+    [Header("Poop")]
     [SerializeField] private int _poopLevelCount = 0;
     [SerializeField] private int _poopMax = 1;
     [SerializeField] private TMPro.TextMeshProUGUI _poopCountText;
     [SerializeField] private TMPro.TextMeshProUGUI _poopMaxText;
+    private int _calculatedPoopCount = 0;
+
+    [Header("Onion Man")]
+    [SerializeField] private TMPro.TextMeshProUGUI _onionManGoalText;
+    [SerializeField] private TMPro.TextMeshProUGUI _onionManTimerText;
+    [SerializeField] private TMPro.TextMeshProUGUI _onionManTimerDescriptionText;
+    private float _numberOfOnionManEaten;
     void Start()
     {
         
@@ -120,7 +128,7 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         Debug.Log(" Start digesting !! ");
         _digestingVegetables.AddRange(_stomachVegetables);
         _stomachVegetables.Clear();
-        _calculatedPoopCount++; 
+        _calculatedPoopCount++;
         _poopCountText.text = (_calculatedPoopCount < 10 ? "0" : "") + _calculatedPoopCount.ToString();
         //
         yield return null;
@@ -198,6 +206,9 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     {
         StomachVegetable veggie = Instantiate(type.stomachPrefab, _neckTransform.position, Quaternion.identity, transform);
         _stomachVegetables.Add(veggie);
+
+        if (type == VegetableType.OnionMan)
+            IncreaseOnionManEaten();
     }
     public void SpawnOnion()
     {
@@ -223,5 +234,29 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     {
         _stomachVegetables.Remove(stomachVegetable);
         _digestingVegetables.Remove(stomachVegetable);
+    }
+
+    public void UpdateOnionManTimer(float currentTime)
+    {
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+        _onionManTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void WaitingForOnionManToBeEaten()
+    {
+        _onionManTimerText.text = "Eat Onion Man";
+        _onionManTimerDescriptionText.text = "Bump Onion Man 4 times to uproot";
+    }
+
+    void IncreaseOnionManEaten()
+    {
+        _numberOfOnionManEaten++;
+
+        if (_numberOfOnionManEaten >= 4)
+            Debug.Log("Win");
+
+        _onionManGoalText.text = _numberOfOnionManEaten.ToString() + " out of 4 Onion Men Eaten";
     }
 }
