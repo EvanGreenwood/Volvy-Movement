@@ -11,6 +11,8 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     public Transform NeckTransform => _neckTransform;
     [SerializeField] private Transform _neckTransform;
     [SerializeField] private Transform _waterLevelDummy;
+    [SerializeField] private Transform _waterLevelAnchor;
+    float _waterLevel = 1;
     [SerializeField] private Transform _exitLevelDummy;
     public List<StomachVegetable> StomachVegetables => _stomachVegetables;
     List<StomachVegetable> _stomachVegetables = new List<StomachVegetable>();
@@ -122,6 +124,12 @@ public class StomachManager : SingletonBehaviour<StomachManager>
                 _digestingVegetables.RemoveAt(i);
             }
         }
+
+        if(_waterLevel > 0)
+        {
+            _waterLevel -= 0.1f * Time.deltaTime;
+            _waterLevelAnchor.localScale = Vector3.one.WithY(_waterLevel / 1);
+        }
     }
     private IEnumerator DigestRoutine()
     {
@@ -196,16 +204,19 @@ public class StomachManager : SingletonBehaviour<StomachManager>
             //RulesUI.Instance.ActivateRulesUI();
             _poopLevelCount++;
         }
+        _waterLevel = 1;
     }
     public void SpawnVegetable()
     {
         StomachVegetable veggie = Instantiate(_vegetablePrefab, _neckTransform.position, Quaternion.identity, transform); 
-        _stomachVegetables.Add(veggie); 
+        _stomachVegetables.Add(veggie);
+        _waterLevel = 1;
     }
     public void SpawnVegetable(VegetableType type)
     {
         StomachVegetable veggie = Instantiate(type.stomachPrefab, _neckTransform.position, Quaternion.identity, transform);
         _stomachVegetables.Add(veggie);
+        _waterLevel = 1;
 
         if (type == VegetableType.OnionMan)
             IncreaseOnionManEaten();
@@ -214,6 +225,7 @@ public class StomachManager : SingletonBehaviour<StomachManager>
     {
         StomachVegetable veggie = Instantiate(_onionPrefab, _neckTransform.position, Quaternion.identity, transform);
         _stomachVegetables.Add(veggie);
+        _waterLevel = 1;
     }
     public void SpawnVegetable(VegetableType type, Vector3 pos)
     {

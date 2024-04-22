@@ -1357,7 +1357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7229373830191058750}
+  - {fileID: 1298309374661486675}
   m_Father: {fileID: 2645769596007102962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3232560499244259734
@@ -1853,6 +1853,7 @@ MonoBehaviour:
   _onionPrefab: {fileID: 6881329953308988149, guid: 1ac39102faac2004eac35604ab748f2e, type: 3}
   _neckTransform: {fileID: 7911386976334975805}
   _waterLevelDummy: {fileID: 902971517838898418}
+  _waterLevelAnchor: {fileID: 1298309374661486675}
   _exitLevelDummy: {fileID: 1827160843383507563}
   _vegetableMax: 5
   _vegetableCountText: {fileID: 6062704398691817333}
@@ -3100,6 +3101,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8190358781226728574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298309374661486675}
+  m_Layer: 0
+  m_Name: Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1298309374661486675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8190358781226728574}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7229373830191058750}
+  m_Father: {fileID: 902971517838898418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8352169551045642096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3126,11 +3159,11 @@ Transform:
   m_GameObject: {fileID: 8352169551045642096}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009999998, y: -2.1199994, z: 0.24}
-  m_LocalScale: {x: 2.00097, y: 1.7999998, z: 2.00097}
+  m_LocalPosition: {x: -0.009999998, y: 2.74, z: 0.2400055}
+  m_LocalScale: {x: 2, y: 2.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 902971517838898418}
+  m_Father: {fileID: 1298309374661486675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3222737397449357110
 SpriteRenderer:
