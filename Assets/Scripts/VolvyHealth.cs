@@ -77,6 +77,7 @@ public class VolvyHealth : MonoBehaviour
 
     void Die()
     {
+        WinLoseScreen.Instance.EndGame(false);
         Destroy(gameObject);
     }
 }

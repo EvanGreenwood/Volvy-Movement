@@ -255,8 +255,9 @@ public class StomachManager : SingletonBehaviour<StomachManager>
         _numberOfOnionManEaten++;
 
         if (_numberOfOnionManEaten >= 4)
-            Debug.Log("Win");
-
+        {
+            WinLoseScreen.Instance.EndGame(true);
+        }
         _onionManGoalText.text = _numberOfOnionManEaten.ToString() + " out of 4 Onion Men Eaten";
     }
 }
