@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Framework;
 using UnityEngine.UIElements;
+using System;
 
 public class RulesManager : SingletonBehaviour<RulesManager> 
 {
@@ -148,8 +149,27 @@ public class RulesManager : SingletonBehaviour<RulesManager>
         {
             EffectsController.Instance.SpawnRatPoison(position);
         }
-
+        else if (effect == RuleEffect.BoostSpeed)
+        {
+            StartCoroutine(AddRemoveEffectRoutine(delegate
+            {
+                UnitManager.Instance.VolvyMover.MoveSpeedMultiplier *= 2f;
+            },
+            delegate
+            {
+                UnitManager.Instance.VolvyMover.MoveSpeedMultiplier /= 2f;
+            },
+            3f));
+        }
     }
+
+    private IEnumerator AddRemoveEffectRoutine(Action onAddEffect, Action onRemoveEffect, float time)
+    {
+        onAddEffect?.Invoke();
+        yield return new WaitForSeconds(time);
+        onRemoveEffect?.Invoke();
+    }
+
     public bool TryCombineVegetables(VegetableType vegetableThis, VegetableType vegetableOther, out VegetableType created)
     { 
         foreach (RuleRecipe recipe in ruleRecipes)

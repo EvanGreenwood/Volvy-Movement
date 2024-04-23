@@ -43,6 +43,10 @@ public class CharacterMover : MonoBehaviour
     private Vector2 _moveDirection = Vector2.zero;
     private Collider2D _collider;
 
+    public float MoveSpeedMultiplier { get; set; } = 1f;
+
+    public float Speed => _speed * MoveSpeedMultiplier;
+
     public EnemyHealth EnemyHealth => _enemyHealth;
     EnemyHealth _enemyHealth;
     void Start()
@@ -117,7 +121,7 @@ public class CharacterMover : MonoBehaviour
         else  if (movementState == MovementState.Burrow)
         {
             if (direction.magnitude > 0) _burrowDirection = Vector3.RotateTowards(_burrowDirection, direction, Time.deltaTime * 4, Time.deltaTime);
-            transform.position += _speed * 1.7f * Time.deltaTime * _burrowDirection.ToVector3();
+            transform.position += Speed * 1.7f * Time.deltaTime * _burrowDirection.ToVector3();
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.25f, LayerMask.GetMask("Wall"));
             if (colliders.Length == 0)
@@ -155,7 +159,7 @@ public class CharacterMover : MonoBehaviour
         else if (direction.magnitude > 0)
         {
             movementState = MovementState.Run;
-            transform.position += _speed * Time.deltaTime * direction.ToVector3();
+            transform.position += Speed * Time.deltaTime * direction.ToVector3();
         }
         else
         {
