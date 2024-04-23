@@ -3,7 +3,7 @@ using Framework;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerCamera : SingletonBehaviour<PlayerCamera>
+public class PlayerCameraManager : SingletonBehaviour<PlayerCameraManager>
 {
     [SerializeField] private CinemachineVirtualCamera _vcam;
     private CinemachineBasicMultiChannelPerlin _noise;

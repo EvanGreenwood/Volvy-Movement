@@ -85,7 +85,10 @@ public class VolvyHealth : MonoBehaviour
 
     IEnumerator TakeDamageRoutine()
     {
-        yield return PlayerCamera.Instance.ShakeRoutine(25f, 0.5f);
+        float time = 0.5f;
+        StartCoroutine(DamageEffectManager.Instance.FlashRoutine(time));
+        StartCoroutine(PlayerCameraManager.Instance.ShakeRoutine(25f, time));
+        yield return new WaitForSeconds(time);
     }
 
     void Die()
