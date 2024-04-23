@@ -33,7 +33,7 @@ public class RuleOptionUI : MonoBehaviour, ISelectHandler, IDeselectHandler
     void RuleSelected()
     {
         RulesManager.Instance.AddRulePair(_trigger, _effect, _probability);
-        RulesUI.Instance.DeactivateRulesUI();
+        UpgradeManager.Instance.DeactivateRulesUI();
     }
 
     public void OnSelect(BaseEventData eventData)

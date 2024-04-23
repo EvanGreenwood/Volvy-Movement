@@ -1058,8 +1058,10 @@ MonoBehaviour:
   _rulesUICanvasGroup: {fileID: 6966768114078657115}
   _ruleOptionPrefab: {fileID: 5808502839562327744, guid: 927c472ceb0a3c1478fa0e3696af6b61, type: 3}
   _ruleOptionsParent: {fileID: 906909763985296210}
-  _passivesUICanvasGroup: {fileID: 0}
-  _passiveOptionsParent: {fileID: 0}
+  _passiveOptionPrefab: {fileID: 686067743040795833, guid: 929d9a0f62340384cb14c00e79c49d20, type: 3}
+  _availablePassives:
+  - {fileID: 11400000, guid: 76b59bafbb7b9eb49a33a00b138374d8, type: 2}
+  - {fileID: 11400000, guid: 86237e89835acb74c930a15b923f00ab, type: 2}
 --- !u!114 &6313615159655778062
 MonoBehaviour:
   m_ObjectHideFlags: 0
