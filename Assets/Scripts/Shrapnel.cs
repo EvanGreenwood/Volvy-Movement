@@ -134,5 +134,9 @@ public class Shrapnel : MonoBehaviour
     public void SetUpgradeShrapnel()
     {
         _collectToUpgrade = true;
+        OffscreenTarget offscreenTarget = GetComponent<OffscreenTarget>();
+        offscreenTarget.enabled = true;
+        GetComponentInChildren<SpriteRenderer>().color = offscreenTarget.TargetColor;
+
     }
 }
