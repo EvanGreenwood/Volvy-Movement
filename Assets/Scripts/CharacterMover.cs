@@ -118,6 +118,21 @@ public class CharacterMover : MonoBehaviour
         {
             if (direction.magnitude > 0) _burrowDirection = Vector3.RotateTowards(_burrowDirection, direction, Time.deltaTime * 4, Time.deltaTime);
             transform.position += _speed * 1.7f * Time.deltaTime * _burrowDirection.ToVector3();
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.25f, LayerMask.GetMask("Wall"));
+            if (colliders.Length == 0)
+            {
+                _burrowTime += Time.deltaTime;
+                if (_burrowTime > 3f)
+                {
+                    movementState = MovementState.ExitBurrow;
+                    _burrowTime = 0;
+                    //
+                    UnitManager.Instance.Explode(transform.position, 0, 2.4f, 3);
+                    //
+                    //EffectsController.Instance.SpawnShrapnel(5, transform.position, 15, 2.5f);
+                }
+            }
         }
         else if (movementState == MovementState.ExitBurrow)
         {
