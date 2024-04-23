@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 4676018682060355523}
   - component: {fileID: 5649156177869545838}
   - component: {fileID: 5043530595456744224}
+  - component: {fileID: 2330960486398016334}
   m_Layer: 0
   m_Name: Volvy
   m_TagString: Untagged
@@ -627,6 +628,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!50 &2330960486398016334
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959660175620158080}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 49152
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &3000370673363572748
 PrefabInstance:
   m_ObjectHideFlags: 0
