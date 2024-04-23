@@ -14,7 +14,6 @@ public enum LayerName
 	IgnoreRaycast = -1,
 	Water = 4,
 	UI = 5,
-	Wall = 6,
 	Enemies = 13,
 	RootedVegetables = -1,
 	UprootedVegetables = -1,
@@ -34,7 +33,6 @@ public static class Layer
 	public const int IgnoreRaycast = -1;
 	public const int Water = 4;
 	public const int UI = 5;
-	public const int Wall = 6;
 	public const int Enemies = 13;
 	public const int RootedVegetables = -1;
 	public const int UprootedVegetables = -1;
@@ -72,7 +70,6 @@ public static partial class LayerMasks
 	public static readonly LayerMask IgnoreRaycast = -2147483648;
 	public static readonly LayerMask Water = 16;
 	public static readonly LayerMask UI = 32;
-	public static readonly LayerMask Wall = 64;
 	public static readonly LayerMask Enemies = 8192;
 	public static readonly LayerMask RootedVegetables = -2147483648;
 	public static readonly LayerMask UprootedVegetables = -2147483648;
@@ -90,7 +87,6 @@ public static class CollisionMatrix
 	public static readonly LayerMask IgnoreRaycastCollisionMask = -1;
 	public static readonly LayerMask WaterCollisionMask = -1;
 	public static readonly LayerMask UICollisionMask = -1;
-	public static readonly LayerMask WallCollisionMask = -1;
 	public static readonly LayerMask EnemiesCollisionMask = -1;
 	public static readonly LayerMask RootedVegetablesCollisionMask = -1;
 	public static readonly LayerMask UprootedVegetablesCollisionMask = -1;
@@ -148,6 +144,7 @@ public partial class RuleTrigger
 	public static RuleTrigger EatOnion { get { if (__eatOnion == null) __eatOnion = GetValue<RuleTrigger>("Eat Onion"); return __eatOnion; } }
 	public static RuleTrigger EatOnionMan { get { if (__eatOnionMan == null) __eatOnionMan = GetValue<RuleTrigger>("Eat Onion Man"); return __eatOnionMan; } }
 	public static RuleTrigger EatRatPoison { get { if (__eatRatPoison == null) __eatRatPoison = GetValue<RuleTrigger>("Eat Rat Poison"); return __eatRatPoison; } }
+	public static RuleTrigger EnemyEat { get { if (__enemyEat == null) __enemyEat = GetValue<RuleTrigger>("Enemy Eat"); return __enemyEat; } }
 	public static RuleTrigger MarkEnemy { get { if (__markEnemy == null) __markEnemy = GetValue<RuleTrigger>("Mark Enemy"); return __markEnemy; } }
 	public static RuleTrigger Overcharge { get { if (__overcharge == null) __overcharge = GetValue<RuleTrigger>("Overcharge"); return __overcharge; } }
 	public static RuleTrigger VolvyEat { get { if (__volvyEat == null) __volvyEat = GetValue<RuleTrigger>("Volvy Eat"); return __volvyEat; } }
@@ -160,6 +157,7 @@ public partial class RuleTrigger
 	protected static RuleTrigger __eatOnion;
 	protected static RuleTrigger __eatOnionMan;
 	protected static RuleTrigger __eatRatPoison;
+	protected static RuleTrigger __enemyEat;
 	protected static RuleTrigger __markEnemy;
 	protected static RuleTrigger __overcharge;
 	protected static RuleTrigger __volvyEat;

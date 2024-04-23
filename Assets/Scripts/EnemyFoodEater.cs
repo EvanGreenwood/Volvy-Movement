@@ -24,6 +24,7 @@ public class EnemyFoodEater : MonoBehaviour
                 if (vegetable.CanBeEaten && vegetable.Type != VegetableType.OnionMan)
                 {
                     Debug.Log("Found vegetable ");
+                    RulesManager.Instance.TryTrigger(RuleTrigger.EnemyEat, UnitManager.Instance.playerTransform.position);
                     _characterMover.Eat(2f);
                     //
                     if (vegetable.Type == VegetableType.RatPoison)
