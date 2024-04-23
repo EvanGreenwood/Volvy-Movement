@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5709200804594635140}
   - component: {fileID: 2037604171533073499}
   - component: {fileID: 6396206776123921775}
+  - component: {fileID: -2414529853510195309}
   m_Layer: 14
   m_Name: OnionMan
   m_TagString: Untagged
@@ -190,6 +191,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.2}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-2414529853510195309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805049172341598899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dd462da48ed9b49a885f1a9cf94fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0.54948986, b: 0, a: 1}
+  needBoxIndicator: 0
+  needArrowIndicator: 1
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &2018102674041135027
 GameObject:
   m_ObjectHideFlags: 0
