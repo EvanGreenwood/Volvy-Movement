@@ -1,7 +1,9 @@
 using Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D.IK;
 
 public enum MovementState
 {
@@ -39,6 +41,7 @@ public class CharacterMover : MonoBehaviour
     private Vector3 _knockForce = Vector3.zero;
     public Vector2 MoveDirection => _moveDirection;
     private Vector2 _moveDirection = Vector2.zero;
+    private Collider2D _collider;
 
     public EnemyHealth EnemyHealth => _enemyHealth;
     EnemyHealth _enemyHealth;
@@ -47,7 +50,9 @@ public class CharacterMover : MonoBehaviour
         movementState = MovementState.Idle;
         _input = GetComponent<CharacterInput>();
         _bounce= GetComponentInChildren<BounceTransform>();
-        _enemyHealth = GetComponent<EnemyHealth>(); 
+        _enemyHealth = GetComponent<EnemyHealth>();
+        _collider = GetComponent<Collider2D>();
+
         //
         if (_avoidEnemies) UnitManager.Instance._enemies.Add(transform);
     }
@@ -68,6 +73,8 @@ public class CharacterMover : MonoBehaviour
                     movementState = MovementState.Burrow;
                     _burrowTime = 0;
                     _shadow.enabled = false;
+                    _collider.enabled = false;
+
                     //
                     if (_moveDirection.magnitude > 0)
                     {
@@ -109,25 +116,8 @@ public class CharacterMover : MonoBehaviour
         }
         else  if (movementState == MovementState.Burrow)
         {
-            if (_input.PressedFireRecently)
-            {
-                // *** STAND STILL  ***
-            }
-            else
-            {
-                if (direction.magnitude > 0) _burrowDirection = Vector3.RotateTowards(_burrowDirection, direction, Time.deltaTime * 4, Time.deltaTime);
-                transform.position += _speed * 1.7f * Time.deltaTime * _burrowDirection.ToVector3();
-            }
-            _burrowTime += Time.deltaTime;
-            if (_burrowTime > 3f)
-            {
-                movementState = MovementState.ExitBurrow;
-                _burrowTime = 0;
-                //
-                UnitManager.Instance.Explode(transform.position, 0, 2.4f, 3);
-                //
-                //EffectsController.Instance.SpawnShrapnel(5, transform.position, 15, 2.5f);
-            }
+            if (direction.magnitude > 0) _burrowDirection = Vector3.RotateTowards(_burrowDirection, direction, Time.deltaTime * 4, Time.deltaTime);
+            transform.position += _speed * 1.7f * Time.deltaTime * _burrowDirection.ToVector3();
         }
         else if (movementState == MovementState.ExitBurrow)
         {
@@ -144,6 +134,8 @@ public class CharacterMover : MonoBehaviour
                     movementState = MovementState.Idle;
                 }
             }
+
+            _collider.enabled = true;
         }
         else if (direction.magnitude > 0)
         {
