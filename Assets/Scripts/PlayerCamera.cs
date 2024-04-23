@@ -17,6 +17,8 @@ public class PlayerCamera : SingletonBehaviour<PlayerCamera>
 
     public IEnumerator ShakeRoutine(float shakeIntensity = 25f, float shakeTime = 0.5f)
     {
+        _noise.ReSeed();
+
         SetNoise(1, shakeIntensity);
         yield return new WaitForSeconds(shakeTime);
         SetNoise(0, 0);
