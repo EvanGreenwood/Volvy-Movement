@@ -73,6 +73,19 @@ public class VolvyHealth : MonoBehaviour
     {
         StomachManager.Instance.ThrowUpVegetables();
         _invulnerabilityTime = 1f;
+
+        if (_takeDamageCoroutine != null)
+        {
+            StopCoroutine(_takeDamageCoroutine);
+        }
+        _takeDamageCoroutine = StartCoroutine(TakeDamageRoutine());
+    }
+
+    private Coroutine _takeDamageCoroutine;
+
+    IEnumerator TakeDamageRoutine()
+    {
+        yield return PlayerCamera.Instance.ShakeRoutine(25f, 0.5f);
     }
 
     void Die()
