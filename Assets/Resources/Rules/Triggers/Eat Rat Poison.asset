@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515f463d241b9a4bbd2e9012663204b, type: 3}
   m_Name: Eat Rat Poison
   m_EditorClassIdentifier: 
-  _guid: 99ee4598ca6eed147b80a8b951b26fe3
+  _guid: 5528788c3ede8424eaff57035b14eaaf
   icon: {fileID: 0}
   defaultProbability:
     portion: 1
-    outOf: 5
+    outOf: 1

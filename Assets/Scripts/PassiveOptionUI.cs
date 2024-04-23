@@ -28,6 +28,7 @@ public class PassiveOptionUI : MonoBehaviour
     void PassiveSelected()
     {
         UnitManager.Instance.VolvyMover.GetComponent<BurrowTrail>().IncreaseBurrowDamage(_passive.extraBurrowDamage);
+        UnitManager.Instance.VolvyMover.IncreaseCollectionRange(_passive.extraCollectionRange);
         UpgradeManager.Instance.DeactivatePassiveUI();
     }
 }

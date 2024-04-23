@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0130fc2292d4984ebb81a49c31b9e0c, type: 3}
   m_Name: Boost Speed
   m_EditorClassIdentifier: 
-  _guid: 1476f3488f323df478b423666b0d6a94
+  _guid: 74fe2b8067f844740913b2475d50c1ae
   icon: {fileID: 0}
-  improbabilityMultiplier: 4
+  improbabilityMultiplier: 2

@@ -133,7 +133,7 @@ public class VegetableObject : MonoBehaviour
                     if (UnitManager.Instance.playerTransform != null)
                     {
                         Vector3 diff = (UnitManager.Instance.playerTransform.position - transform.position).WithZ(0);
-                        if (diff.sqrMagnitude < 4)
+                        if (diff.sqrMagnitude < UnitManager.Instance.VolvyMover.CollectionRange)
                         {
                             _collecting = true;
                             _velocity = -diff * 3.5f;

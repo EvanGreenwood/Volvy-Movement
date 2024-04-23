@@ -47,6 +47,9 @@ public class CharacterMover : MonoBehaviour
 
     public float Speed => _speed * MoveSpeedMultiplier;
 
+    public float CollectionRange => _collectionRange;
+    float _collectionRange = 4;
+
     public EnemyHealth EnemyHealth => _enemyHealth;
     EnemyHealth _enemyHealth;
     void Start()
@@ -194,5 +197,10 @@ public class CharacterMover : MonoBehaviour
     public void Knock(Vector3 velocity)
     {
         _knockForce = velocity;
+    }
+
+    public void IncreaseCollectionRange(float extraCollectionRange)
+    {
+        _collectionRange += extraCollectionRange;
     }
 }

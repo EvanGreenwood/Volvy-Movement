@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515f463d241b9a4bbd2e9012663204b, type: 3}
   m_Name: Eat Carrot
   m_EditorClassIdentifier: 
-  _guid: 99ee4598ca6eed147b80a8b951b26fe3
+  _guid: dd9c9ee60b2d3ed47af047c7e9ec06ea
   icon: {fileID: 0}
   defaultProbability:
     portion: 1
-    outOf: 5
+    outOf: 1

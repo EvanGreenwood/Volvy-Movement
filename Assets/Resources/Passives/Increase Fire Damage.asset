@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0130fc2292d4984ebb81a49c31b9e0c, type: 3}
-  m_Name: Recharge Burrow
+  m_Script: {fileID: 11500000, guid: 63f4bd34b0270dd4f9efeca4338ef8fb, type: 3}
+  m_Name: Increase Fire Damage
   m_EditorClassIdentifier: 
-  _guid: 1476f3488f323df478b423666b0d6a94
-  icon: {fileID: 0}
-  improbabilityMultiplier: 2
+  passiveName: Food Attraction
+  passiveDescription: Increase Food Collection Range
+  extraBurrowDamage: 0
+  extraCollectionRange: 1
