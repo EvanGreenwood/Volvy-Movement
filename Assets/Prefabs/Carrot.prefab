@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4444687144464004070}
   - component: {fileID: 7015041130971538873}
   - component: {fileID: 48970222861116248}
-  - component: {fileID: 3506292164396862564}
+  - component: {fileID: 7602267719032722180}
   m_Layer: 14
   m_Name: Carrot
   m_TagString: Untagged
@@ -153,13 +153,18 @@ MonoBehaviour:
     loopFrame: -1
     wobble: 0
   _shadow: {fileID: 4160978302940627812}
---- !u!135 &3506292164396862564
-SphereCollider:
+  _startRooted: 1
+  _numberOfBumpsToUproot: 1
+  _bumpText: {fileID: 0}
+--- !u!58 &7602267719032722180
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043026137160203467}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -168,12 +173,24 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.2}
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1001 &5240626951779007860
 PrefabInstance:
   m_ObjectHideFlags: 0

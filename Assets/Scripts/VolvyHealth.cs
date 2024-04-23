@@ -30,9 +30,9 @@ public class VolvyHealth : MonoBehaviour
 
     void CheckEnemyCollisions()
     {
-        Collider[] enemyColliders = Physics.OverlapSphere(transform.position, _collisionRadius, 1 << Layer.Enemies);
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, _collisionRadius, 1 << Layer.Enemies);
 
-        foreach (Collider c in enemyColliders)
+        foreach (Collider2D c in enemyColliders)
         {
             if (!UnitManager.Instance.IsVolvyBurrowing)
             {
@@ -73,6 +73,22 @@ public class VolvyHealth : MonoBehaviour
     {
         StomachManager.Instance.ThrowUpVegetables();
         _invulnerabilityTime = 1f;
+
+        if (_takeDamageCoroutine != null)
+        {
+            StopCoroutine(_takeDamageCoroutine);
+        }
+        _takeDamageCoroutine = StartCoroutine(TakeDamageRoutine());
+    }
+
+    private Coroutine _takeDamageCoroutine;
+
+    IEnumerator TakeDamageRoutine()
+    {
+        float time = 0.5f;
+        StartCoroutine(DamageEffectManager.Instance.FlashRoutine(time));
+        StartCoroutine(PlayerCameraManager.Instance.ShakeRoutine(25f, time));
+        yield return new WaitForSeconds(time);
     }
 
     void Die()
