@@ -30,9 +30,9 @@ public class VolvyHealth : MonoBehaviour
 
     void CheckEnemyCollisions()
     {
-        Collider[] enemyColliders = Physics.OverlapSphere(transform.position, _collisionRadius, 1 << Layer.Enemies);
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, _collisionRadius, 1 << Layer.Enemies);
 
-        foreach (Collider c in enemyColliders)
+        foreach (Collider2D c in enemyColliders)
         {
             if (!UnitManager.Instance.IsVolvyBurrowing)
             {

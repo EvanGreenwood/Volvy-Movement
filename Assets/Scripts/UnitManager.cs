@@ -42,7 +42,7 @@ public class UnitManager : SingletonBehaviour<UnitManager>
     public void Explode(Vector3 position, float killRange, float knockRange, float knockForce)
     {
        
-        Collider[] enemyColliders = Physics.OverlapSphere(position, Mathf.Max(knockRange, killRange), 1 << LayerMask.NameToLayer("Enemies"));
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(position, Mathf.Max(knockRange, killRange), 1 << LayerMask.NameToLayer("Enemies"));
         //
        // Debug.Log(" Explode " + Mathf.Max(knockRange, killRange) + "  " + enemyColliders.Length);
         //

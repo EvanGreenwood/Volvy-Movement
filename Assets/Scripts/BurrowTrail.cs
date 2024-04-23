@@ -43,7 +43,7 @@ public class BurrowTrail : MonoBehaviour
                 TryRemoveBurrows();
             }
             //
-            Collider[] vegetableColliders = Physics.OverlapSphere(transform.position, 0.6f, 1 << LayerMask.NameToLayer("Rooted Vegetables")); 
+            Collider2D[] vegetableColliders = Physics2D.OverlapCircleAll(transform.position, 0.6f, 1 << LayerMask.NameToLayer("Rooted Vegetables")); 
             for (int i = 0; i < vegetableColliders.Length; i++)
             {
                 if (vegetableColliders[i].TryGetComponent<VegetableObject>(out VegetableObject vegetable))
@@ -52,7 +52,7 @@ public class BurrowTrail : MonoBehaviour
                 }
             }
             //
-            Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 0.6f, 1 << LayerMask.NameToLayer("Enemies"));
+            Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, 0.6f, 1 << LayerMask.NameToLayer("Enemies"));
             for (int i = 0; i < enemyColliders.Length; i++)
             {
                 if (enemyColliders[i].TryGetComponent<CharacterMover>(out CharacterMover mover))

@@ -139,6 +139,14 @@ MonoBehaviour:
     loop: 0
     loopFrame: -1
     wobble: 0
+  _eatAnimation:
+    frames: []
+    frameCounter: 0
+    frameRate: 0.0334
+    frame: 0
+    loop: 1
+    loopFrame: -1
+    wobble: 0
   _stunnedAnimation:
     frames: []
     frameCounter: 0
@@ -294,6 +302,14 @@ MonoBehaviour:
     loop: 0
     loopFrame: -1
     wobble: 0
+  _eatAnimation:
+    frames: []
+    frameCounter: 0
+    frameRate: 0.0334
+    frame: 0
+    loop: 1
+    loopFrame: -1
+    wobble: 0
   _stunnedAnimation:
     frames: []
     frameCounter: 0
@@ -326,6 +342,7 @@ GameObject:
   - component: {fileID: 1187346612172450115}
   - component: {fileID: 4676018682060355523}
   - component: {fileID: 5649156177869545838}
+  - component: {fileID: 5043530595456744224}
   m_Layer: 0
   m_Name: Volvy
   m_TagString: Untagged
@@ -497,6 +514,14 @@ MonoBehaviour:
     loop: 0
     loopFrame: -1
     wobble: 0
+  _eatAnimation:
+    frames: []
+    frameCounter: 0
+    frameRate: 0.0334
+    frame: 0
+    loop: 1
+    loopFrame: -1
+    wobble: 0
   _stunnedAnimation:
     frames: []
     frameCounter: 0
@@ -567,6 +592,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 9195784310918474120, guid: f51ec74c5d982f7408d8ff9dcd0bad33, type: 3}
   _rate: 2
+--- !u!58 &5043530595456744224
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959660175620158080}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.1}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1001 &3000370673363572748
 PrefabInstance:
   m_ObjectHideFlags: 0

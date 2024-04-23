@@ -85,14 +85,13 @@ public class StomachVegetable : MonoBehaviour
         _ejecting = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!_combining && collision.rigidbody != null && collision.rigidbody.TryGetComponent(out StomachVegetable otherVegetable))
         {
             //
             if (RulesManager.Instance.TryCombineVegetables(Type, otherVegetable.Type, out VegetableType result))
             {
-
                 _combining = true;
                 //_rigidbody.MovePosition(collision.contacts[0].point);
                 StomachManager.Instance.SpawnVegetable(result, collision.contacts[0].point);
