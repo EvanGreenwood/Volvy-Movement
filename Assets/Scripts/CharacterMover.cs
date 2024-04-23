@@ -55,8 +55,38 @@ public class CharacterMover : MonoBehaviour
     {
         if (_avoidEnemies && UnitManager.HasInstance) UnitManager.Instance._enemies.Remove(transform);
     }
-    //  
+
+
     void Update()
+    {
+        if (_input.PressedFire)
+        {
+            if (movementState != MovementState.Burrow)
+            {
+                if (AbilitiesManager.Instance.chargeBar.TryUseCharge())
+                {
+                    movementState = MovementState.Burrow;
+                    _burrowTime = 0;
+                    _shadow.enabled = false;
+                    //
+                    if (_moveDirection.magnitude > 0)
+                    {
+                        _burrowDirection = _moveDirection;
+                    }
+                    else if (_input.LastDirection != 0)
+                    {
+                        _burrowDirection = new Vector2(_input.LastDirection, 0);
+                    }
+                    else
+                    {
+                        _burrowDirection = new Vector2(1, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    void FixedUpdate()
     {
         Vector2 direction = new Vector2((_input.HoldingLeft ? -1 : 0) + (_input.HoldingRight ? 1 : 0), (_input.HoldingDowm ? -1 : 0) + (_input.HoldingUp ? 1 : 0)).normalized;
         _moveDirection = direction;
@@ -123,32 +153,6 @@ public class CharacterMover : MonoBehaviour
         else
         {
             movementState = MovementState.Idle;
-        }
-        //
-        if (_input.PressedFire)
-        {
-            if (movementState != MovementState.Burrow)
-            {
-                if (AbilitiesManager.Instance.chargeBar.TryUseCharge())
-                {
-                    movementState = MovementState.Burrow;
-                    _burrowTime = 0;
-                    _shadow.enabled = false;
-                    //
-                    if (direction.magnitude > 0)
-                    {
-                        _burrowDirection = direction;
-                    }
-                    else if (_input.LastDirection != 0)
-                    {
-                        _burrowDirection = new Vector2(_input.LastDirection, 0);
-                    }
-                    else
-                    {
-                        _burrowDirection = new Vector2(1, 0);
-                    }
-                }
-            }
         }
         //
         if (_avoidEnemies && movementState != MovementState.Stunned && movementState != MovementState.Dead)
