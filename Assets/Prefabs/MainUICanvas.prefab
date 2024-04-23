@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 1472260659385562602}
   - component: {fileID: 6966768114078657115}
   m_Layer: 5
-  m_Name: RulesUI
+  m_Name: UpgradeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 906909763985296210}
   - component: {fileID: 6399208582724678731}
   m_Layer: 5
-  m_Name: RuleOptionsParent
+  m_Name: OptionsParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,6 +1057,10 @@ MonoBehaviour:
   _rulesUICanvasGroup: {fileID: 6966768114078657115}
   _ruleOptionPrefab: {fileID: 5808502839562327744, guid: 927c472ceb0a3c1478fa0e3696af6b61, type: 3}
   _ruleOptionsParent: {fileID: 906909763985296210}
+  _passiveOptionPrefab: {fileID: 686067743040795833, guid: 929d9a0f62340384cb14c00e79c49d20, type: 3}
+  _availablePassives:
+  - {fileID: 11400000, guid: 76b59bafbb7b9eb49a33a00b138374d8, type: 2}
+  - {fileID: 11400000, guid: 86237e89835acb74c930a15b923f00ab, type: 2}
 --- !u!114 &6313615159655778062
 MonoBehaviour:
   m_ObjectHideFlags: 0

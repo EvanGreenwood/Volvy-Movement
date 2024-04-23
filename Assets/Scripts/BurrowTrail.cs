@@ -12,6 +12,7 @@ public class BurrowTrail : MonoBehaviour
     [SerializeField] private float _trailRemoveDistance = 2f;
     private float _trailRemoveTime = -10;
     private int _trailCount = 0;
+    int _burrowDamage = 1;
     void Start()
     {
         _mover = GetComponent<CharacterMover>();    
@@ -94,5 +95,10 @@ public class BurrowTrail : MonoBehaviour
     {
         _trailObjects.Add(Instantiate(_burrowObjectPrefab, transform.position  + Random.onUnitSphere.WithZ(0) * 0.15f, Quaternion.identity));
         _trailObjects[_trailObjects.Count -1]. transform.position = _trailObjects[_trailObjects.Count - 1].transform.position.WithZ(_trailObjects[_trailObjects.Count - 1].transform.position.y * 0.02f);
+    }
+
+    public void IncreaseBurrowDamage(int extraDamage)
+    {
+        _burrowDamage += extraDamage;
     }
 }

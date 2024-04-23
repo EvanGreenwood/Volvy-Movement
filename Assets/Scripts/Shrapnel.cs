@@ -100,7 +100,7 @@ public class Shrapnel : MonoBehaviour
                     Vector3 diff = (UnitManager.Instance.playerTransform.position - transform.position).WithZ(0);
                     if (diff.sqrMagnitude < 0.2f)
                     {
-                        RulesUI.Instance.ActivateRulesUI();
+                        UpgradeManager.Instance.ActivateUpgradeUI();
                         Destroy(gameObject);
                     }
                 }
