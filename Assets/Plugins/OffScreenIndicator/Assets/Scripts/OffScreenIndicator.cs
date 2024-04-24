@@ -10,9 +10,7 @@ using UnityEngine;
 [DefaultExecutionOrder(-1)]
 public class OffScreenIndicator : MonoBehaviour
 {
-    [Range(0.5f, 0.9f)]
-    [Tooltip("Distance offset of the indicators from the centre of the screen")]
-    [SerializeField] private float screenBoundOffset = 0.9f;
+    [SerializeField] private float padding;
 
     private Camera mainCamera;
     private Vector3 screenCentre;
@@ -22,11 +20,13 @@ public class OffScreenIndicator : MonoBehaviour
 
     public static Action<OffscreenTarget, bool> TargetStateChanged;
 
+    private RectTransform RectTransform => transform as RectTransform;
+
     void Awake()
     {
         mainCamera = Camera.main;
-        screenCentre = new Vector3(Screen.width, Screen.height, 0) / 2;
-        screenBounds = screenCentre * screenBoundOffset;
+        screenCentre = new Vector3(Screen.width, Screen.height, 0f) / 2f;
+        screenBounds = screenCentre;
         TargetStateChanged += HandleTargetStateChanged;
     }
 
@@ -43,7 +43,7 @@ public class OffScreenIndicator : MonoBehaviour
         foreach(OffscreenTarget target in targets)
         {
             Vector3 screenPosition = OffScreenIndicatorCore.GetScreenPosition(mainCamera, target.transform.position);
-            bool isTargetVisible = OffScreenIndicatorCore.IsTargetVisible(screenPosition);
+            bool isTargetVisible = OffScreenIndicatorCore.IsTargetVisible(screenPosition, RectTransform.offsetMin, RectTransform.offsetMax);
             float distanceFromCamera = target.NeedDistanceText ? target.GetDistanceFromCamera(mainCamera.transform.position) : float.MinValue;// Gets the target distance from the camera.
             Indicator indicator = null;
 
@@ -68,6 +68,10 @@ public class OffScreenIndicator : MonoBehaviour
             {
                 indicator.SetImageColor(target.TargetColor);// Sets the image color of the indicator.
                 indicator.SetDistanceText(distanceFromCamera); //Set the distance text for the indicator.
+
+                screenPosition.x = Mathf.Clamp(screenPosition.x, RectTransform.offsetMin.x + padding, Screen.width - RectTransform.offsetMax.x - padding);
+                screenPosition.y = Mathf.Clamp(screenPosition.y, RectTransform.offsetMin.y + padding, Screen.height - RectTransform.offsetMax.y - padding);
+
                 indicator.transform.position = screenPosition; //Sets the position of the indicator on the screen.
                 indicator.SetTextRotation(Quaternion.identity); // Sets the rotation of the distance text of the indicator.
             }

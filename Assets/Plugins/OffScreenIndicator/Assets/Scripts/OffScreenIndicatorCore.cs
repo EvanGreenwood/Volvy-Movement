@@ -21,9 +21,9 @@ namespace PixelPlay.OffScreenIndicator
         /// </summary>
         /// <param name="screenPosition">Position of the target mapped to screen cordinates</param>
         /// <returns></returns>
-        public static bool IsTargetVisible(Vector3 screenPosition)
+        public static bool IsTargetVisible(Vector3 screenPosition, Vector2 offsetMin, Vector2 offsetMax)
         {
-            bool isTargetVisible = screenPosition.z > 0 && screenPosition.x > 0 && screenPosition.x < Screen.width && screenPosition.y > 0 && screenPosition.y < Screen.height;
+            bool isTargetVisible = screenPosition.z > 0 && screenPosition.x > offsetMin.x && screenPosition.x < Screen.width - offsetMax.x && screenPosition.y > offsetMin.y && screenPosition.y < Screen.height - offsetMax.y;
             return isTargetVisible;
         }
 
